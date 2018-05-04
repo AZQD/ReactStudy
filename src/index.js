@@ -1,11 +1,12 @@
-import React from 'react';
-import {render} from 'react-dom';
+import React from 'react'
+import {render} from 'react-dom'
+import Header from './components/Header'
 
 class Index extends React.Component {
   render() {
     return (
-      <div>123</div>
+      <Header />
     )
   }
 }
-render(<Index />, document.getElementById("box"));
+render(<Index />, document.getElementById("box"))
