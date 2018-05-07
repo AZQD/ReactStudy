@@ -4,12 +4,13 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');//压缩js
 const CleanWebpackPlugin = require("clean-webpack-plugin");//清除相关文件
 
 module.exports = {
-  entry:  __dirname + "/src/index.jsx",//已多次提及的唯一入口文件
+  entry:  __dirname + "/src/components/Index.jsx",//已多次提及的唯一入口文件
   resolve:{
     extensions:['.js',".css",'.jsx', '.less']//自动补全文件后缀
   },
   output: {
     path: __dirname + "/build",//打包后的文件存放的地方
+    // publicPath:'/assest',
     filename: "js/bundle-[hash].js"//打包后输出文件的文件名
   },
   devServer: {
@@ -44,6 +45,17 @@ module.exports = {
           { loader: 'css-loader', options: { importLoaders: 1 } },//注意less的配置
           'less-loader'
         ]
+      },
+      {
+        //loader 后面 limit 字段代表图片打包限制，这个限制是指当图片大小小于限制时会自动转成 base64 码引用。
+        //name 字段指定了在打包根目录（output.path）下生成名为 images 的文件夹，并在原图片名前加上8位 hash 值。
+        test: /\.(png|jpg|gif)$/,
+        // loader: 'url-loader?limit=8192'
+        loader: 'url-loader?limit=8192&name=images/[hash:8].[name].[ext]',
+      },
+      {
+        test:/\.html$/,
+        loader:'html-loader'
       }
     ]
   },
