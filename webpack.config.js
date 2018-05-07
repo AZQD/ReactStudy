@@ -4,14 +4,17 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');//压缩js
 const CleanWebpackPlugin = require("clean-webpack-plugin");//清除相关文件
 
 module.exports = {
-  entry:  __dirname + "/src/components/Index.jsx",//已多次提及的唯一入口文件
+  entry: {
+    index:__dirname + "/src/components/index/Index.jsx",//已多次提及的唯一入口文件
+    router:__dirname + "/src/components/router/Index.jsx",//已多次提及的唯一入口文件
+  },
   resolve:{
     extensions:['.js',".css",'.jsx', '.less']//自动补全文件后缀
   },
   output: {
     path: __dirname + "/build",//打包后的文件存放的地方
     // publicPath:'/assest',
-    filename: "js/bundle-[hash].js"//打包后输出文件的文件名
+    filename: "js/[name].[hash].js"//打包后输出文件的文件名
   },
   devServer: {
     contentBase: "./",//本地服务器所加载的页面所在的目录
@@ -78,12 +81,18 @@ module.exports = {
       template: __dirname + "/src/index.tmpl.html",//new 一个这个插件的实例，并传入相关的参数
       title:'index',
       filename:'index.html',
-      chunks:"js/bundle",//如果引入多个js,参考github上PICOOC文件写法；
+      chunks:['index'],//如果引入多个js,参考github上PICOOC文件写法；
+    }),
+    new HtmlWebpackPlugin({
+      template: __dirname + "/src/router.tmpl.html",//new 一个这个插件的实例，并传入相关的参数
+      title:'router',
+      filename:'router.html',
+      chunks:['router'],//如果引入多个js,参考github上PICOOC文件写法；
     }),
 
     new webpack.HotModuleReplacementPlugin(),//热加载插件
 
-    new UglifyJSPlugin(),//压缩插件
+    // new UglifyJSPlugin(),//压缩插件
 
   ],
 }
