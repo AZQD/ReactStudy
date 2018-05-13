@@ -1,10 +1,14 @@
 import React from 'react'
 import {render} from 'react-dom'
+import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
+import App from '../../components/router/App'
 
 export default class Index extends React.Component{
   render (){
     return (
-      <div>112</div>
+      <Router>
+        <App />
+      </Router>
     )
   }
 }
