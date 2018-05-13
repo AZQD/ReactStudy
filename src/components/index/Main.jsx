@@ -7,13 +7,13 @@ export default class Main extends React.Component{
       <div>
         <ul>
           <li>
-            <Link to="/router/home">Home</Link>
+            <Link to="/home">Home</Link>
           </li>
           <li>
-            <Link to="/router/about">About</Link>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="/router/topic">Topic</Link>
+            <Link to="/topic">Topic</Link>
           </li>
         </ul>
       </div>

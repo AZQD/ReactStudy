@@ -1,16 +1,15 @@
 import React from 'react'
 import {render} from 'react-dom'
-import Header from './Header'
-import Content from './Content'
+import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
+import App from './App'
 
-class Index extends React.Component {
-  render() {
+export default class Index extends React.Component{
+  render (){
     return (
-      <div className="wrapper">
-        <Header />
-        <Content />
-      </div>
+      <Router>
+        <App />
+      </Router>
     )
   }
 }
-render(<Index />, document.getElementById("box"))
+render(<Index/>, document.getElementById("box"))

@@ -1,6 +1,6 @@
 import React from 'react'
-import Main from '../../components/router/Main'
-import Content from '../../components/router/Content'
+import Main from './Main'
+import Content from './Content'
 
 export default class App extends React.Component{
   render (){

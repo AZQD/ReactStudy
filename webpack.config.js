@@ -5,8 +5,8 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");//清除相关文件
 
 module.exports = {
   entry: {
+    test:__dirname + "/src/components/test/Index.jsx",//已多次提及的唯一入口文件
     index:__dirname + "/src/components/index/Index.jsx",//已多次提及的唯一入口文件
-    router:__dirname + "/src/components/router/Index.jsx",//已多次提及的唯一入口文件
   },
   resolve:{
     extensions:['.js',".css",'.jsx', '.less']//自动补全文件后缀
@@ -78,16 +78,16 @@ module.exports = {
     new webpack.BannerPlugin('一分耕耘，一分收获！'),//自带插件
 
     new HtmlWebpackPlugin({
+      template: __dirname + "/src/test.tmpl.html",//new 一个这个插件的实例，并传入相关的参数
+      title:'test',
+      filename:'test.html',
+      chunks:['test'],//如果引入多个js,参考github上PICOOC文件写法；
+    }),
+    new HtmlWebpackPlugin({
       template: __dirname + "/src/index.tmpl.html",//new 一个这个插件的实例，并传入相关的参数
       title:'index',
       filename:'index.html',
       chunks:['index'],//如果引入多个js,参考github上PICOOC文件写法；
-    }),
-    new HtmlWebpackPlugin({
-      template: __dirname + "/src/router.tmpl.html",//new 一个这个插件的实例，并传入相关的参数
-      title:'router',
-      filename:'router.html',
-      chunks:['router'],//如果引入多个js,参考github上PICOOC文件写法；
     }),
 
     new webpack.HotModuleReplacementPlugin(),//热加载插件
