@@ -4,17 +4,36 @@
   min-height: 100vh;
   .partLeft{
     width: 8rem;
-    background-color: #f3f3f3;
+    background-color: #f6f8fa;
     .mainBox{
       text-align: center;
+      font-size: 1.25rem;
       .mainUl{
         .mainLi{
-          line-height: 40/@rem;
+          line-height: 50/@rem;
+          border-bottom: 1/@rem solid #eaecef;
         }
       }
     }
   }
   .partRight{
     flex-grow: 1;
+    padding: 20/@rem;
+    .listBox{
+      .listUl{
+        border: 1/@rem solid #eaecef;
+        .listLi{
+          padding-left: 20/@rem;
+          line-height: 40/@rem;
+          border-bottom: 1/@rem solid #eaecef;
+        }
+        .listLi:last-child{
+          border-bottom: none;
+        }
+      }
+      .listRouter{
+        padding-top: 20/@rem;
+      }
+    }
   }
 }

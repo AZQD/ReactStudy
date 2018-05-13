@@ -4,14 +4,31 @@
 }
 .wrapper .partLeft {
   width: 8rem;
-  background-color: #f3f3f3;
+  background-color: #f6f8fa;
 }
 .wrapper .partLeft .mainBox {
   text-align: center;
+  font-size: 1.25rem;
 }
 .wrapper .partLeft .mainBox .mainUl .mainLi {
-  line-height: 2.5rem;
+  line-height: 3.125rem;
+  border-bottom: 0.0625rem solid #eaecef;
 }
 .wrapper .partRight {
   flex-grow: 1;
+  padding: 1.25rem;
+}
+.wrapper .partRight .listBox .listUl {
+  border: 0.0625rem solid #eaecef;
+}
+.wrapper .partRight .listBox .listUl .listLi {
+  padding-left: 1.25rem;
+  line-height: 2.5rem;
+  border-bottom: 0.0625rem solid #eaecef;
+}
+.wrapper .partRight .listBox .listUl .listLi:last-child {
+  border-bottom: none;
+}
+.wrapper .partRight .listBox .listRouter {
+  padding-top: 1.25rem;
 }

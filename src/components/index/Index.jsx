@@ -1,13 +1,17 @@
 import React from 'react'
 import {render} from 'react-dom'
-import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
+import {Router , Route, Link, Switch} from 'react-router-dom'
+// import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 import App from './App'
-import '../../css/public'
+import '../../../static/css/public'
+import '../../../static/js/public'
+import createHistory from 'history/createHashHistory'
+const history = createHistory()
 
 export default class Index extends React.Component{
   render (){
     return (
-      <Router>
+      <Router history={history}>
         <App />
       </Router>
     )
