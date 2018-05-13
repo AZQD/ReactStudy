@@ -20,11 +20,11 @@ const Topic = () => (
 export default class Content extends React.Component{
   render (){
     return (
-      <div>
+      <Switch>
         <Route path="/home" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/topic" component={Topic} />
-      </div>
+      </Switch>
     )
   }
 }

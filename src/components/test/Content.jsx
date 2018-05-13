@@ -1,6 +1,6 @@
 import React from 'react'
-import '../../css/content'
-import pig from '../../images/pig.png'
+import '../../css/test/content'
+import pig from '../../images/test/pig.png'
 
 export default class Content extends React.Component{
   render (){
