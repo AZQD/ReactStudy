@@ -67,7 +67,8 @@ module.exports = {
     // 这里是之前配置的其它各种插件
     new CleanWebpackPlugin(
       [
-        'build/js/*.js*',    // removes all files in 'build' folder
+        // 'build/js/*.js*',    // removes all files in 'build' folder
+        'build',    // removes all files in 'build' folder
       ],
       {
         root: __dirname,

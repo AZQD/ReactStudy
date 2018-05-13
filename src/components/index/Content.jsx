@@ -3,12 +3,12 @@ import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 
 const Home = () => (
   <div>
-    <h2>Home</h2>
+    <h2>58集团</h2>
   </div>
 );
 const About = () => (
   <div>
-    <h2>About</h2>
+    <h2>电子城</h2>
   </div>
 );
 const Topics = ({match}) => (
@@ -16,7 +16,7 @@ const Topics = ({match}) => (
     <ul className="listUl">
       <li className="listLi">
         <h3>
-          <Link to={`${match.url}/topic1`} replace>topic1</Link>
+          <Link to={`${match.url}/topic1`} replace>愿景</Link>
         </h3>
       </li>
       <li className="listLi">
