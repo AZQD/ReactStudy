@@ -13,7 +13,7 @@ export default class Main extends React.Component{
             <Link to="/about" replace>About</Link>
           </li>
           <li className="mainLi">
-            <Link to="/topics" replace>Topic</Link>
+            <Link to="/menu" replace>Menu</Link>
           </li>
         </ul>
       </div>

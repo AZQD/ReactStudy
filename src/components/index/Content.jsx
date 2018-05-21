@@ -11,35 +11,35 @@ const About = () => (
     <h2>About</h2>
   </div>
 );
-const Topics = ({match}) => (
+const Menu = ({match}) => (
   <div className="listBox">
     <ul className="listUl">
       <li className="listLi">
         <h3>
-          <Link to={`${match.url}/topic1`} replace>topic1</Link>
+          <Link to={`${match.url}/item1`} replace>item1</Link>
         </h3>
       </li>
       <li className="listLi">
         <h3>
-          <Link to={`${match.url}/topic2`} replace>topic2</Link>
+          <Link to={`${match.url}/item2`} replace>item2</Link>
         </h3>
       </li>
       <li className="listLi">
         <h3>
-          <Link to={`${match.url}/topic3`} replace>topic3</Link>
+          <Link to={`${match.url}/item3`} replace>item3</Link>
         </h3>
       </li>
     </ul>
     <div className="listRouter">
-      <Route path={`${match.url}/:topicId`} component={Topic} />
-      <Route exact path={match.url} render={() => <h3>Please select a topic.</h3>} />
+      <Route path={`${match.url}/:itemId`} component={Item} />
+      <Route exact path={match.url} render={() => <h3>Please select a item.</h3>} />
     </div>
   </div>
 );
 
-const Topic = ({match}) => (
+const Item = ({match}) => (
   <div>
-    <h3>This is the {match.params.topicId}</h3>
+    <h3>This is the {match.params.itemId}</h3>
     <Link to="/">Back</Link>
   </div>
 );
@@ -51,7 +51,7 @@ export default class Content extends React.Component{
         <Route exact path="/" component={Home} />
         <Route path="/home" component={Home} />
         <Route path="/about" component={About} />
-        <Route path="/topics" component={Topics} />
+        <Route path="/menu" component={Menu} />
       </Switch>
     )
   }
