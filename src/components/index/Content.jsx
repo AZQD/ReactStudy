@@ -6,8 +6,9 @@ const Home = () => (
     <h2>Home</h2>
   </div>
 );
-const About = () => (
+const About = (props) => (
   <div>
+    {console.log("props",props)}
     <h2>About</h2>
   </div>
 );
@@ -31,8 +32,8 @@ const Menu = ({match}) => (
       </li>
     </ul>
     <div className="listRouter">
-      <Route path={`${match.url}/:itemId`} component={Item} />
-      <Route exact path={match.url} render={() => <h3>Please select a item.</h3>} />
+      <Route path={`${match.url}/:itemId`} component={Item}/>
+      <Route exact path={match.url} render={() => <h3>Please select a item.</h3>}/>
     </div>
   </div>
 );
