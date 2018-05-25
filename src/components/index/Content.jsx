@@ -40,6 +40,7 @@ const Menu = ({match}) => (
 
 const Item = ({match}) => (
   <div>
+    {console.log(match)}
     <h3>This is the {match.params.itemId}</h3>
     <Link to="/">Back</Link>
   </div>
