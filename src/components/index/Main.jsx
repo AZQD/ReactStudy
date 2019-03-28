@@ -27,6 +27,9 @@ export default class Main extends React.Component{
           <li className="mainLi">
             <Link to={reduxDemo1} replace>Redex Demo1</Link>
           </li>
+          <li className="mainLi">
+            <Link to="/reduxDemo2" replace>Redex Demo2</Link>
+          </li>
         </ul>
       </div>
     )
