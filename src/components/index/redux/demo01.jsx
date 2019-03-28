@@ -71,7 +71,7 @@ store.dispatch(addToCart('Juice 2L', 1, 250));
 
 unsubscribe();
 
-const ReduxDemo = ((props)=>{
+const Demo01 = ((props)=>{
   // console.log(props);
   return (
     <div>
@@ -80,4 +80,4 @@ const ReduxDemo = ((props)=>{
   )
 });
 
-export default ReduxDemo;
+export default Demo01;

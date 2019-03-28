@@ -8,8 +8,8 @@ export default class Main extends React.Component{
       pathname:"/about",
       aa:data
     };
-    let reduxDemo = {
-      pathname: '/reduxDemo',
+    let reduxDemo1 = {
+      pathname: '/reduxDemo1',
       test: {a:1}
     };
     return (
@@ -25,7 +25,7 @@ export default class Main extends React.Component{
             <Link to="/menu" replace>Menu</Link>
           </li>
           <li className="mainLi">
-            <Link to={reduxDemo} replace>Redex Demo</Link>
+            <Link to={reduxDemo1} replace>Redex Demo1</Link>
           </li>
         </ul>
       </div>
