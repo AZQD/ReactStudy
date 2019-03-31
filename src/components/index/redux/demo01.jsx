@@ -1,6 +1,6 @@
 import React from 'react'
 import { createStore } from 'redux'
-console.log(123, createStore);
+// console.log(123, createStore);
 // import { createStore } from "redux";
 import { combineReducers } from 'redux';
 
@@ -59,10 +59,12 @@ const rootReducer = combineReducers(allReducers);
 
 let store = createStore(rootReducer);
 
-console.log("initial state: ", store.getState());
+// console.log("initial state: ", store.getState());
 
 let unsubscribe = store.subscribe(() =>
-  console.log(store.getState())
+  {
+    // console.log(store.getState())
+  }
 );
 
 store.dispatch(addToCart('Coffee 500gm', 1, 250));

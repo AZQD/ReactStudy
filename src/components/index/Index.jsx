@@ -6,7 +6,7 @@ import App from './App'
 import '../../../static/css/public'
 import '../../../static/js/public'
 import hashHistory from 'react-dom'
-console.log("hashHistory",hashHistory);
+// console.log("hashHistory",hashHistory);
 
 export default class Index extends React.Component{
   render (){
