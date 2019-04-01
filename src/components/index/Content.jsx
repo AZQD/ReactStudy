@@ -1,7 +1,6 @@
 import React from 'react'
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 import Demo01 from './redux/demo01'
-import Demo02 from './redux/demo02'
 
 const Home = () => (
   <div>
