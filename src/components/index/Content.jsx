@@ -57,7 +57,6 @@ export default class Content extends React.Component{
         <Route path="/about" component={About} />
         <Route path="/menu" component={Menu} />
         <Route path="/reduxDemo1" component={Demo01} />
-        <Route path="/reduxDemo2" component={Demo02} />
       </Switch>
     )
   }

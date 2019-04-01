@@ -7,6 +7,7 @@ module.exports = {
   entry: {
     test:__dirname + "/src/components/test/Index.jsx",//已多次提及的唯一入口文件
     index:__dirname + "/src/components/index/Index.jsx",//已多次提及的唯一入口文件
+    redux:__dirname + "/src/components/redux/Index.jsx",//已多次提及的唯一入口文件
   },
   resolve:{
     extensions:['.js',".css",'.jsx', '.less']//自动补全文件后缀
@@ -89,6 +90,12 @@ module.exports = {
       title:'index',
       filename:'index.html',
       chunks:['index'],//如果引入多个js,参考github上PICOOC文件写法；
+    }),
+    new HtmlWebpackPlugin({
+      template: __dirname + "/src/redux.tmpl.html",//new 一个这个插件的实例，并传入相关的参数
+      title:'redux',
+      filename:'redux.html',
+      chunks:['redux'],//如果引入多个js,参考github上PICOOC文件写法；
     }),
 
     new webpack.HotModuleReplacementPlugin(),//热加载插件
