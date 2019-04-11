@@ -16,15 +16,17 @@ import Demo2 from './container/Demo2/index'
 function counter(state = {count: 0}, action) {
   const count = state.count;
   switch (action.type) {
-    case 'increase':
+    case 'add':
       return {count: count + 1};
+    case 'reduce':
+      return {count: count - 1};
     default:
       return state
   }
 }
 
 /**
- * // 创建store
+ * // 1、 创建store
  // 存储状态的地方——store
  // store存在于顶层组件，类似于全局变量、静态变量、本地存储的概念，
  // 意思是：状态树存在这个地方，欢迎所有组件随时访问；

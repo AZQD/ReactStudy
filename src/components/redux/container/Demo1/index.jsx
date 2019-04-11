@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import {createStore} from 'redux'
-import {Provider, connect} from 'react-redux'
+import {connect} from 'react-redux'
 import CommonMenu from '../CommonMenu/index'
 
 // React component
@@ -24,7 +23,7 @@ Counter.propTypes = {
 }
 
 // Action
-const increaseAction = {type: 'increase'};
+const increaseAction = {type: 'add'};
 
 
 // Map Redux state to component props
@@ -47,4 +46,14 @@ const Demo1 = connect(
   mapDispatchToProps
 )(Counter);
 
-export default Demo1
+export default Demo1;
+
+/**
+ * 3、组件内访问和改变状态树——mapStateToProps & mapDispatchToProps
+
+ 我们知道，组件间的传值使用的是props，mapStateToProps和mapDispatchToProps这两个方法，顾名思义，就是把状态树和改变状态树的方法作为组件的props，这样就可以达到访问、改变状态树的目的；
+
+ 4、状态树和组件之间友谊的小船——connect
+
+ connect是一个高阶函数，用于连接状态树和组件
+ */
