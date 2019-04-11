@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import ReactDOM from 'react-dom'
 import {createStore} from 'redux'
 import {Provider, connect} from 'react-redux'
 import CommonMenu from '../CommonMenu/index'
@@ -48,4 +47,4 @@ const Demo1 = connect(
   mapDispatchToProps
 )(Counter);
 
-export default Demo1;
+export default Demo1

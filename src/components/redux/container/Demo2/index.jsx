@@ -10,4 +10,4 @@ export default class Demo2 extends React.Component {
       </div>
     )
   }
-}
+};

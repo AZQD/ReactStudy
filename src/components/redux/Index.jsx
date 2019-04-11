@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
@@ -9,10 +8,10 @@ import Demo2 from './container/Demo2/index'
 
 // Reducer
 function counter(state = {count: 0}, action) {
-  const count = state.count
+  const count = state.count;
   switch (action.type) {
     case 'increase':
-      return {count: count + 1}
+      return {count: count + 1};
     default:
       return state
   }
@@ -31,4 +30,4 @@ ReactDOM.render(
     </HashRouter>
   </Provider>,
   document.getElementById('box')
-)
+);
