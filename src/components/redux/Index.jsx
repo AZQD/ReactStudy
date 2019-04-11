@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom'
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import {HashRouter, Switch, hashHistory, Route} from 'react-router-dom';
-import Demo1 from './Demo1'
-import Demo2 from './Demo2'
+import Demo1 from './container/Demo1/index'
+import Demo2 from './container/Demo2/index'
 
 // Reducer
 function counter(state = {count: 0}, action) {
