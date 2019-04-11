@@ -3,14 +3,15 @@ import {connect} from 'react-redux'
 import CommonMenu from '../CommonMenu/index'
 
 
-class Counter extends Component{
-  render(){
-    const {value, onIncreaseClick} = this.props;
+class Counter extends Component {
+  render() {
+    const {value, onDoubleClick} = this.props;
+    console.log(value);
     return (
       <div className="demo2Box">
         <CommonMenu history={this.props.history}/>
         <span>{value}</span>
-        <button onClick={onIncreaseClick}>点击</button>
+        <button onClick={onDoubleClick}>翻倍</button>
       </div>
     )
   }
@@ -24,9 +25,9 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onIncreaseClick: ()=>{
+    onDoubleClick: () => {
       dispatch({
-        type: 'reduce'
+        type: 'double'
       });
     }
   }

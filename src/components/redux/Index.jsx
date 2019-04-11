@@ -13,13 +13,20 @@ import Demo2 from './container/Demo2/index'
  dispatch是动作的执行，类似于“投”篮的这个动作；
  */
 // Reducer
-function counter(state = {count: 0}, action) {
+const initState = {
+  count: 0,
+};
+
+function counter(state = initState, action) {
   const count = state.count;
-  switch (action.type) {
+  const type = action.type;
+  switch (type) {
     case 'add':
       return {count: count + 1};
     case 'reduce':
       return {count: count - 1};
+    case 'double': //翻倍
+      return {count: count*2};
     default:
       return state
   }

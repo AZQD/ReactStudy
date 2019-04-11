@@ -6,12 +6,14 @@ import CommonMenu from '../CommonMenu/index'
 // React component
 class Counter extends Component {
   render() {
-    const {value, onIncreaseClick} = this.props;
+    console.log(this.props);
+    const {value, onAddClick, onReduceClick} = this.props;
     return (
       <div>
         <CommonMenu history={this.props.history}/>
-        <span>{value}</span>
-        <button onClick={onIncreaseClick}>Increase</button>
+        <div>{value}</div>
+        <button onClick={onAddClick}>add</button>
+        <button onClick={onReduceClick}>reduce</button>
       </div>
     )
   }
@@ -19,8 +21,9 @@ class Counter extends Component {
 
 Counter.propTypes = {
   value: PropTypes.number.isRequired,
-  onIncreaseClick: PropTypes.func.isRequired
-}
+  onAddClick: PropTypes.func.isRequired,
+  onReduceClick: PropTypes.func.isRequired
+};
 
 // Action
 const increaseAction = {type: 'add'};
@@ -36,7 +39,12 @@ function mapStateToProps(state) {
 // Map Redux actions to component props
 function mapDispatchToProps(dispatch) {
   return {
-    onIncreaseClick: () => dispatch(increaseAction)
+    onAddClick: () => dispatch({
+      type: 'add'
+    }),
+    onReduceClick: () => dispatch({
+      type: 'reduce'
+    }),
   }
 }
 
