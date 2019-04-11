@@ -1,10 +1,12 @@
 import React from 'react'
+import CommonMenu from '../CommonMenu/index'
 
-export default class Demo2 extends React.Component{
-  render(){
+export default class Demo2 extends React.Component {
+  render() {
     return (
       <div className="headerBox">
-        This is <span className="active">header</span>
+        <CommonMenu history={this.props.history}/>
+        This is <span className="active">Demo2</span>
       </div>
     )
   }
