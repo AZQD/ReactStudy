@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
-import {createStore} from 'redux'
+import {createStore, combineReducers} from 'redux'
 import {Provider} from 'react-redux'
 import {HashRouter, Switch, hashHistory, Route} from 'react-router-dom';
+import reducers from './reducers';
 import Demo1 from './container/Demo1/index'
 import Demo2 from './container/Demo2/index'
 
@@ -12,25 +13,6 @@ import Demo2 from './container/Demo2/index'
  reducer是响应的抽象；传入的参数是当前state和action；它是一个纯方法；传入旧的state和action，返回一个新的状态；
  dispatch是动作的执行，类似于“投”篮的这个动作；
  */
-// Reducer
-const initState = {
-  count: 0,
-};
-
-function counter(state = initState, action) {
-  const count = state.count;
-  const type = action.type;
-  switch (type) {
-    case 'add':
-      return {count: count + 1};
-    case 'reduce':
-      return {count: count - 1};
-    case 'double': //翻倍
-      return {count: count*2};
-    default:
-      return state
-  }
-}
 
 /**
  * // 1、 创建store
@@ -39,7 +21,7 @@ function counter(state = initState, action) {
  // 意思是：状态树存在这个地方，欢迎所有组件随时访问；
  // 我们使用createStore来创建store，用combineReducers来把多个store整合在一起；
  */
-const store = createStore(counter);
+const store = createStore(reducers);
 
 /**
  * exact的值为bool型，为true是表示严格匹配，为false时为正常匹配。

@@ -31,8 +31,10 @@ const increaseAction = {type: 'add'};
 
 // Map Redux state to component props
 function mapStateToProps(state) {
+  const counter = state.counter;
+  console.log(counter.count);
   return {
-    value: state.count
+    value: counter.count
   }
 }
 
