@@ -6,6 +6,7 @@ import {HashRouter, Switch, hashHistory, Route} from 'react-router-dom';
 import reducers from './reducers';
 import Demo1 from './container/Demo1/index'
 import Demo2 from './container/Demo2/index'
+import Demo3 from './container/Demo3/index'
 
 /**
  * 2、 改变状态树的方法——dispatch & action & reducer
@@ -33,6 +34,7 @@ ReactDOM.render(
       <Switch>
         <Route exact path="/" component={Demo1}/>
         <Route path="/demo2" component={Demo2}/>
+        <Route path="/demo3" component={Demo3}/>
       </Switch>
     </HashRouter>
   </Provider>,
