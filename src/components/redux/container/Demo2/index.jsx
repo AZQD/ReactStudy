@@ -12,10 +12,11 @@ class Counter extends Component {
   }
 
   render() {
+    console.log('Demo2', this.props);
     return (
       <div className="demo2Box">
         <CommonMenu history={this.props.history}/>
-        <span>{this.props.value}</span>
+        <span>{this.props.count}</span>
         <button onClick={()=>{this.onDoubleClick()}}>翻倍</button>
       </div>
     )
@@ -25,7 +26,7 @@ class Counter extends Component {
 function mapStateToProps(state) {
   const counter = state.counter;
   return {
-    value: counter.count
+    count: counter.count
   }
 }
 

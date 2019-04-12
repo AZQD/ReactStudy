@@ -15,12 +15,11 @@ class Counter extends Component {
   }
 
   render() {
-    console.log(this.props);
-    // const {value, onAddClick, onReduceClick} = this.props;
+    console.log('Demo1', this.props);
     return (
       <div>
         <CommonMenu history={this.props.history}/>
-        <div>{this.props.value}</div>
+        <div>{this.props.count}</div>
         <button onClick={()=>{this.onAddClick()}}>add</button>
         <button onClick={()=>{this.onReduceClick()}}>reduce</button>
       </div>
@@ -32,9 +31,8 @@ class Counter extends Component {
 // Map Redux state to component props
 function mapStateToProps(state) {
   const counter = state.counter;
-  console.log(counter.count);
   return {
-    value: counter.count
+    count: counter.count
   }
 }
 
