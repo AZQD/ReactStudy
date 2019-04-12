@@ -1,32 +1,32 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import { bindActionCreators } from 'redux';
 import CommonMenu from '../CommonMenu/index'
+import * as actionFN from '../../action'
 
 // React component
 class Counter extends Component {
+  onAddClick(){
+    this.props.action.onAddClick();
+  }
+  onReduceClick(){
+    this.props.action.onReduceClick();
+  }
+
   render() {
     console.log(this.props);
-    const {value, onAddClick, onReduceClick} = this.props;
+    // const {value, onAddClick, onReduceClick} = this.props;
     return (
       <div>
         <CommonMenu history={this.props.history}/>
-        <div>{value}</div>
-        <button onClick={onAddClick}>add</button>
-        <button onClick={onReduceClick}>reduce</button>
+        <div>{this.props.value}</div>
+        <button onClick={()=>{this.onAddClick()}}>add</button>
+        <button onClick={()=>{this.onReduceClick()}}>reduce</button>
       </div>
     )
   }
 }
-
-Counter.propTypes = {
-  value: PropTypes.number.isRequired,
-  onAddClick: PropTypes.func.isRequired,
-  onReduceClick: PropTypes.func.isRequired
-};
-
-// Action
-const increaseAction = {type: 'add'};
 
 
 // Map Redux state to component props
@@ -41,12 +41,7 @@ function mapStateToProps(state) {
 // Map Redux actions to component props
 function mapDispatchToProps(dispatch) {
   return {
-    onAddClick: () => dispatch({
-      type: 'add'
-    }),
-    onReduceClick: () => dispatch({
-      type: 'reduce'
-    }),
+    action: bindActionCreators(actionFN, dispatch)
   }
 }
 

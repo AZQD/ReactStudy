@@ -1,17 +1,22 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import { bindActionCreators } from 'redux';
 import CommonMenu from '../CommonMenu/index'
+import * as actionFN from "../../action";
 
 
 class Counter extends Component {
+
+  onDoubleClick(){
+    this.props.action.onDoubleClick();
+  }
+
   render() {
-    const {value, onDoubleClick} = this.props;
-    console.log(value);
     return (
       <div className="demo2Box">
         <CommonMenu history={this.props.history}/>
-        <span>{value}</span>
-        <button onClick={onDoubleClick}>翻倍</button>
+        <span>{this.props.value}</span>
+        <button onClick={()=>{this.onDoubleClick()}}>翻倍</button>
       </div>
     )
   }
@@ -26,11 +31,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onDoubleClick: () => {
-      dispatch({
-        type: 'double'
-      });
-    }
+    action: bindActionCreators(actionFN, dispatch)
   }
 }
 
