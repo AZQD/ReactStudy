@@ -18,3 +18,9 @@ export function onDoubleClick(payload) {
     payload
   }
 }
+export function getCateList(payload) {
+  return {
+    type: actionData.GET_CATE_LIST,
+    payload
+  }
+}
