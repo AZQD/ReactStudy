@@ -18,10 +18,19 @@ module.exports = {
     filename: "js/[name].[hash].js"//打包后输出文件的文件名
   },
   devServer: {
-    contentBase: "./",//本地服务器所加载的页面所在的目录
+    port: 8081,
+    // contentBase: "./",//本地服务器所加载的页面所在的目录
+    contentBase: __dirname + "/",
     historyApiFallback: true,//不跳转
     inline: true,//实时刷新
-    hot: true
+    hot: true,
+    proxy: {
+      '/sug': {
+        target: 'https://suggest.taobao.com/',
+        changeOrigin: true,
+        secure: false
+      }
+    }
   },
   module: {
     rules: [
