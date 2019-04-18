@@ -1,13 +1,14 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
-import {createStore, combineReducers} from 'redux'
+import {createStore, applyMiddleware} from 'redux'
+import createSagaMiddleware from 'redux-saga'
 import {Provider} from 'react-redux'
 import {HashRouter, Switch, hashHistory, Route} from 'react-router-dom';
 import reducers from './reducers';
+import {helloSaga} from './saga' //导入Sagas
 import Demo1 from './container/Demo1/index'
 import Demo2 from './container/Demo2/index'
 import Demo3 from './container/Demo3/index'
-
 /**
  * 2、 改变状态树的方法——dispatch & action & reducer
  action是行为的抽象；它是一个普通的js对象；由方法生成；必须有一个type；
@@ -22,7 +23,12 @@ import Demo3 from './container/Demo3/index'
  // 意思是：状态树存在这个地方，欢迎所有组件随时访问；
  // 我们使用createStore来创建store，用combineReducers来把多个store整合在一起；
  */
-const store = createStore(reducers);
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(
+  reducers,
+  applyMiddleware(sagaMiddleware) //添加到中间件
+  );
+sagaMiddleware.run(helloSaga);// 运行 Sagas 函数
 
 /**
  * exact的值为bool型，为true是表示严格匹配，为false时为正常匹配。
