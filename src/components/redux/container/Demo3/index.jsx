@@ -20,9 +20,10 @@ class CateList extends Component{
   }
   
   render() {
+    console.log('Demo3', this.props);
     return (
       <div>
-        {/*<CommonMenu history={this.props.history} />*/}
+        <CommonMenu history={this.props.history} />
         <div className="demo3Box">
           666
         </div>
