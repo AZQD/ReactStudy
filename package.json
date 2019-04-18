@@ -37,6 +37,7 @@
     "ajax-promise-simple": "^1.1.2",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-redux": "^7.0.2",
     "react-router-dom": "^4.2.2",
     "redux": "^4.0.1",
     "redux-saga": "^1.0.2"
