@@ -18,14 +18,19 @@ class CateList extends Component{
         console.log(error);
       });
   }
+
+  getCateList(){
+    this.props.action.getCateList();
+  }
   
   render() {
     console.log('Demo3', this.props);
     return (
       <div>
-        <CommonMenu history={this.props.history} />
+        {/*<CommonMenu history={this.props.history} />*/}
+        <button onClick={()=>this.getCateList()}>获取列表</button>
         <div className="demo3Box">
-          666
+
         </div>
       </div>
     )

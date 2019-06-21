@@ -5,7 +5,7 @@ import createSagaMiddleware from 'redux-saga'
 import {Provider} from 'react-redux'
 import {HashRouter, Switch, hashHistory, Route} from 'react-router-dom';
 import reducers from './reducers';
-import {helloSaga} from './saga' //导入Sagas
+import {rootSaga} from './saga' //导入Sagas
 import Demo1 from './container/Demo1/index'
 import Demo2 from './container/Demo2/index'
 import Demo3 from './container/Demo3/index'
@@ -28,7 +28,7 @@ const store = createStore(
   reducers,
   applyMiddleware(sagaMiddleware) //添加到中间件
   );
-sagaMiddleware.run(helloSaga);// 运行 Sagas 函数
+sagaMiddleware.run(rootSaga);// 运行 Sagas 函数
 
 /**
  * exact的值为bool型，为true是表示严格匹配，为false时为正常匹配。
