@@ -1,7 +1,7 @@
 import React from 'react'
 import Main from './Main'
 import Content from './Content'
-import '../../css/index/index';
+import '../../css/index/index.less';
 
 export default class App extends React.Component{
   render (){

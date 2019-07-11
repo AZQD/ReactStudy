@@ -1,6 +1,7 @@
 import React from 'react'
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 import Demo01 from './redux/demo01'
+import Demo02 from './redux/demo02'
 
 const Home = () => (
   <div>
@@ -56,6 +57,7 @@ export default class Content extends React.Component{
         <Route path="/about" component={About} />
         <Route path="/menu" component={Menu} />
         <Route path="/reduxDemo1" component={Demo01} />
+        <Route path="/reduxDemo2" component={Demo02} />
       </Switch>
     )
   }
