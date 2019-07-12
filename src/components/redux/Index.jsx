@@ -22,6 +22,7 @@ import Demo3 from './container/Demo3/index'
  // store存在于顶层组件，类似于全局变量、静态变量、本地存储的概念，
  // 意思是：状态树存在这个地方，欢迎所有组件随时访问；
  // 我们使用createStore来创建store，用combineReducers来把多个store整合在一起；
+ // createStore方法还可以接受第二个参数，表示 State 的最初状态。这通常是服务器给出的。
  */
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
