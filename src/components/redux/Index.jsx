@@ -28,7 +28,7 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   reducers,
   applyMiddleware(sagaMiddleware) //添加到中间件
-  );
+);
 sagaMiddleware.run(rootSaga);// 运行 Sagas 函数
 
 /**
