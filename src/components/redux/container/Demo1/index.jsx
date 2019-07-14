@@ -1,16 +1,17 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import { bindActionCreators } from 'redux';
+import {bindActionCreators} from 'redux';
 import CommonMenu from '../CommonMenu/index'
 import * as actionFN from '../../action'
 
 // React component
 class Counter extends Component {
-  onAddClick(){
+  onAddClick() {
     this.props.action.onAddClick();
   }
-  onReduceClick(){
+
+  onReduceClick() {
     this.props.action.onReduceClick();
   }
 
@@ -20,8 +21,14 @@ class Counter extends Component {
       <div>
         <CommonMenu history={this.props.history}/>
         <div>{this.props.count}</div>
-        <button onClick={()=>{this.onAddClick()}}>add</button>
-        <button onClick={()=>{this.onReduceClick()}}>reduce</button>
+        <button onClick={() => {
+          this.onAddClick()
+        }}>add
+        </button>
+        <button onClick={() => {
+          this.onReduceClick()
+        }}>reduce
+        </button>
       </div>
     )
   }

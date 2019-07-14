@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import { bindActionCreators } from 'redux';
+import {bindActionCreators} from 'redux';
 import CommonMenu from '../CommonMenu/index'
 import * as actionFN from "../../action";
 
 
 class Counter extends Component {
 
-  onDoubleClick(){
+  onDoubleClick() {
     this.props.action.onDoubleClick();
   }
 
@@ -17,7 +17,10 @@ class Counter extends Component {
       <div className="demo2Box">
         <CommonMenu history={this.props.history}/>
         <span>{this.props.count}</span>
-        <button onClick={()=>{this.onDoubleClick()}}>翻倍</button>
+        <button onClick={() => {
+          this.onDoubleClick()
+        }}>翻倍
+        </button>
       </div>
     )
   }

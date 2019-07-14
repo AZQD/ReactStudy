@@ -14,7 +14,7 @@ function counter(state = initState, action) {
     case actionData.REDUCE:
       return {count: count - 1};
     case actionData.DOUBLE: //翻倍
-      return {count: count*2};
+      return {count: count * 2};
     default:
       return state
   }
