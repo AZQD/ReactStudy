@@ -5,12 +5,12 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");//清除相关文件
 
 module.exports = {
   entry: {
-    test:__dirname + "/src/components/test/Index.jsx",//已多次提及的唯一入口文件
-    index:__dirname + "/src/components/index/Index.jsx",//已多次提及的唯一入口文件
-    redux:__dirname + "/src/components/redux/Index.jsx",//已多次提及的唯一入口文件
+    test: __dirname + "/src/components/test/Index.jsx",//已多次提及的唯一入口文件
+    index: __dirname + "/src/components/index/Index.jsx",//已多次提及的唯一入口文件
+    redux: __dirname + "/src/components/redux/Index.jsx",//已多次提及的唯一入口文件
   },
-  resolve:{
-    extensions:['.js',".css",'.jsx', '.less']//自动补全文件后缀
+  resolve: {
+    extensions: ['.js', ".css", '.jsx', '.less']//自动补全文件后缀
   },
   output: {
     path: __dirname + "/build",//打包后的文件存放的地方
@@ -35,7 +35,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test:/\.jsx?$/,
+        test: /\.jsx?$/,
         use: {
           loader: "babel-loader"
         },
@@ -55,7 +55,7 @@ module.exports = {
         test: /\.less$/,
         use: [
           'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },//注意less的配置
+          {loader: 'css-loader', options: {importLoaders: 1}},//注意less的配置
           'less-loader'
         ]
       },
@@ -67,8 +67,8 @@ module.exports = {
         loader: 'url-loader?limit=8192&name=images/[hash:8].[name].[ext]',
       },
       {
-        test:/\.html$/,
-        loader:'html-loader'
+        test: /\.html$/,
+        loader: 'html-loader'
       }
     ]
   },
@@ -90,21 +90,21 @@ module.exports = {
 
     new HtmlWebpackPlugin({
       template: __dirname + "/src/test.tmpl.html",//new 一个这个插件的实例，并传入相关的参数
-      title:'test',
-      filename:'test.html',
-      chunks:['test'],//如果引入多个js,参考github上PICOOC文件写法；
+      title: 'test',
+      filename: 'test.html',
+      chunks: ['test'],//如果引入多个js,参考github上PICOOC文件写法；
     }),
     new HtmlWebpackPlugin({
       template: __dirname + "/src/index.tmpl.html",//new 一个这个插件的实例，并传入相关的参数
-      title:'index',
-      filename:'index.html',
-      chunks:['index'],//如果引入多个js,参考github上PICOOC文件写法；
+      title: 'index',
+      filename: 'index.html',
+      chunks: ['index'],//如果引入多个js,参考github上PICOOC文件写法；
     }),
     new HtmlWebpackPlugin({
       template: __dirname + "/src/redux.tmpl.html",//new 一个这个插件的实例，并传入相关的参数
-      title:'redux',
-      filename:'redux.html',
-      chunks:['redux'],//如果引入多个js,参考github上PICOOC文件写法；
+      title: 'redux',
+      filename: 'redux.html',
+      chunks: ['redux'],//如果引入多个js,参考github上PICOOC文件写法；
     }),
 
     new webpack.HotModuleReplacementPlugin(),//热加载插件
@@ -112,4 +112,4 @@ module.exports = {
     // new UglifyJSPlugin(),//压缩插件
 
   ],
-}
+};
