@@ -1,8 +1,7 @@
 import React from 'react'
 import {render} from 'react-dom'
-import transform from "css-to-react-native-transform";
-console.log(34, transform);
 
+/*import transform from "css-to-react-native-transform";
 let test1 = transform(`
 .myClass {
   font-size: 18px;
@@ -45,7 +44,26 @@ let test3 = transform(
 `,
   { parseMediaQueries: true },
 );
-console.log('编译后的样式：', test3);
+console.log('编译后的样式：', test3);*/
+
+
+
+
+import transform, { getPropertyName, getStylesForProperty } from "css-to-react-native";
+
+let test1 = transform([
+  ['font', 'bold 14px/16px "Helvetica"'],
+  ['margin', '5px 7px 2px'],
+  ['border-left-width', '5px'],
+]);
+
+console.log('编译后的样式：', test1);
+
+console.log(getPropertyName('border-width'));
+
+console.log(getStylesForProperty('borderWidth', '1px 0px 2px 0px'));
+
+
 
 export default class Transform1 extends React.Component{
   render (){
