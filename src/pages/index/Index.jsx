@@ -1,6 +1,6 @@
 import React from 'react'
 import {render} from 'react-dom'
-import { HashRouter as Router, Route, Link, Switch} from 'react-router-dom'
+import {HashRouter as Router, Route, Link, Switch} from 'react-router-dom'
 import PartLeft from './PartLeft'
 import PartRight from './PartRight'
 import '../../../static/js/public.js'
@@ -10,16 +10,16 @@ import '../../css/index/index.less'
 import hashHistory from 'react-dom'
 // console.log("hashHistory",hashHistory);
 
-export default class Index extends React.Component{
-  render (){
+export default class Index extends React.Component {
+  render() {
     return (
       <Router>
         <div className="wrapper">
           <div className="partLeft">
-            <PartLeft />
+            <PartLeft/>
           </div>
           <div className="partRight">
-            <PartRight />
+            <PartRight/>
           </div>
         </div>
       </Router>

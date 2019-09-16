@@ -8,7 +8,7 @@ const Home = () => (
 );
 const About = (props) => (
   <div>
-    {console.log("props",props)}
+    {console.log("props", props)}
     <h2>About</h2>
   </div>
 );
@@ -46,14 +46,14 @@ const Item = ({match}) => (
   </div>
 );
 
-export default class PartRight extends React.Component{
-  render (){
+export default class PartRight extends React.Component {
+  render() {
     return (
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/home" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/menu" component={Menu} />
+        <Route exact path="/" component={Home}/>
+        <Route path="/home" component={Home}/>
+        <Route path="/about" component={About}/>
+        <Route path="/menu" component={Menu}/>
       </Switch>
     )
   }

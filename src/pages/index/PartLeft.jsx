@@ -1,12 +1,14 @@
 import React from 'react'
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 
-export default class PartLeft extends React.Component{
-  render (){
-    let data = {a:1, b:2};
+export default class PartLeft extends React.Component {
+  render() {
     let path = {
-      pathname:"/about",
-      aa:data
+      pathname: "/about",
+      params: {
+        a: 1,
+        b: 2
+      }
     };
     return (
       <div className="mainBox">
@@ -19,6 +21,12 @@ export default class PartLeft extends React.Component{
           </li>
           <li className="mainLi">
             <Link to="/menu" replace>Menu</Link>
+          </li>
+          <li className="mainLi">
+            <a href="/redux.html">redux.html</a>
+          </li>
+          <li className="mainLi">
+            <a href="/test.html">test.html</a>
           </li>
         </ul>
       </div>
