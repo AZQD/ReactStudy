@@ -23,10 +23,10 @@ export default class PartLeft extends React.Component {
             <Link to="/menu" replace>Menu</Link>
           </li>
           <li className="mainLi">
-            <a href="/redux.html">redux.html</a>
+            <a href="./redux.html">redux.html</a>
           </li>
           <li className="mainLi">
-            <a href="/test.html">test.html</a>
+            <a href="./test.html">test.html</a>
           </li>
         </ul>
       </div>
