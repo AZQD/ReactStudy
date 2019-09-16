@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack --mode development",
-    "server": "webpack-dev-server --open --mode development"
+    "dev": "webpack-dev-server --open --mode development",
+    "build": "webpack --mode development"
   },
   "author": "liuchaojie",
   "license": "ISC",
