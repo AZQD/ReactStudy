@@ -13,6 +13,8 @@ export default class PartLeft extends React.Component {
     return (
       <div className="mainBox">
         <ul className="mainUl">
+
+          {/*路由切换*/}
           <li className="mainLi">
             <Link to="/home" replace>Home</Link>
           </li>
@@ -22,6 +24,11 @@ export default class PartLeft extends React.Component {
           <li className="mainLi">
             <Link to="/menu" replace>Menu</Link>
           </li>
+          <li className="mainLi">
+            <Link to="/reactRender" replace>reactRender</Link>
+          </li>
+
+          {/*页面跳转*/}
           <li className="mainLi">
             <a href="./redux.html">redux.html</a>
           </li>

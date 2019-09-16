@@ -1,6 +1,8 @@
 import React from 'react'
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 
+import ReactRender from './component/ReactRender'
+
 const Home = () => (
   <div>
     <h2>Home</h2>
@@ -54,6 +56,7 @@ export default class PartRight extends React.Component {
         <Route path="/home" component={Home}/>
         <Route path="/about" component={About}/>
         <Route path="/menu" component={Menu}/>
+        <Route path="/reactRender" component={ReactRender}/>
       </Switch>
     )
   }
