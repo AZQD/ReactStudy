@@ -2,7 +2,6 @@ import React from 'react'
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 import Demo01 from './redux/demo01'
 import Demo02 from './redux/demo02'
-import Transform1 from './transform/Transform1'
 
 const Home = () => (
   <div>
@@ -59,7 +58,6 @@ export default class Content extends React.Component{
         <Route path="/menu" component={Menu} />
         <Route path="/reduxDemo1" component={Demo01} />
         <Route path="/reduxDemo2" component={Demo02} />
-        <Route path="/Transform1" component={Transform1} />
       </Switch>
     )
   }

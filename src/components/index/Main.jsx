@@ -1,6 +1,5 @@
 import React from 'react'
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
-import Transform1 from "./transform/Transform1";
 
 export default class Main extends React.Component{
   render (){
@@ -30,9 +29,6 @@ export default class Main extends React.Component{
           </li>
           <li className="mainLi">
             <Link to="/reduxDemo2" replace>Redux Demo2</Link>
-          </li>
-          <li className="mainLi">
-            <Link to="/Transform1" replace>Transform1</Link>
           </li>
         </ul>
       </div>
