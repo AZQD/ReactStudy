@@ -1,10 +1,10 @@
 # ReactStudy
 
-安装node_modules：npm install
+安装依赖：npm install
 
-打包项目：npm start
+实时编译：npm run dev
 
-实时编译项目：npm run server
+打包项目：npm run build
 
 # React 组件生命周期
 在本章节中我们将讨论 React 组件的生命周期。
@@ -31,15 +31,21 @@ componentDidUpdate(prevProps, prevState) 在组件完成更新后立即调用。
 
 componentWillUnmount在组件从 DOM 中移除之前立刻被调用。
 
-### React常用知识点总结：
+# React常用知识点总结
 
-## 1.react setState后render没有更新:
-
+### 1.react setState后render没有更新:
 ```
 解决方案：React.Component 把PureComponent 改成Component。
 总结：PureComponent与Component唯一的区别：PureComponent是自带了一个简单的shouldComponentUpdate来优化更新机制的。
 它们几乎完全相同，但是PureComponent通过prop和state的浅比较来实现shouldComponentUpdate，某些情况下可以用PureComponent提升性能
 如果state和prop一直变化的话，还是建议使用Component，并且PureComponent最好作为展示组件；
-总结地址：https://zhuanlan.zhihu.com/p/82700116
 ```
+参考链接：[https://zhuanlan.zhihu.com/p/82700116](https://zhuanlan.zhihu.com/p/82700116)
 
+### 2.React 在jsx文件中使用箭头函数报错:
+```
+(1).安装ES7的转码规则 cnpm install --save-dev babel-preset-stage-2
+(2).在.babelrc里更改配置："presets": ["react", "es2015", "env","stage-1"]
+‘react’版块用于编译jsx文件，'es2015'用于预先加载es6语法的模块；
+```
+参考链接：[https://www.jianshu.com/p/532a4a5201e9](https://www.jianshu.com/p/532a4a5201e9)
