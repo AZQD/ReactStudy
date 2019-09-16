@@ -32,10 +32,10 @@ componentDidUpdate(prevProps, prevState) 在组件完成更新后立即调用。
 componentWillUnmount在组件从 DOM 中移除之前立刻被调用。
 
 React常用知识点总结：
+
 1.react setState后render没有更新:
-解决方案：React.Component 把PureComponent 改成Component。
-说明：React.PureComponent 通过prop和state的浅对比来实现 如果使用了PureComponent 请确保子组件也是PureComponent；
-它们几乎完全相同，但是PureComponent通过prop和state的浅比较来实现shouldComponentUpdate，某些情况下可以用PureComponent提升性能
-如果state和prop一直变化的话，还是建议使用Component，并且PureComponent的最好作为展示组件；
-总结：PureComponent与Component唯一的区别：
-     PureComponent是自带了一个简单的shouldComponentUpdate来优化更新机制的。
+    解决方案：React.Component 把PureComponent 改成Component。
+    总结：PureComponent与Component唯一的区别：PureComponent是自带了一个简单的shouldComponentUpdate来优化更新机制的。
+    它们几乎完全相同，但是PureComponent通过prop和state的浅比较来实现shouldComponentUpdate，某些情况下可以用PureComponent提升性能
+    如果state和prop一直变化的话，还是建议使用Component，并且PureComponent最好作为展示组件；
+    总结地址：https://zhuanlan.zhihu.com/p/82700116
