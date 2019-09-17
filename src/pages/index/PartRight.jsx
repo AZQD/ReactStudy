@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 
 import ReactRender from './component/ReactRender'
 import Decorator from './component/Decorator'
-import HOC from './component/HOC'
+import UseHoc from './component/hoc/useHoc'
 
 const Home = () => (
   <div>
@@ -60,7 +60,7 @@ export default class PartRight extends React.Component {
         <Route path="/menu" component={Menu}/>
         <Route path="/reactRender" component={ReactRender}/>
         <Route path="/decorator" component={Decorator}/>
-        <Route path="/HOC" component={HOC}/>
+        <Route path="/useHoc" component={UseHoc}/>
       </Switch>
     )
   }
