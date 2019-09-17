@@ -42,3 +42,9 @@ export default class Component2 extends React.Component{
     return <div>类的装饰和方法的装饰</div>
   }
 }
+
+/*
+*总结：
+*修饰器（Decorator）是一个函数，用来修改类的行为。
+*修饰器只能用于类和类的方法，不能用于函数，因为存在函数提升。
+* */
