@@ -49,3 +49,9 @@ componentWillUnmount在组件从 DOM 中移除之前立刻被调用。
 ‘react’版块用于编译jsx文件，'es2015'用于预先加载es6语法的模块；
 ```
 参考链接：[https://www.jianshu.com/p/532a4a5201e9](https://www.jianshu.com/p/532a4a5201e9)
+
+### 3.ES6里的修饰器Decorator支持配置：
+```
+(1).cnpm i babel-plugin-transform-decorators-legacy --save-dev
+(2).在.babelrc里添加配置：plugins: ["transform-decorators-legacy"]
+```
