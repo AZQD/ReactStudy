@@ -20,8 +20,11 @@ const withHeader = (WrapComp) =>
     }
 
     render() {
+      console.log('初始props：', this.props);
+      const { history, ...otherProps } = this.props;
+      console.log('不传history, 只传递props：', otherProps);
       return <div>
-        {WrapComp && <WrapComp getDate={this.getDate} {...this.state}/>}
+        {WrapComp && <WrapComp getDate={this.getDate} {...this.state} {...otherProps}/>}
         <div className="title">我是高阶组件的内容</div>
       </div>
     }
