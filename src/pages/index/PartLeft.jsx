@@ -28,6 +28,9 @@ export default class PartLeft extends React.Component {
             <Link to="/reactRender" replace>reactRender</Link>
           </li>
           <li className="mainLi">
+            <Link to="/decorator" replace>Decorator</Link>
+          </li>
+          <li className="mainLi">
             <Link to="/HOC" replace>HOC</Link>
           </li>
 
