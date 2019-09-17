@@ -8,16 +8,21 @@ const withHeader = (WrapComp) =>
         uuid: ''
       }
     }
-    componentDidMount(){
+
+    componentDidMount() {
       let uuid = window.localStorage.getItem('58tj_uuid');
-      console.log(uuid);
       this.setState({uuid});
+    }
+
+    getDate() {
+      const timestamp = (new Date()).getTime();
+      console.log(timestamp);
     }
 
     render() {
       return <div>
-        <div className="title">我是标题</div>
-        {WrapComp && <WrapComp {...this.state} {...this.props}/>}
+        {WrapComp && <WrapComp getDate={this.getDate} {...this.state}/>}
+        <div className="title">我是高阶组件的内容</div>
       </div>
     }
   };
