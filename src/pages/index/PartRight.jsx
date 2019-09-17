@@ -2,6 +2,7 @@ import React from 'react'
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 
 import ReactRender from './component/ReactRender'
+import HOC from './component/HOC'
 
 const Home = () => (
   <div>
@@ -57,6 +58,7 @@ export default class PartRight extends React.Component {
         <Route path="/about" component={About}/>
         <Route path="/menu" component={Menu}/>
         <Route path="/reactRender" component={ReactRender}/>
+        <Route path="/HOC" component={HOC}/>
       </Switch>
     )
   }
