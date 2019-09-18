@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 import ReactRender from './component/ReactRender'
 import Decorator from './component/Decorator'
 import UseHoc from './component/hoc/useHoc'
+import CssTree from './component/CssTree'
 
 const Home = () => (
   <div>
@@ -61,6 +62,7 @@ export default class PartRight extends React.Component {
         <Route path="/reactRender" component={ReactRender}/>
         <Route path="/decorator" component={Decorator}/>
         <Route path="/useHoc" component={UseHoc}/>
+        <Route path="/cssTree" component={CssTree}/>
       </Switch>
     )
   }

@@ -33,6 +33,9 @@ export default class PartLeft extends React.Component {
           <li className="mainLi">
             <Link to="/useHoc" replace>useHoc</Link>
           </li>
+          <li className="mainLi">
+            <Link to="/cssTree" replace>css-tree</Link>
+          </li>
 
           {/*页面跳转*/}
           <li className="mainLi">
