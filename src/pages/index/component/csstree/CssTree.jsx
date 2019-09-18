@@ -1,9 +1,10 @@
 import React from 'react'
 import csstree from 'css-tree' // 引入CSS语法树
 import cssCollect from './cssCollect'
+import rnCollect from './rnCollect'
 
 // 传入的花括号样式
-let entryCurlyBracesCss = '{color: red; width: 12px; border: 1px solid red; a: 1;}';
+let entryCurlyBracesCss = '{color: red; width: 12px; border: 1px solid red; line-height: 16px;}';
 
 // 花括号内CSS转义为语法树
 let curlyBracesCssAST = csstree.parse(entryCurlyBracesCss, {
@@ -14,14 +15,45 @@ let curlyBracesCssAST = csstree.parse(entryCurlyBracesCss, {
 let propertyArr = getCurlyBracesPropertyArr(curlyBracesCssAST.children.head);
 console.log('获取属性数组', propertyArr);
 
-// 检测结果：true：属性都支持；false：有不支持的属性，具体看console；
-let checkResult = checkProperty(propertyArr, cssCollect);
-console.log('检测结果：', checkResult);
+// 检测CSS结果：true：属性都支持；false：有不支持的属性，具体看console；
+let checkCSSResult = checkProperty(propertyArr, cssCollect);
+console.log('检测结果：', checkCSSResult);
 
 // checkResult如果是true，则转换驼峰，并校验是否是RN支持的属性；
+if(checkCSSResult){
+  console.log('准备转RN');
+  let humpPropertyArr = propertyArr.map((item) => humpFun(item));
+  console.log(111, humpPropertyArr);
+  // 检测RN结果：true：属性都支持；false：有不支持的属性，具体看console；
+  let checkRNResult = checkProperty(humpPropertyArr, rnCollect);
+  console.log('检测结果：', checkRNResult);
+}
+
+/**
+ * CSS属性字符串转换为驼峰命名
+ * eg: humpFun('ab-cd-e'); // abCdE
+ * @param str
+ * @returns {string}
+ */
+function humpFun(str) {
+  let arr = str.split('-');
+  let newArr = [];
+  arr.map((item, index) => {
+    if (index) {
+      newArr.push(item.charAt(0).toUpperCase() + item.slice(1));
+    } else {
+      newArr.push(item);
+    }
+  });
+  return newArr.join('');
+}
 
 // 判断是否为CSS可支持的属性
 function checkProperty(targetArr, collectArr) {
+  if(!targetArr.length){
+    console.log('传入数组为空，请校验！');
+    return;
+  }
   let flagArr = []; // 检查结果
   // 遍历数组，确定是否是可支持的属性；
   for (let i = 0; i < targetArr.length; i++) {
