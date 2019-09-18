@@ -1,3 +1,8 @@
+/**
+ * CSS支持的样式属性汇总：
+ * 参考地址：https://www.w3school.com.cn/cssref/index.asp
+ * @type {string[]}
+ */
 let cssCollect = [
   // CSS3 动画属性（Animation）
   'animation',
