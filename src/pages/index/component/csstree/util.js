@@ -54,7 +54,7 @@ export function checkProperty(targetArr, collectArr) {
     console.log('传入数组为空，请校验！');
     return;
   }
-  let flagArr = []; // 检查结果
+  let checkFlagArr = []; // 检查结果
   // 遍历数组，确定是否是可支持的属性；
   for (let i = 0; i < targetArr.length; i++) {
     let targetItem = targetArr[i];
@@ -66,22 +66,23 @@ export function checkProperty(targetArr, collectArr) {
         break;
       }
     }
-    flagArr.push(flag);
+    checkFlagArr.push(flag);
   }
-  console.log(flagArr);
 
   // 打印属性支持情况，并返回结果（默认返回true，如有不支持的属性，则返回false）
-  let returnFlag = true;
-  for (let i = 0; i < flagArr.length; i++) {
-    let flagItem = flagArr[i];
+  let checkReturnFlag = true;
+  for (let i = 0; i < checkFlagArr.length; i++) {
+    let flagItem = checkFlagArr[i];
     if (flagItem) {
       console.log(`${targetArr[i]}属性可用；`);
     } else {
-      returnFlag = false;
+      checkReturnFlag = false;
       console.log(`${targetArr[i]}属性不可用；`);
     }
   }
-  return returnFlag;
+  let result = {checkFlagArr, checkReturnFlag};
+  console.log(result);
+  return result;
 }
 
 
