@@ -6,6 +6,36 @@ import {csstreeParse, getCurlyBracesPropertyArr, checkProperty, humpFun} from '.
 import './cssTree.less'
 
 
+// http://api.postcss.org/postcss.html#.parse
+import postcss from 'postcss'
+console.log(postcss);
+var root = postcss.parse('color: red; width: 12px; border: 1px solid red;');
+console.log(111, root);
+console.log(111, root.nodes);
+for(let i = 0; i<root.nodes.length; i++){
+    let item = root.nodes[i];
+    console.log(item.prop);
+    console.log(item.value);
+}
+
+
+import parseCSS from "css/lib/parse";
+console.log(parseCSS);
+const { stylesheet } = parseCSS(`.foo { font-size: 1vh; } .foo2:after { color: red; border: 1px solid red;}`);
+console.log(222, stylesheet);
+console.log(222, stylesheet.rules);
+let rules = stylesheet.rules;
+for(let i = 0; i<rules.length; i++){
+    console.log(rules[i].selectors);
+    console.log(rules[i].selectors[0]);
+    let declarations = rules[i].declarations;
+    for(let j = 0; j<declarations.length; j++){
+        console.log(declarations[j].property);
+        console.log(declarations[j].value);
+    }
+}
+
+
 // 1.传入花括号样式（后续使用node工具的fs读取文件）
 let entryCurlyBracesCss = '{color: red; width: 12px; border: 1px solid red; line-height: 16px; font-size: 16px; float: right;}';
 console.log('第一步：传入花括号样式：', entryCurlyBracesCss);
@@ -78,4 +108,5 @@ export default class CssTree extends React.Component {
 * 1.css支持，但是RN不支持的，怎么处理；比如：float；
 * 2.css不支持的，但是RN支持，怎么处理；比如：backfaceVisibility；
 * 3.语法树模拟器和控制台打印出来的不太一致；
+* 4.postcss插件使用；
 * */
