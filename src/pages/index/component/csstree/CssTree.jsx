@@ -27,10 +27,10 @@ console.log('第四步：检测CSS支持结果：', `W3School 的 CSS 参考手�
 
 
 // 检测CSS支持结果如果是true，则转换驼峰，并校验是否是RN支持的属性；
-let checkFlagRNArr = [];
+let checkFlagRNArr = [], humpPropertyArr = [];
 if (checkCSSResult) {
   // 5.css属性转换驼峰属性
-  let humpPropertyArr = propertyArr.map((item) => humpFun(item));
+  humpPropertyArr = propertyArr.map((item) => humpFun(item));
   console.log('第五步：转换驼峰：', humpPropertyArr);
 
 
@@ -51,8 +51,8 @@ export default class CssTree extends React.Component {
       {
         propertyArr && propertyArr.map((item, index) => {
           return <div key={index} className="infoBox">
-            <div className="item">属性名称：<span className="value">{item}</span></div>
             <div className="item">属性下标：<span className="value">{index}</span></div>
+            <div className="item">属性名称：<span className="value">{item}</span></div>
             <div className="item">CSS支持情况：<span
               className={classNames('value', {'false': !checkFlagCSSArr[index]})}>{checkFlagCSSArr[index] ? '支持' : '不支持'}</span>
             </div>
@@ -61,6 +61,10 @@ export default class CssTree extends React.Component {
               <div className="item">RN支持情况：<span
                 className={classNames('value', {'false': !checkFlagRNArr[index]})}>{checkFlagRNArr[index] ? '支持' : '不支持'}</span>
               </div>
+            }
+            {
+              checkFlagRNArr.length > 0 &&
+              <div className="item">属性名称：<span className="value">{checkFlagRNArr[index] ? humpPropertyArr[index] : '--'}</span></div>
             }
           </div>;
         })
