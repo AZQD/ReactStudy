@@ -72,3 +72,10 @@ export default class CssTree extends React.Component {
     </div>
   }
 }
+
+/*
+* 问题汇总：
+* 1.css支持，但是RN不支持的，怎么处理；比如：float；
+* 2.css不支持的，但是RN支持，怎么处理；比如：backfaceVisibility；
+* 3.语法树模拟器和控制台打印出来的不太一致；
+* */
