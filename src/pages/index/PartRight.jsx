@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 import ReactRender from './component/ReactRender'
 import Decorator from './component/Decorator'
 import UseHoc from './component/hoc/useHoc'
-import CssTree from './component/CssTree'
+import CssTree from './component/csstree/CssTree'
 
 const Home = () => (
   <div>
