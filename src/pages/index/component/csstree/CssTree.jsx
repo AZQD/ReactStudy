@@ -7,6 +7,7 @@ import './cssTree.less'
 
 
 // http://api.postcss.org/postcss.html#.parse
+// https://segmentfault.com/a/1190000015155639
 import postcss from 'postcss'
 console.log(postcss);
 var root = postcss.parse('color: red; width: 12px; border: 1px solid red;');
