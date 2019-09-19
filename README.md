@@ -55,3 +55,21 @@ componentWillUnmount在组件从 DOM 中移除之前立刻被调用。
 (1).cnpm i babel-plugin-transform-decorators-legacy --save-dev
 (2).在.babelrc里添加配置：plugins: ["transform-decorators-legacy"]
 ```
+
+### 4.使用 html-webpack-plugin 插件，title配置没有生效：
+
+```
+(1).在模板html中已配置：<title><%= htmlWebpackPlugin.options.title %></title>
+(2).webpack.config.js的plugin中已经配置如下：
+    new HtmlWebpackPlugin({
+      title: 'redux',
+      template: __dirname + "/src/redux.tmpl.html",
+      filename: 'redux.html',
+      chunks: ['redux'],
+    });
+    
+解决方案：webpack.config.js的配置文件里面加了 html-loader，加了之后会正常解析html文件作为模版，
+就会直接把 <%= htmlWebpackPlugin.options.title %>解析成字符串。如果有html-loader ,去掉就可以了。
+
+该插件更多参数配置参考：https://github.com/jantimon/html-webpack-plugin
+```
