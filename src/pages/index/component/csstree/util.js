@@ -8,6 +8,7 @@ import csstree from 'css-tree' // 引入CSS语法树
  */
 export function csstreeParse(entryCurlyBracesCss) {
   return csstree.parse(entryCurlyBracesCss, {
+    // csstree参数配置：// https://github.com/csstree/csstree/blob/HEAD/docs/parsing.md
     context: 'block'
   });
 }
