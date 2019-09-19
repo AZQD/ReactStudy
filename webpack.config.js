@@ -105,6 +105,8 @@ module.exports = {
       title: 'redux',
       filename: 'redux.html',
       chunks: ['redux'],//如果引入多个js,参考github上PICOOC文件写法；
+      hash: true,
+      favicon: './favicon.ico'
     }),
 
     new webpack.HotModuleReplacementPlugin(),//热加载插件
