@@ -38,7 +38,7 @@ for(let i = 0; i<rules.length; i++){
 
 
 // 1.传入花括号样式（后续使用node工具的fs读取文件）
-let entryCurlyBracesCss = '{color: red; width: 12px; border: 1px solid red; line-height: 16px; font-size: 16px; float: right;}';
+let entryCurlyBracesCss = '{color: red; width: 12px; border: 1px solid red; line-height: 16px; font-size: 16px; float: right; a: 1;}';
 console.log('第一步：传入花括号样式：', entryCurlyBracesCss);
 
 
@@ -59,7 +59,7 @@ console.log('第四步：检测CSS支持结果：', `W3School 的 CSS 参考手�
 
 // 检测CSS支持结果如果是true，则转换驼峰，并校验是否是RN支持的属性；
 let checkFlagRNArr = [], humpPropertyArr = [];
-if (checkCSSResult) {
+if (checkCSSResult || true) { // 目前不管是否是CSS支持的，都直接执行下一步；
   // 5.css属性转换驼峰属性
   humpPropertyArr = propertyArr.map((item) => humpFun(item));
   console.log('第五步：转换驼峰：', humpPropertyArr);
