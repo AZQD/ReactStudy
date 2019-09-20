@@ -1,8 +1,9 @@
-import csstree from 'css-tree' // 引入CSS语法树
+import csstree from 'css-tree'
+import postcss from 'postcss'
 
 
 /**
- * 花括号内CSS转义为语法树(csstree)
+ * 花括号内CSS转义为语法树 (csstree使用)
  * @param entryCss
  * @returns {number | any}
  */
@@ -16,18 +17,18 @@ export function csstreeParse(entryCss) {
 
 /**
  * 使用递归函数，遍历语法树，将属性合并成数组，并返回；(csstree使用)
- * @param params
+ * @param csstreeAST
  * @returns {*}
  */
-export function csstreeASTToPropArr(params) {
-  if (typeof params !== 'object') {
+export function csstreeASTToPropArr(csstreeAST) {
+  if (typeof csstreeAST !== 'object') {
     console.log('语法树格式有误，请检查格式！');
     return;
   }
-  if (params === null) { // 为空返回空数组，避免报错；
+  if (csstreeAST === null) { // 为空返回空数组，避免报错；
     return [];
   }
-  const {data, next} = params;
+  const {data, next} = csstreeAST;
   if (data) {
     // console.log('data', data);
     if (next) {
@@ -41,6 +42,33 @@ export function csstreeASTToPropArr(params) {
     console.log('没有data');
     return [];
   }
+}
+
+
+/**
+ * 花括号内CSS转义为语法树 (postcss使用)
+ * @param entryCss
+ * @returns {number | any}
+ */
+export function postcssParse(entryCss) {
+  let postcssAST = postcss.parse(entryCss);
+  console.log('postcss语法树：', postcssAST);
+  return postcssAST;
+}
+
+
+/**
+ * 遍历语法树，获取属性prop和value数组 (postcss使用)
+ * @param postcssAST
+ * @returns {Array}
+ */
+export function postcssASTToPropValueArr(postcssAST) {
+  let propValueArr = [];
+  postcssAST.nodes && postcssAST.nodes.length > 0 && postcssAST.nodes[0].nodes.map((item) => {
+    propValueArr.push({prop: item.prop, value: item.value});
+  });
+  // console.log('解析后返回数组：', propValueArr);
+  return propValueArr;
 }
 
 /**
@@ -70,7 +98,7 @@ export function getCheckedPropArr(targetArr, collectArr) {
         break;
       }
     }
-    (flag ? passedPropArr : notPassedPropArr).push(targetItem);
+    (flag ? passedPropArr : notPassedPropArr).push(targetArr[i]);
   }
   let totalPropArr = targetArr; // 后面要处理简写
   let result = {totalPropArr, passedPropArr, notPassedPropArr};
