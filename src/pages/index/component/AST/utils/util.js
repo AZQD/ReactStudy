@@ -87,13 +87,14 @@ export function getCheckedPropArr(targetArr, collectArr) {
   // 遍历数组，确定是否是可支持的属性；
   for (let i = 0; i < targetArr.length; i++) {
     let targetItem = targetArr[i]; // csstree
+    let targetItemProp = targetItem;
     if (typeof targetItem === 'object') { // postcss
-      targetItem = targetItem.prop;
+      targetItemProp = targetItem.prop;
     }
     let flag = false;
     for (let j = 0; j < collectArr.length; j++) {
       let collectItem = collectArr[j];
-      if (targetItem === collectItem) {
+      if (targetItemProp === collectItem) {
         flag = true;
         break;
       }
