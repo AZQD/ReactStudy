@@ -8,33 +8,33 @@ import './cssTree.less'
 
 // http://api.postcss.org/postcss.html#.parse
 // https://segmentfault.com/a/1190000015155639
-import postcss from 'postcss'
-console.log(postcss);
-var root = postcss.parse('color: red; width: 12px; border: 1px solid red;');
-console.log(111, root);
-console.log(111, root.nodes);
-for(let i = 0; i<root.nodes.length; i++){
-    let item = root.nodes[i];
-    console.log(item.prop);
-    console.log(item.value);
-}
-
-
-import parseCSS from "css/lib/parse";
-console.log(parseCSS);
-const { stylesheet } = parseCSS(`.foo { font-size: 1vh; } .foo2:after { color: red; border: 1px solid red;}`);
-console.log(222, stylesheet);
-console.log(222, stylesheet.rules);
-let rules = stylesheet.rules;
-for(let i = 0; i<rules.length; i++){
-    console.log(rules[i].selectors);
-    console.log(rules[i].selectors[0]);
-    let declarations = rules[i].declarations;
-    for(let j = 0; j<declarations.length; j++){
-        console.log(declarations[j].property);
-        console.log(declarations[j].value);
-    }
-}
+// import postcss from 'postcss'
+// console.log(postcss);
+// var root = postcss.parse('color: red; width: 12px; border: 1px solid red;');
+// console.log(111, root);
+// console.log(111, root.nodes);
+// for(let i = 0; i<root.nodes.length; i++){
+//     let item = root.nodes[i];
+//     console.log(item.prop);
+//     console.log(item.value);
+// }
+//
+//
+// import parseCSS from "css/lib/parse";
+// console.log(parseCSS);
+// const { stylesheet } = parseCSS(`.foo { font-size: 1vh; } .foo2:after { color: red; border: 1px solid red;}`);
+// console.log(222, stylesheet);
+// console.log(222, stylesheet.rules);
+// let rules = stylesheet.rules;
+// for(let i = 0; i<rules.length; i++){
+//     console.log(rules[i].selectors);
+//     console.log(rules[i].selectors[0]);
+//     let declarations = rules[i].declarations;
+//     for(let j = 0; j<declarations.length; j++){
+//         console.log(declarations[j].property);
+//         console.log(declarations[j].value);
+//     }
+// }
 
 
 // 1.传入花括号样式（后续使用node工具的fs读取文件）
