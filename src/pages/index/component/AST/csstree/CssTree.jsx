@@ -1,7 +1,12 @@
 import React from 'react'
 import cssCollect from '../utils/cssCollect'
 import rnCollect from '../utils/rnCollect'
-import {csstreeParse, csstreeASTToPropArr, getCheckedPropArr, humpHandle} from '../utils/util'
+import {
+  csstreeParse,
+  csstreeASTToPropArr,
+  getCheckedPropArr,
+  humpHandle
+} from '../utils/util'
 import './cssTree.less'
 
 
