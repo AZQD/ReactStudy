@@ -41,3 +41,8 @@ function CSSTransformRN(entryCss) {
 
 
 console.log('----------测试 end------------');
+
+
+// 备注：
+// CSS属性简写汇总：https://my.oschina.net/u/1866405/blog/291247
+// 目前只处理了border、margin、padding，其他的后面视情况调整；
