@@ -1,6 +1,6 @@
 import React from 'react'
-import cssCollect from '../utils/cssCollect'
-import rnCollect from '../utils/rnCollect'
+import {entryCss} from './../entryCss';
+
 import {
   csstreeParse,
   csstreeASTToPropArr,
@@ -14,7 +14,7 @@ console.log('--------csstree begin----------');
 
 
 // 1.传入花括号样式（后续使用node工具的fs读取文件）
-let entryCss = '{color: red; width: 12px; border: 1px solid red; line-height: 16px; font-size: 16px; float: right; a: 1;}';
+// let entryCss = '{color: red; line-height: 16px; border: 1px solid red; float: right; a: 1;}';
 console.log('第一步：传入花括号样式：', entryCss);
 
 
@@ -29,7 +29,7 @@ console.log('第三步：通过语法树，获取属性数组：', propArr);
 
 
 // 4.检测CSS支持结果：true：属性都支持；false：有不支持的属性，具体看console；
-let {totalPropArr: cssTotalPropArr, passedPropArr: cssPassedPropArr, notPassedPropArr: cssNotPassedPropArr} = getCheckedPropArr(propArr, cssCollect);
+let {totalPropArr: cssTotalPropArr, passedPropArr: cssPassedPropArr, notPassedPropArr: cssNotPassedPropArr} = getCheckedPropArr(propArr, 'csstree', 'css');
 console.log('第四步：检测CSS支持结果：', `W3School 的 CSS 参考手册校验${!cssNotPassedPropArr.length ? '通过' : '未通过'}`);
 
 
@@ -41,7 +41,7 @@ console.log('第五步：转换驼峰：', humpPropArr);
 
 
 // 6.检测RN主持结果：true：属性都支持；false：有不支持的属性，具体看console；
-let {totalPropArr: RNTotalPropArr, passedPropArr: RNPassedPropArr, notPassedPropArr: RNNotPassedPropArr} = getCheckedPropArr(humpPropArr, rnCollect);
+let {totalPropArr: RNTotalPropArr, passedPropArr: RNPassedPropArr, notPassedPropArr: RNNotPassedPropArr} = getCheckedPropArr(humpPropArr, 'csstree', 'rn');
 console.log('第六步：检测RN支持结果：', `React Native Styling Cheat Sheet校验${!RNNotPassedPropArr.length ? '通过' : '未通过'}`);
 
 
