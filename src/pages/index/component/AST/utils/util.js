@@ -2,7 +2,7 @@ import csstree from 'css-tree' // 引入CSS语法树
 
 
 /**
- * 花括号内CSS转义为语法树
+ * 花括号内CSS转义为语法树(csstree)
  * @param entryCurlyBracesCss
  * @returns {number | any}
  */
