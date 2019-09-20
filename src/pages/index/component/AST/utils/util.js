@@ -1,5 +1,7 @@
 import csstree from 'css-tree'
 import postcss from 'postcss'
+import cssCollect from '../utils/cssCollect'
+import rnCollect from '../utils/rnCollect'
 
 
 /**
@@ -77,7 +79,8 @@ export function postcssASTToPropValueArr(postcssAST) {
  * @param collectArr
  * @returns {*}
  */
-export function getCheckedPropArr(targetArr, collectArr) {
+export function getCheckedPropArr(targetArr, ASTTYPE, whiteListType) {
+  let collectArr = whiteListType === 'rn' ? rnCollect : cssCollect;
   if (!targetArr.length) {
     console.log('传入数组为空，请校验！');
     return false;
@@ -88,20 +91,129 @@ export function getCheckedPropArr(targetArr, collectArr) {
   for (let i = 0; i < targetArr.length; i++) {
     let targetItem = targetArr[i]; // csstree
     let targetItemProp = targetItem;
-    if (typeof targetItem === 'object') { // postcss
+    if (ASTTYPE === 'postcss') { // postcss
       targetItemProp = targetItem.prop;
     }
-    let flag = false;
+    let flag = 0;// 0:不通过；1：直接通过；2：简写通过；
     for (let j = 0; j < collectArr.length; j++) {
       let collectItem = collectArr[j];
       if (targetItemProp === collectItem) {
-        flag = true;
+        flag = 1;
         break;
       }
+
+      // 处理简写：只处理RN
+      if(whiteListType === 'rn'){
+        if (ASTTYPE === 'csstree') { // csstree
+          if(targetItemProp === 'border'){
+            flag = 2;
+            passedPropArr = passedPropArr.concat([
+              'border-left',
+              'border-right',
+              'border-top',
+              'border-bottom'
+            ]);
+            break;
+          }
+          if(targetItemProp === 'margin'){
+            flag = 2;
+            passedPropArr = passedPropArr.concat([
+              'margin-left',
+              'margin-right',
+              'margin-top',
+              'margin-bottom'
+            ]);
+            break;
+          }
+          if(targetItemProp === 'padding'){
+            flag = 2;
+            passedPropArr = passedPropArr.concat([
+              'padding-left',
+              'padding-right',
+              'padding-top',
+              'padding-bottom'
+            ]);
+            break;
+          }
+        }
+        if (ASTTYPE === 'postcss') { // postcss
+          if(targetItemProp === 'border'){
+            flag = 2;
+            passedPropArr = passedPropArr.concat([
+              {
+                ...targetItem,
+                prop: 'borderLeft'
+              },
+              {
+                ...targetItem,
+                prop: 'borderRight'
+              },
+              {
+                ...targetItem,
+                prop: 'borderTop'
+              },
+              {
+                ...targetItem,
+                prop: 'borderBottom'
+              },
+            ]);
+            break;
+          }
+          if(targetItemProp === 'margin'){
+            flag = 2;
+            passedPropArr = passedPropArr.concat([
+              {
+                ...targetItem,
+                prop: 'marginLeft'
+              },
+              {
+                ...targetItem,
+                prop: 'marginRight'
+              },
+              {
+                ...targetItem,
+                prop: 'marginTop'
+              },
+              {
+                ...targetItem,
+                prop: 'marginBottom'
+              },
+            ]);
+            break;
+          }
+          if(targetItemProp === 'padding'){
+            flag = 2;
+            passedPropArr = passedPropArr.concat([
+              {
+                ...targetItem,
+                prop: 'paddingLeft'
+              },
+              {
+                ...targetItem,
+                prop: 'paddingRight'
+              },
+              {
+                ...targetItem,
+                prop: 'paddingTop'
+              },
+              {
+                ...targetItem,
+                prop: 'paddingBottom'
+              },
+            ]);
+            break;
+          }
+        }
+      }
     }
-    (flag ? passedPropArr : notPassedPropArr).push(targetArr[i]);
+    if(flag === 0){
+      notPassedPropArr.push(targetArr[i]);
+    }
+    if(flag === 1){
+      passedPropArr.push(targetArr[i]);
+    }
   }
-  let totalPropArr = targetArr; // 后面要处理简写
+  let totalPropArr = passedPropArr.concat(notPassedPropArr); // 后面要处理简写
   let result = {totalPropArr, passedPropArr, notPassedPropArr};
   console.log('获取校验后的数组：', result);
   return result;
