@@ -1,8 +1,8 @@
 import React from 'react'
 import classNames from 'classnames';
-import cssCollect from './cssCollect'
-import rnCollect from './rnCollect'
-import {csstreeParse, getCurlyBracesPropertyArr, checkProperty, humpFun} from './util'
+import cssCollect from '../utils/cssCollect'
+import rnCollect from '../utils/rnCollect'
+import {csstreeParse, getCurlyBracesPropertyArr, checkProperty, humpFun} from '../utils/util'
 import './cssTree.less'
 
 
