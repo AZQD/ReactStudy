@@ -29,12 +29,12 @@ export function getCurlyBracesPropertyArr(params) {
   }
   const {data, next} = params;
   if (data) {
-    console.log('data', data);
+    // console.log('data', data);
     if (next) {
-      console.log('next', next);
+      // console.log('next', next);
       return [data.property].concat(getCurlyBracesPropertyArr(next)); // 递归函数
     } else {
-      console.log('没有next');
+      // console.log('没有next');
       return [data.property];
     }
   } else {
@@ -43,22 +43,25 @@ export function getCurlyBracesPropertyArr(params) {
   }
 }
 
-
 /**
- * 判断是否为CSS/RN可支持的属性
+ * 判断是否为CSS/RN可支持的属性，获取校验后的数组；
  * @param targetArr
  * @param collectArr
- * @returns {boolean}
+ * @returns {*}
  */
-export function checkProperty(targetArr, collectArr) {
+export function getCheckedPropArr(targetArr, collectArr) {
   if (!targetArr.length) {
     console.log('传入数组为空，请校验！');
-    return;
+    return false;
   }
-  let checkFlagArr = []; // 检查结果
+  let passedPropArr = []; // 通过的数组
+  let notPassedPropArr = []; // 未通过的数组
   // 遍历数组，确定是否是可支持的属性；
   for (let i = 0; i < targetArr.length; i++) {
-    let targetItem = targetArr[i];
+    let targetItem = targetArr[i]; // csstree
+    if (typeof targetItem === 'object') { // postcss
+      targetItem = targetItem.prop;
+    }
     let flag = false;
     for (let j = 0; j < collectArr.length; j++) {
       let collectItem = collectArr[j];
@@ -67,22 +70,11 @@ export function checkProperty(targetArr, collectArr) {
         break;
       }
     }
-    checkFlagArr.push(flag);
+    (flag ? passedPropArr : notPassedPropArr).push(targetItem);
   }
-
-  // 打印属性支持情况，并返回结果（默认返回true，如有不支持的属性，则返回false）
-  let checkReturnFlag = true;
-  for (let i = 0; i < checkFlagArr.length; i++) {
-    let flagItem = checkFlagArr[i];
-    if (flagItem) {
-      console.log(`${targetArr[i]}属性可用；`);
-    } else {
-      checkReturnFlag = false;
-      console.log(`${targetArr[i]}属性不可用；`);
-    }
-  }
-  let result = {checkFlagArr, checkReturnFlag};
-  console.log(result);
+  let totalPropArr = targetArr; // 后面要处理简写
+  let result = {totalPropArr, passedPropArr, notPassedPropArr};
+  console.log('获取校验后的数组：', result);
   return result;
 }
 
