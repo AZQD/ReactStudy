@@ -1,5 +1,4 @@
 import React from 'react'
-import postcss from 'postcss'
 import cssCollect from '../utils/cssCollect'
 import rnCollect from '../utils/rnCollect'
 import {
@@ -56,7 +55,52 @@ console.log('--------postcss end----------');
 export default class Postcss extends React.Component {
   render() {
     return <div>
-      Postcss
+      <h3>传入的花括号样式：</h3>
+      <p>{entryCss}</p>
+      <br/>
+      <h3>CSS语法树转译结果：</h3>
+
+      <div className="infoBox">
+        <div className="infoItem">
+          <h4>支持的CSS：</h4>
+          {
+            cssPassedPropArr && cssPassedPropArr.map((item, index) => {
+              return <div className="item" key={index}>样式信息：<span className="value">{item.prop}: {item.value};</span>
+              </div>
+            })
+          }
+        </div>
+        <div className="infoItem">
+          <h4>不支持的CSS：</h4>
+          {
+            cssNotPassedPropArr && cssNotPassedPropArr.map((item, index) => {
+              return <div className="item" key={index}>样式信息：<span
+                className="value false">{item.prop}: {item.value};</span></div>
+            })
+          }
+        </div>
+      </div>
+
+      <div className="infoBox">
+        <div className="infoItem">
+          <h4>支持的RN样式：</h4>
+          {
+            RNPassedPropArr && RNPassedPropArr.map((item, index) => {
+              return <div className="item" key={index}>样式信息：<span className="value">{item.prop}: {item.value};</span>
+              </div>
+            })
+          }
+        </div>
+        <div className="infoItem">
+          <h4>不支持的RN样式：</h4>
+          {
+            RNNotPassedPropArr && RNNotPassedPropArr.map((item, index) => {
+              return <div className="item" key={index}>样式信息：<span
+                className="value false">{item.prop}: {item.value};</span></div>
+            })
+          }
+        </div>
+      </div>
     </div>
   }
 }
