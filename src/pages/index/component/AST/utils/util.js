@@ -3,11 +3,11 @@ import csstree from 'css-tree' // 引入CSS语法树
 
 /**
  * 花括号内CSS转义为语法树(csstree)
- * @param entryCurlyBracesCss
+ * @param entryCss
  * @returns {number | any}
  */
-export function csstreeParse(entryCurlyBracesCss) {
-  return csstree.parse(entryCurlyBracesCss, {
+export function csstreeParse(entryCss) {
+  return csstree.parse(entryCss, {
     // csstree参数配置：// https://github.com/csstree/csstree/blob/HEAD/docs/parsing.md
     context: 'block'
   });
@@ -15,11 +15,11 @@ export function csstreeParse(entryCurlyBracesCss) {
 
 
 /**
- * 使用递归函数，遍历语法树，将属性合并成数组，并返回；
+ * 使用递归函数，遍历语法树，将属性合并成数组，并返回；(csstree使用)
  * @param params
  * @returns {*}
  */
-export function getCurlyBracesPropertyArr(params) {
+export function csstreeASTToPropArr(params) {
   if (typeof params !== 'object') {
     console.log('语法树格式有误，请检查格式！');
     return;
@@ -32,7 +32,7 @@ export function getCurlyBracesPropertyArr(params) {
     // console.log('data', data);
     if (next) {
       // console.log('next', next);
-      return [data.property].concat(getCurlyBracesPropertyArr(next)); // 递归函数
+      return [data.property].concat(csstreeASTToPropArr(next)); // 递归函数
     } else {
       // console.log('没有next');
       return [data.property];
@@ -81,11 +81,11 @@ export function getCheckedPropArr(targetArr, collectArr) {
 
 /**
  * CSS属性字符串转换为驼峰命名
- * eg: humpFun('ab-cd-e'); // abCdE
+ * eg: humpHandle('ab-cd-e'); // abCdE
  * @param str
  * @returns {string}
  */
-export function humpFun(str) {
+export function humpHandle(str) {
   let arr = str.split('-');
   let newArr = [];
   arr.map((item, index) => {
