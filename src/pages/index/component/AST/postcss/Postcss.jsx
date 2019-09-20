@@ -7,6 +7,7 @@ import {
   getCheckedPropArr,
   humpHandle
 } from '../utils/util'
+import './Postcss.less'
 
 
 console.log('--------postcss begin----------');
@@ -54,7 +55,7 @@ console.log('--------postcss end----------');
 
 export default class Postcss extends React.Component {
   render() {
-    return <div>
+    return <div className="postcssBox">
       <h3>传入的花括号样式：</h3>
       <p>{entryCss}</p>
       <br/>
