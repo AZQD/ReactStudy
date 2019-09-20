@@ -5,6 +5,7 @@ import ReactRender from './component/ReactRender'
 import Decorator from './component/Decorator'
 import UseHoc from './component/hoc/useHoc'
 import CssTree from './component/csstree/CssTree'
+import Postcss from './component/AST/postcss/Postcss'
 
 const Home = () => (
   <div>
@@ -63,6 +64,7 @@ export default class PartRight extends React.Component {
         <Route path="/decorator" component={Decorator}/>
         <Route path="/useHoc" component={UseHoc}/>
         <Route path="/cssTree" component={CssTree}/>
+        <Route path="/postcss" component={Postcss}/>
       </Switch>
     )
   }
