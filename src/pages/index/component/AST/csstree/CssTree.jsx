@@ -42,7 +42,7 @@ let entryCurlyBracesCss = '{color: red; width: 12px; border: 1px solid red; line
 console.log('第一步：传入花括号样式：', entryCurlyBracesCss);
 
 
-// 2.花括号内CSS转义为语法树
+// 2.花括号内CSS转义为语法树(csstree)
 let curlyBracesCssAST = csstreeParse(entryCurlyBracesCss);
 console.log('第二步：花括号内CSS转义为语法树：', curlyBracesCssAST);
 
