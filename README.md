@@ -73,3 +73,12 @@ componentWillUnmount在组件从 DOM 中移除之前立刻被调用。
 
 该插件更多参数配置参考：https://github.com/jantimon/html-webpack-plugin
 ```
+
+### 4.对文件执行Eslint，有如下报错："Parsing error: Unexpected token = ***"：
+
+```
+原因：开发环境与ESLint当前的解析功能不兼容；
+解决方案：使用babel-eslint解析；
+(1).安装babel-eslint： cnpm install babel-eslint --save-dev
+(2).在.eslintrc中添加: "parser": "babel-eslint"
+```
