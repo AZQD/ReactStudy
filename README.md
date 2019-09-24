@@ -74,7 +74,7 @@ componentWillUnmount在组件从 DOM 中移除之前立刻被调用。
 该插件更多参数配置参考：https://github.com/jantimon/html-webpack-plugin
 ```
 
-### 5.对文件执行ESlint，有如下报错："Parsing error: Unexpected token = ***"：
+### 5.对文件执行ESlint，有如下报错："Parsing error: Unexpected token = ***"，或者报错：Parsing error: The keyword 'import' is reserved：
 
 ```
 原因：开发环境与ESLint当前的解析功能不兼容；
