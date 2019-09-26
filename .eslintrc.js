@@ -1,24 +1,49 @@
+// eslintrc.js配置最详细介绍
+// https://blog.csdn.net/q3254421/article/details/86477502
 module.exports = {
-    "env": {
-        "browser": true,
-        "es6": true
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true
+  },
+  "parser": "babel-eslint",
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 7,
+    // 开启实验属性
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      // 修饰器
+      "experimentalDecorators": true,
+      "jsx": true
     },
-  parser: "babel-eslint",
-    "extends": "airbnb",
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 2018,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
-    ],
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react"
+  ],
+  "globals": {
+    "__DEV__": false,
+    "__dirname": false,
+    "window": true,
+    "define": true,
+    "history": true,
+    "location": true,
+    "wxjs": true,
+    "$": true,
+    "WeixinJSBridge": true,
+    "wx": true,
+    "process": true,
+    "qq": true,
+  },
+  "settings": {
+    "react": {
+      "version": "16.2.0",
+    }
+  },
   /**
    * "off" 或 0 - 关闭规则
    * "warn" 或 1 - 开启规则，使用警告级别的错误：warn (不会导致程序退出),
@@ -62,11 +87,6 @@ module.exports = {
     "no-undef-init": 2,
     // 禁止将 undefined 作为标识符
     "no-undefined": 0,
-    // 禁止出现未使用过的变量
-    "no-unused-vars": [2, {
-      "vars": "all",
-      "args": "none"
-    }],
     // 不允许在变量定义之前使用它们
     "no-use-before-define": 0,
     //////////////
@@ -243,8 +263,6 @@ module.exports = {
     //////////////
     // ES6.相关 //
     //////////////
-    // 每个模块只能使用一个import
-    "no-duplicate-imports": 2,
     // 要求箭头函数体使用大括号
     "arrow-body-style": 2,
     // 要求箭头函数的参数使用圆括号
@@ -266,7 +284,7 @@ module.exports = {
     "no-const-assign": 2,
     // 禁止类成员中出现重复的名称
     "no-dupe-class-members": 2,
-    // 不允许复制模块的进口
+    // 每个模块只能使用一个import
     "no-duplicate-imports": 2,
     // 禁止 Symbolnew 操作符和 new 一起使用
     "no-new-symbol": 2,
