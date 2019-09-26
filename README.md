@@ -93,3 +93,5 @@ webpack引入eslint详解：[https://www.jianshu.com/p/33597b663481](https://www
 
 lint-staged：取得所有被提交的文件依次执行写好的任务（ESLint 和 Prettier）：
 [https://www.jianshu.com/p/cdd749c624d9](https://www.jianshu.com/p/cdd749c624d9)
+
+ESlint配置参考文档：https://segmentfault.com/a/1190000016626739#articleHeader5
