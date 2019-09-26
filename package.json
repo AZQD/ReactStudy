@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --open --mode development",
-    "build": "webpack --mode development"
+    "build": "webpack --mode development",
+    "lint": "eslint --fix src/pages/test/Index.jsx"
   },
   "author": "liuchaojie",
   "license": "ISC",
@@ -28,6 +29,10 @@
     "css-to-react-native-transform": "^1.9.0",
     "css-tree": "^1.0.0-alpha.34",
     "eslint": "^6.4.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.11",
     "html-loader": "^0.5.5",
@@ -36,6 +41,7 @@
     "less-loader": "^4.1.0",
     "postcss": "^7.0.18",
     "postcss-loader": "^2.1.4",
+    "pre-commit": "^1.2.2",
     "style-loader": "^0.21.0",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^1.0.1",
@@ -51,5 +57,8 @@
     "react-router-dom": "^4.2.2",
     "redux": "^4.0.1",
     "redux-saga": "^0.15.0"
-  }
+  },
+  "pre-commit": [
+    "lint"
+  ]
 }
