@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server --open --mode development",
     "build": "webpack --mode development",
-    "lint": "eslint --fix src/pages/test/Index.jsx"
+    "lint": "eslint --fix src"
   },
   "author": "liuchaojie",
   "license": "ISC",
