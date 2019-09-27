@@ -95,3 +95,5 @@ lint-staged：取得所有被提交的文件依次执行写好的任务（ESLint
 [https://www.jianshu.com/p/cdd749c624d9](https://www.jianshu.com/p/cdd749c624d9)
 
 ESlint配置参考文档：https://segmentfault.com/a/1190000016626739#articleHeader5
+
+Prettier配置参考：https://segmentfault.com/a/1190000015862803
