@@ -10,6 +10,8 @@ export default class CommonMenu extends React.Component {
       this.props.history.replace('/demo2');
     } else if (type === 3) {
       this.props.history.replace('/demo3');
+    } else if (type === 4) {
+      this.props.history.replace('/demo4');
     }
   }
 
@@ -27,6 +29,10 @@ export default class CommonMenu extends React.Component {
         <div className="menuItem" onClick={() => {
           this.toggleMenu(3)
         }}>Demo3
+        </div>
+        <div className="menuItem" onClick={() => {
+          this.toggleMenu(4)
+        }}>Demo4
         </div>
       </div>
     )
