@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ajax from 'ajax-promise-simple';
 import CommonMenu from '../CommonMenu';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
@@ -34,7 +33,6 @@ function mapDispatchToProps(dispatch) {
     action: bindActionCreators(actionFN, dispatch)
   }
 }
-
 
 const Demo4 = connect(mapStateToProps, mapDispatchToProps)(CateList);
 
