@@ -30,7 +30,7 @@ export function csstreeASTToPropArr (csstreeAST) {
   if (csstreeAST === null) { // 为空返回空数组，避免报错；
     return [];
   }
-  const { data, next } = csstreeAST;
+  const {data, next} = csstreeAST;
   if (data) {
     // console.log('data', data);
     if (next) {
@@ -65,7 +65,7 @@ export function postcssParse (entryCss) {
 export function postcssASTToPropValueArr (postcssAST) {
   const propValueArr = [];
   postcssAST.nodes && postcssAST.nodes.length > 0 && postcssAST.nodes[0].nodes.map((item) => {
-    propValueArr.push({ prop: item.prop, value: item.value });
+    propValueArr.push({prop: item.prop, value: item.value});
   });
   // console.log('解析后返回数组：', propValueArr);
   return propValueArr;
@@ -212,7 +212,7 @@ export function getCheckedPropArr (targetArr, ASTTYPE, whiteListType) {
     }
   }
   const totalPropArr = passedPropArr.concat(notPassedPropArr); // 后面要处理简写
-  const result = { totalPropArr, passedPropArr, notPassedPropArr };
+  const result = {totalPropArr, passedPropArr, notPassedPropArr};
   console.log('获取校验后的数组：', result);
   return result;
 }
