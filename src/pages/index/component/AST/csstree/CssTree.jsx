@@ -6,8 +6,8 @@ import {
   csstreeASTToPropArr,
   getCheckedPropArr,
   humpHandle
-} from '../utils/util'
-import './cssTree.less'
+} from '../utils/util';
+import './cssTree.less';
 
 
 console.log('--------csstree begin----------');
