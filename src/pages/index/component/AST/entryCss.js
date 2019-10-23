@@ -25,16 +25,16 @@ console.log(' CSS 转 RN 结果：', CSSToRNtransformResult);
 function CSSTransformRN (entryCss) {
   const postcssAST = postcssParse(entryCss);
   const propValueArr = postcssASTToPropValueArr(postcssAST);
-  const { totalPropArr: cssTotalPropArr, passedPropArr: cssPassedPropArr, notPassedPropArr: cssNotPassedPropArr } = getCheckedPropArr(propValueArr, 'postcss', 'css');
+  const {totalPropArr: cssTotalPropArr, passedPropArr: cssPassedPropArr, notPassedPropArr: cssNotPassedPropArr} = getCheckedPropArr(propValueArr, 'postcss', 'css');
   const humpPropArr = cssTotalPropArr.map((item) => ({
     ...item,
     prop: humpHandle(item.prop),
   }));
-  const { totalPropArr: RNTotalPropArr, passedPropArr: RNPassedPropArr, notPassedPropArr: RNNotPassedPropArr } = getCheckedPropArr(humpPropArr, 'postcss', 'rn');
+  const {totalPropArr: RNTotalPropArr, passedPropArr: RNPassedPropArr, notPassedPropArr: RNNotPassedPropArr} = getCheckedPropArr(humpPropArr, 'postcss', 'rn');
   console.log('RNTotalPropArr', RNTotalPropArr);
   console.log('RNPassedPropArr', RNPassedPropArr);
   console.log('RNNotPassedPropArr', RNNotPassedPropArr);
-  return { RNTotalPropArr, RNPassedPropArr, RNNotPassedPropArr };
+  return {RNTotalPropArr, RNPassedPropArr, RNNotPassedPropArr};
 }
 
 
