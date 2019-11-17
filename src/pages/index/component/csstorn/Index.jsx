@@ -56,11 +56,24 @@ import { getStylesForProperty } from 'css-to-react-native'
 import './Index.less'
 document.write(getStylesForProperty);
 
+// transform第二个参数接收字符串，哪个不需要处理简写，如margin；
+/*
+* issue：https://github.com/styled-components/css-to-react-native/issues/124
+* 如果tranform函数的第二个参数shorthandBlacklist误传一个字符串，比如：‘fontmargin’，同样会允许使用缩写。
+* 或许在这里添加TypeScript或者校验一下数据类型会更严谨。
+*
+* */
 function transform (rules) {
+  console.log(23, arguments);
+  console.log(23, arguments.length);
+  console.log(23, arguments[1]);
   var shorthandBlacklist = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+  console.log(1111, shorthandBlacklist);
   return rules.reduce(function (accum, rule) {
     var propertyName = getPropertyName(rule[0]);
     var value = rule[1];
+    /*是否要用简写，存在的坑，第二个参数如果是fontmaigin同样会被作为不处理简写，不够严谨，最合理的方式应该是判断数组*/
+    console.log(34, shorthandBlacklist instanceof Object);
     var allowShorthand = shorthandBlacklist.indexOf(propertyName) === -1;
     return Object.assign(accum, getStylesForProperty(propertyName, value, allowShorthand));
   }, {});
@@ -87,7 +100,7 @@ console.log('transform:', transform([
   ['margin', '5px 7px 2px'],
   ['border-left-width', '5px'],
   ['transform', 'translate(10px, 5px) scale(5)'],
-]));
+], ['fontsmargins']));
 
 
 export default class Index extends React.Component {
