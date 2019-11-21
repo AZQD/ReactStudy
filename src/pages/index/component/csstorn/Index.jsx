@@ -272,7 +272,7 @@ export default class Index extends React.Component {
       '  border-left: 1px solid red;\n' +
       '  box-shadow: 1px 2px 3px 4px;\n' +
       '}';
-    this.transformFun(entryCss);
+    // this.transformFun(entryCss);
   }
 
   transformFun(entryCss){
@@ -332,10 +332,16 @@ export default class Index extends React.Component {
         <div className="outputInfo">
           <div className="title">运行结果：</div>
           <div className="content">
-            <div className="styleTip1">{stylesStr1}</div>
-            <div className="styleTip2">
-              {`${selectorName}:  {`}
-            </div>
+            {
+              RNPassedPropArr.length>0 &&
+              <React.Fragment>
+                <div className="styleTip1">{stylesStr1}</div>
+                <div className="styleTip2">
+                  {`${selectorName}:  {`}
+                </div>
+              </React.Fragment>
+            }
+
 
             {
               RNPassedPropArr && RNPassedPropArr.map((item, index) => {
@@ -351,10 +357,15 @@ export default class Index extends React.Component {
               })
             }
 
-            <div className="styleTip2">
-              {'}'}
-            </div>
-            <span className="styleTip1">{stylesStr2}</span>
+            {
+              RNPassedPropArr.length>0 &&
+              <React.Fragment>
+                <div className="styleTip2">
+                  {'}'}
+                </div>
+                <span className="styleTip1">{stylesStr2}</span>
+              </React.Fragment>
+            }
           </div>
         </div>
         {/*<div className="infoItem">
@@ -372,7 +383,8 @@ export default class Index extends React.Component {
         {
           notPassStr &&
           <div className="desc1">
-            <span className="bold">注意：</span>{notPassStr}属性转换异常，请检查校验！
+            <span className="bold">注意：</span>
+            <span className="bold">{notPassStr}</span>，属性转换异常，请检查校验！
           </div>
         }
         {
