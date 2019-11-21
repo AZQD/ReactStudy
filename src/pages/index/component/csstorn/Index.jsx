@@ -166,6 +166,9 @@ import marginAbbrev from './abbreviate/margin';
 import paddingAbbrev from './abbreviate/padding';
 import borderAbbrev from './abbreviate/border';
 import borderLeftAbbrev from './abbreviate/borderLeft';
+import borderRightAbbrev from './abbreviate/borderRight';
+import borderTopAbbrev from './abbreviate/borderTop';
+import borderBottomAbbrev from './abbreviate/borderBottom';
 
 
 handlePropValue(humpPropArr);
@@ -177,7 +180,7 @@ function handlePropValue (humpPropArr) {
   }
   let passedPropArr = []; // 通过的数组
   let notPassedPropArr = []; // 未通过的数组
-  // 遍历数组，确定是否是可支持的属性；
+  // 遍历数组，确定是否是可支持的属性；item示例：{prop: "color", value: "red"}
   humpPropArr.map((item, index) => {
     item.value = item.value.split(' ').map(valueItem => {
       if (/\dpx$/.test(valueItem)) { // 单位处理!!!(可以扩展处理rem)思路：value值先split，正则处理每一块，然后再join；
@@ -188,19 +191,22 @@ function handlePropValue (humpPropArr) {
     }).join(' ');
     if (rnCollectFilter.includes(item.prop)) {// js判断某个值是否在rnCollect数组中
       if (rnCollectFilterAbbrevia.includes(item.prop)) {// js判断某个值是否在简写数组中
-        console.log('通过且要处理简写的有：', item);
+        console.log('RN支持的样式，且要处理简写的有：', item);
         let valueArr = item.value.split(' ');
-        if (item.prop === 'margin') {
-          passedPropArr.push.apply(passedPropArr, marginAbbrev(valueArr));
-        } else if (item.prop === 'padding') {
-          passedPropArr.push.apply(passedPropArr, paddingAbbrev(valueArr));
-        } else if (item.prop === 'border') {
-          passedPropArr.push.apply(passedPropArr, borderAbbrev(valueArr));
-        } else if (item.prop === 'borderLeft') {
-          passedPropArr.push.apply(passedPropArr, borderLeftAbbrev(valueArr));
-        } else {
-          console.log('通过且要处理简写，但是并没有处理的有：', item);
-        }
+        let abbrevArr = [
+          {type: 'margin', abbrevFun: marginAbbrev},
+          {type: 'padding', abbrevFun: paddingAbbrev},
+          {type: 'border', abbrevFun: borderAbbrev},
+          {type: 'borderLeft', abbrevFun: borderLeftAbbrev},
+          {type: 'borderRight', abbrevFun: borderRightAbbrev},
+          {type: 'borderTop', abbrevFun: borderTopAbbrev},
+          {type: 'borderBottom', abbrevFun: borderBottomAbbrev},
+        ];
+        abbrevArr.map(abbrevItem => {
+          if (item.prop === abbrevItem.type) {
+            passedPropArr.push.apply(passedPropArr, abbrevItem.abbrevFun(valueArr));
+          }
+        });
       } else {
         console.log('RN支持的样式有：', item);
         passedPropArr.push(item);
