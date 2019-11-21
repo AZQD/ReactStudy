@@ -168,7 +168,7 @@ const rnCollect = [
 
 
 // 获取去重后的Native支持的样式属性汇总
-/*var fs = require('fs');
+/* var fs = require('fs');
 fs.writeFileSync('rnCollectFilter.js', `
 let rnCollectFilter = [
   ${
