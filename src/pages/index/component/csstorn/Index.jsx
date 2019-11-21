@@ -176,8 +176,6 @@ import textDecorationAbbrev from './abbreviate/textDecoration';
 import flexAbbrev from './abbreviate/flex';
 
 
-handlePropValue(humpPropArr);
-
 function handlePropValue (humpPropArr) {
   if (!humpPropArr.length) {
     console.log('传入数组为空，请校验！');
@@ -231,16 +229,74 @@ function handlePropValue (humpPropArr) {
   console.log('最终结果passedPropArr：', passedPropArr);
   console.log('最终结果notPassedPropArr：', notPassedPropArr);
   console.log('最终结果的数组：', totalPropArr);
-  return totalPropArr;
+  return {totalPropArr, passedPropArr, notPassedPropArr};
 }
+
+// 6.检测RN主持结果：true：属性都支持；false：有不支持的属性，具体看console；
+let {totalPropArr: RNTotalPropArr, passedPropArr: RNPassedPropArr, notPassedPropArr: RNNotPassedPropArr} = handlePropValue(humpPropArr);
+
 
 
 console.log('----------纯粹处理转RN end------------');
 
 export default class Index extends React.Component {
-  render () {
-    return <div className="container">
-      CSS TO RN
+  render() {
+    return <div className="postcssBox">
+      <h3>传入的花括号样式：</h3>
+      <p>{entryCss}</p>
+      <br/>
+      <h3>CSS语法树转译结果：</h3>
+
+      <div className="infoBox">
+
+        <div className="infoItem">
+          <h4>支持的CSS：</h4>
+          {
+            cssPassedPropArr && cssPassedPropArr.map((item, index) => {
+              return <div className="item" key={index}>样式信息：<span className="value">{item.prop}: {item.value};</span>
+              </div>
+            })
+          }
+        </div>
+
+        <div className="infoItem">
+          <h4>不支持的CSS：</h4>
+          {
+            cssNotPassedPropArr && cssNotPassedPropArr.map((item, index) => {
+              return <div className="item" key={index}>样式信息：<span
+                className="value false">{item.prop}: {item.value};</span></div>
+            })
+          }
+        </div>
+      </div>
+
+      <div className="infoBox">
+        <div className="infoItem">
+          <h4>支持的RN样式：</h4>
+          {
+            RNPassedPropArr && RNPassedPropArr.map((item, index) => {
+              return <div className="item" key={index}>样式信息：<span className="value">
+                <span>{item.prop}: </span>
+                {
+                  item.value.width ?
+                  <span>{`{width: ${item.value.width}; height: ${item.value.height};}`};</span> :
+                    <span>{item.value}</span>
+                }
+              </span>
+              </div>
+            })
+          }
+        </div>
+        <div className="infoItem">
+          <h4>不支持的RN样式：</h4>
+          {
+            RNNotPassedPropArr && RNNotPassedPropArr.map((item, index) => {
+              return <div className="item" key={index}>样式信息：<span
+                className="value false">{item.prop}: {item.value};</span></div>
+            })
+          }
+        </div>
+      </div>
     </div>
   }
 }
