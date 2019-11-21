@@ -173,6 +173,7 @@ import backgroundAbbrev from './abbreviate/background';
 import boxShadowAbbrev from './abbreviate/boxShadow';
 import texShadowAbbrev from './abbreviate/texShadow';
 import textDecorationAbbrev from './abbreviate/textDecoration';
+import flexAbbrev from './abbreviate/flex';
 
 
 handlePropValue(humpPropArr);
@@ -209,6 +210,7 @@ function handlePropValue (humpPropArr) {
           {type: 'boxShadow', abbrevFun: boxShadowAbbrev},
           {type: 'textShadow', abbrevFun: texShadowAbbrev},
           {type: 'textDecoration', abbrevFun: textDecorationAbbrev},
+          {type: 'flex', abbrevFun: flexAbbrev},
         ];
         abbrevArr.map(abbrevItem => {
           if (item.prop === abbrevItem.type) {
