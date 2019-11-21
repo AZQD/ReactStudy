@@ -238,16 +238,16 @@ let {totalPropArr: RNTotalPropArr, passedPropArr: RNPassedPropArr, notPassedProp
 
 
 console.log('----------纯粹处理转RN end------------');
-
+import './index.less';
 export default class Index extends React.Component {
   render() {
-    return <div className="postcssBox">
-      <h3>传入的花括号样式：</h3>
-      <p>{entryCss}</p>
+    return <div className="cssToRNBox">
+      {/*<h3>传入的花括号样式：</h3>
+      <p>{entryCss}</p>*/}
       <br/>
       <h3>CSS语法树转译结果：</h3>
 
-      <div className="infoBox">
+      {/*<div className="infoBox">
 
         <div className="infoItem">
           <h4>支持的CSS：</h4>
@@ -268,7 +268,7 @@ export default class Index extends React.Component {
             })
           }
         </div>
-      </div>
+      </div>*/}
 
       <div className="infoBox">
         <div className="infoItem">
