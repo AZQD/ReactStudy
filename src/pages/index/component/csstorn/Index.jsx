@@ -129,10 +129,9 @@ console.log('transform:', result);
 console.log('----------css-to-react-native end------------');
 
 
-
 console.log('----------纯粹处理转RN begin------------');
 
-let entryCss = '.container{margin: 12px 20px 15px 34px; color: red; line-height: 16px; border: 1px solid red; float: right; ab-cd: 12px;}';
+let entryCss = '.container{padding: 10px 20px; margin: 12px 20px 15px 34px; color: red; line-height: 16px; border: 1px solid red; float: right; ab-cd: 12px;}';
 
 // 1.传入花括号样式（后续使用node工具的fs读取文件）
 console.log('第一步：传入花括号样式：', entryCss);
@@ -162,12 +161,13 @@ let humpPropArr = cssTotalPropArr.map((item) => {
 console.log('第五步：转换驼峰：', humpPropArr);
 
 
-import { rnCollectFilter, rnCollectFilterAbbrevia} from '../AST/utils/rnCollectFilter'
+import {rnCollectFilter, rnCollectFilterAbbrevia} from '../AST/utils/rnCollectFilter'
 import marginAbbrev from './abbreviate/margin';
-console.log(998, marginAbbrev);
+import paddingAbbrev from './abbreviate/padding';
 
 
 handlePropValue(humpPropArr);
+
 function handlePropValue (humpPropArr) {
   if (!humpPropArr.length) {
     console.log('传入数组为空，请校验！');
@@ -177,27 +177,29 @@ function handlePropValue (humpPropArr) {
   let notPassedPropArr = []; // 未通过的数组
   // 遍历数组，确定是否是可支持的属性；
   humpPropArr.map((item, index) => {
-    item.value = item.value.split(' ').map(valueItem =>{
-      if(/\dpx$/.test(valueItem)){ // 单位处理!!!(可以扩展处理rem)思路：value值先split，正则处理每一块，然后再join；
+    item.value = item.value.split(' ').map(valueItem => {
+      if (/\dpx$/.test(valueItem)) { // 单位处理!!!(可以扩展处理rem)思路：value值先split，正则处理每一块，然后再join；
         return parseFloat(valueItem);
-      }else{
+      } else {
         return valueItem;
       }
     }).join(' ');
-    if(rnCollectFilter.includes(item.prop)){// js判断某个值是否在rnCollect数组中
-      if(rnCollectFilterAbbrevia.includes(item.prop)){// js判断某个值是否在简写数组中
+    if (rnCollectFilter.includes(item.prop)) {// js判断某个值是否在rnCollect数组中
+      if (rnCollectFilterAbbrevia.includes(item.prop)) {// js判断某个值是否在简写数组中
         console.log('通过且要处理简写的有：', item);
         let valueArr = item.value.split(' ');
         if (item.prop === 'margin') {
           passedPropArr.push.apply(passedPropArr, marginAbbrev(valueArr));
-        }else{
+        } else if (item.prop === 'padding') {
+          passedPropArr.push.apply(passedPropArr, paddingAbbrev(valueArr));
+        } else {
           console.log('通过且要处理简写，但是并没有处理的有：', item);
         }
-      }else{
+      } else {
         console.log('RN支持的样式有：', item);
         passedPropArr.push(item);
       }
-    }else{
+    } else {
       console.log('不是RN支持的样式有：', item);
       notPassedPropArr.push(item);
     }
@@ -211,12 +213,10 @@ function handlePropValue (humpPropArr) {
 }
 
 
-
-
 console.log('----------纯粹处理转RN end------------');
 
 export default class Index extends React.Component {
-  render() {
+  render () {
     return <div className="container">
       CSS TO RN
     </div>
