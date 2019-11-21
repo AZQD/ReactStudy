@@ -131,7 +131,7 @@ console.log('----------css-to-react-native end------------');
 
 console.log('----------纯粹处理转RN begin------------');
 
-let entryCss = '.container{background: yellows; border-left: 1px solid red; padding: 10px 20px; margin: 12px 20px 15px 34px; color: red; line-height: 16px; border: 1px solid red; float: right; ab-cd: 12px;}';
+let entryCss = '.container{box-shadow: 1px 2px 3px 4px .5;background: yellows; border-left: 1px solid red; padding: 10px 20px; margin: 12px 20px 15px 34px; color: red; line-height: 16px; border: 1px solid red; float: right; ab-cd: 12px;}';
 
 // 1.传入花括号样式（后续使用node工具的fs读取文件）
 console.log('第一步：传入花括号样式：', entryCss);
@@ -170,6 +170,7 @@ import borderRightAbbrev from './abbreviate/borderRight';
 import borderTopAbbrev from './abbreviate/borderTop';
 import borderBottomAbbrev from './abbreviate/borderBottom';
 import backgroundAbbrev from './abbreviate/background';
+import boxShadowAbbrev from './abbreviate/boxShadow';
 
 
 handlePropValue(humpPropArr);
@@ -203,6 +204,7 @@ function handlePropValue (humpPropArr) {
           {type: 'borderTop', abbrevFun: borderTopAbbrev},
           {type: 'borderBottom', abbrevFun: borderBottomAbbrev},
           {type: 'background', abbrevFun: backgroundAbbrev},
+          {type: 'boxShadow', abbrevFun: boxShadowAbbrev},
         ];
         abbrevArr.map(abbrevItem => {
           if (item.prop === abbrevItem.type) {
