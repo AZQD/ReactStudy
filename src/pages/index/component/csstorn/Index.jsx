@@ -106,6 +106,186 @@ console.log('transform:', transform([
 
 
 import React from 'react'
+import {getCheckedPropArr, humpHandle, postcssASTToPropValueArr, postcssParse} from "../AST/utils/util";
+
+
+console.log('----------css-to-react-native begin------------');
+
+import transform from 'css-to-react-native'
+
+let result = transform([
+  ['font', 'bold 14px/16px "Helvetica"'],
+  ['background', 'yellow'],
+  ['margin', '5px 7px 2px'],
+  ['text-align', 'center'],
+  ['border-radius', '12px'],
+  ['text-decoration', 'underline'],
+  // ['border-left-width', '5px'],
+  ['border', '5px solid red'],
+  ['transform', 'translate(10px, 5px) scale(5)'],
+]);
+console.log('transform:', result);
+
+console.log('----------css-to-react-native end------------');
+
+
+
+console.log('----------纯粹处理转RN begin------------');
+
+let entryCss = '.container{margin: 12px 20px 15px 34px; color: red; line-height: 16px; border: 1px solid red; float: right; ab-cd: 12px;}';
+
+// 1.传入花括号样式（后续使用node工具的fs读取文件）
+console.log('第一步：传入花括号样式：', entryCss);
+
+// 2.花括号内CSS转义为语法树(postcss)
+let postcssAST = postcssParse(entryCss);
+console.log('第二步：花括号内CSS转义为语法树：', postcssAST);
+
+// 3.通过语法树，获取属性prop和value数组
+let propValueArr = postcssASTToPropValueArr(postcssAST);
+console.log('第三步：通过语法树，获取属性数组：', propValueArr);
+
+// 4.检测CSS支持结果：true：属性都支持；false：有不支持的属性，具体看console；
+let {totalPropArr: cssTotalPropArr, passedPropArr: cssPassedPropArr, notPassedPropArr: cssNotPassedPropArr} = getCheckedPropArr(propValueArr, 'postcss', 'css');
+console.log('第四步：检测CSS支持结果：', `W3School 的 CSS 参考手册校验${!cssNotPassedPropArr.length ? '通过' : '未通过'}`);
+console.log('第四步：检测CSS支持结果：', cssTotalPropArr);
+
+// 检测CSS支持结果如果是true，则转换驼峰，并校验是否是RN支持的属性；
+// 目前不管是否是CSS支持的，都直接执行下一步；
+// 5.css属性转换驼峰属性
+let humpPropArr = cssTotalPropArr.map((item) => {
+  return {
+    ...item,
+    prop: humpHandle(item.prop)
+  }
+});
+console.log('第五步：转换驼峰：', humpPropArr);
+
+
+import { rnCollectFilter, rnCollectFilterAbbrevia} from '../AST/utils/rnCollectFilter'
+
+
+handlePropValue(humpPropArr);
+function handlePropValue (humpPropArr) {
+  if (!humpPropArr.length) {
+    console.log('传入数组为空，请校验！');
+    return false;
+  }
+  let passedPropArr = []; // 通过的数组
+  let notPassedPropArr = []; // 未通过的数组
+  // 遍历数组，确定是否是可支持的属性；
+  humpPropArr.map((item, index) => {
+    item.value = item.value.split(' ').map(valueItem =>{
+      if(/\dpx$/.test(valueItem)){ // 单位处理!!!(可以扩展处理rem)思路：value值先split，正则处理每一块，然后再join；
+        return parseFloat(valueItem);
+      }else{
+        return valueItem;
+      }
+    }).join(' ');
+    if(rnCollectFilter.includes(item.prop)){// js判断某个值是否在rnCollect数组中
+      if(rnCollectFilterAbbrevia.includes(item.prop)){// js判断某个值是否在简写数组中
+        console.log('通过且要处理简写的有：', item);
+        let valueArr = item.value.split(' ');
+        if (item.prop === 'margin') {
+          if (valueArr.length === 1) {
+            passedPropArr.push.apply(passedPropArr,[
+              {
+                prop: 'marginLeft',
+                value: valueArr[0]
+              },
+              {
+                prop: 'marginRight',
+                value: valueArr[0]
+              },
+              {
+                prop: 'marginTop',
+                value: valueArr[0]
+              },
+              {
+                prop: 'marginBottom',
+                value: valueArr[0]
+              }
+            ]);
+          }else if (valueArr.length === 2) {
+            passedPropArr.push.apply(passedPropArr,[
+              {
+                prop: 'marginTop',
+                value: valueArr[0]
+              },
+              {
+                prop: 'marginBottom',
+                value: valueArr[0]
+              },
+              {
+                prop: 'marginLeft',
+                value: valueArr[1]
+              },
+              {
+                prop: 'marginRight',
+                value: valueArr[1]
+              }
+            ]);
+          }else if (valueArr.length === 3) {
+            passedPropArr.push.apply(passedPropArr,[
+              {
+                prop: 'marginTop',
+                value: valueArr[0]
+              },
+              {
+                prop: 'marginLeft',
+                value: valueArr[1]
+              },
+              {
+                prop: 'marginRight',
+                value: valueArr[1]
+              },
+              {
+                prop: 'marginBottom',
+                value: valueArr[2]
+              }
+            ]);
+          }else if (valueArr.length === 4) {
+            passedPropArr.push.apply(passedPropArr,[
+              {
+                prop: 'marginTop',
+                value: valueArr[0]
+              },
+              {
+                prop: 'marginRight',
+                value: valueArr[1]
+              },
+              {
+                prop: 'marginBottom',
+                value: valueArr[2]
+              },
+              {
+                prop: 'marginLeft',
+                value: valueArr[3]
+              }
+            ]);
+          }
+        }
+      }else{
+        console.log('RN支持的样式有：', item);
+        passedPropArr.push(item);
+      }
+    }else{
+      console.log('不是RN支持的样式有：', item);
+      notPassedPropArr.push(item);
+    }
+  });
+
+  const totalPropArr = passedPropArr.concat(notPassedPropArr);
+  console.log('最终结果passedPropArr：', passedPropArr);
+  console.log('最终结果notPassedPropArr：', notPassedPropArr);
+  console.log('最终结果的数组：', totalPropArr);
+  return totalPropArr;
+}
+
+
+
+
+console.log('----------纯粹处理转RN end------------');
 
 export default class Index extends React.Component {
   render() {
