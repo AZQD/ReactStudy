@@ -371,11 +371,19 @@ export default class Index extends React.Component {
       <div className="tipBox">
         {
           notPassStr &&
-          <div className="desc2"><span className="bold">注意：</span>{notPassStr}属性转换异常，请检查校验！</div>
+          <div className="desc1">
+            <span className="bold">注意：</span>{notPassStr}属性转换异常，请检查校验！
+          </div>
         }
         {
           RNTotalPropArr.length>0 &&
-          <div className="desc1"><span className="bold">说明：</span>样式选择器为：{selectorName}，共转换{RNTotalPropArr.length}个属性，{RNPassedPropArr.length}个转换成功，{RNNotPassedPropArr.length}个转换异常。</div>
+          <div className="desc2">
+            <span className="bold">说明：</span>
+            样式选择器为：<span className="green bold">{selectorName}</span>，
+            共转换<span className="green bold">{RNTotalPropArr.length}</span>个属性，
+            <span className="green bold">{RNPassedPropArr.length}</span>个转换成功，
+            <span className="red bold">{RNNotPassedPropArr.length}</span>个转换异常。
+          </div>
         }
       </div>
     </div>
