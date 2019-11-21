@@ -131,7 +131,7 @@ console.log('----------css-to-react-native end------------');
 
 console.log('----------纯粹处理转RN begin------------');
 
-let entryCss = '.container{text-shadow: 1px 2px 3px red; box-shadow: 1px 2px 3px 4px .5;background: yellows; border-left: 1px solid red; padding: 10px 20px; margin: 12px 20px 15px 34px; color: red; line-height: 16px; border: 1px solid red; float: right; ab-cd: 12px;}';
+let entryCss = '.container{text-decoration: underline solid blue; text-shadow: 1px 2px 3px red; box-shadow: 1px 2px 3px 4px .5;background: yellows; border-left: 1px solid red; padding: 10px 20px; margin: 12px 20px 15px 34px; color: red; line-height: 16px; border: 1px solid red; float: right; ab-cd: 12px;}';
 
 // 1.传入花括号样式（后续使用node工具的fs读取文件）
 console.log('第一步：传入花括号样式：', entryCss);
@@ -172,6 +172,7 @@ import borderBottomAbbrev from './abbreviate/borderBottom';
 import backgroundAbbrev from './abbreviate/background';
 import boxShadowAbbrev from './abbreviate/boxShadow';
 import texShadowAbbrev from './abbreviate/texShadow';
+import textDecorationAbbrev from './abbreviate/textDecoration';
 
 
 handlePropValue(humpPropArr);
@@ -207,6 +208,7 @@ function handlePropValue (humpPropArr) {
           {type: 'background', abbrevFun: backgroundAbbrev},
           {type: 'boxShadow', abbrevFun: boxShadowAbbrev},
           {type: 'textShadow', abbrevFun: texShadowAbbrev},
+          {type: 'textDecoration', abbrevFun: textDecorationAbbrev},
         ];
         abbrevArr.map(abbrevItem => {
           if (item.prop === abbrevItem.type) {
