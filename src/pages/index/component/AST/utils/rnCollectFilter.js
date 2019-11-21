@@ -128,7 +128,7 @@ export const rnCollectFilter = [
  * @type {string[]}
  */
 export const rnCollectFilterAbbrevia = [
-  'flex', //ok
+  'flex', // ok
   'margin', // 简写ok
   'padding', // 简写ok
   'transform', // 简写(直接就是transform)
