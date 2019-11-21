@@ -1,4 +1,7 @@
-
+/**
+ * 所有RN支持的样式key
+ * @type {string[]}
+ */
 export const rnCollectFilter = [
   'alignContent',
   'alignItems',
@@ -120,20 +123,24 @@ export const rnCollectFilter = [
   'textDecoration', // 简写
 ];
 
+/**
+ * 需要转换的缩写
+ * @type {string[]}
+ */
 export const rnCollectFilterAbbrevia = [
-  'flex', // 简写
+  'flex', //ok
   'margin', // 简写ok
   'padding', // 简写ok
-  'transform', // 简写
+  'transform', // 简写(直接就是transform)
 
-  'font', // 简写
+  'font', // 简写(直接使用各自的写法，如fontSize等)
   'border', // 简写ok
   'borderLeft', // 简写ok
   'borderRight', // 简写ok
   'borderTop', // 简写ok
   'borderBottom', // 简写ok
   'background', // 简写ok
-  'boxShadow', // 简写
-  'textShadow', // 简写
-  'textDecoration', // 简写
+  'boxShadow', // 简写//ok
+  'textShadow', // 简写//ok
+  'textDecoration', // 简写//ok
 ];
