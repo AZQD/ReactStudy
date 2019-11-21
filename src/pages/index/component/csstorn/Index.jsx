@@ -155,7 +155,7 @@ function transformSelf (entryCss) {
   let postcssAST = postcssParse(entryCss);
   console.log('第二步：花括号内CSS转义为语法树：', postcssAST);
   
-  let selectorName = postcssAST.nodes[0].selector;
+  let selectorName = postcssAST.nodes[0].selector.replace(/\./g, '');
 
 // 3.通过语法树，获取属性prop和value数组
   let propValueArr = postcssASTToPropValueArr(postcssAST);
@@ -262,7 +262,17 @@ export default class Index extends React.Component {
 
   componentWillMount () {
     // let entryCss = '.container{text-decoration: underline solid blue; text-shadow: 1px 2px 3px red; box-shadow: 1px 2px 3px 4px .5;background: yellows; border-left: 1px solid red; padding: 10px 20px; margin: 12px 20px 15px 34px; color: red; line-height: 16px; border: 1px solid red; float: right; ab-cd: 12px;}';
-    // this.transformFun(entryCss);
+    let entryCss = '.boxSelector {\n' +
+      '  display: flex;\n' +
+      '  align-items: center;\n' +
+      '  width: 200px;\n' +
+      '  height: 100px;\n' +
+      '  background-color: red;\n' +
+      '  padding: 10px 20px;\n' +
+      '  border-left: 1px solid red;\n' +
+      '  box-shadow: 1px 2px 3px 4px;\n' +
+      '}';
+    this.transformFun(entryCss);
   }
 
   transformFun(entryCss){
@@ -295,8 +305,9 @@ export default class Index extends React.Component {
   render() {
     let {entryCss, selectorName, RNTotalPropArr, RNPassedPropArr, RNNotPassedPropArr} = this.state;
     console.log(666, this.state);
+    let stylesStr1 = 'const styles = StyleSheet.create({';
+    let stylesStr2 = '});';
     return <div className="cssToRNBox">
-      <br/>
       <h3>CSS语法转RN-工具平台</h3>
 
       <div className="infoBox">
@@ -309,20 +320,34 @@ export default class Index extends React.Component {
         </div>
 
         <div className="resultBox">
+
           <div className="submitBtn" onClick={this.submitFun}>提交运行</div>
-          {
-            RNPassedPropArr && RNPassedPropArr.map((item, index) => {
-              return <div className="item" key={index}>样式信息：<span className="value">
-                <span>{item.prop}: </span>
-                {
-                  item.value.width ?
-                  <span>{`{width: ${item.value.width}; height: ${item.value.height};}`};</span> :
-                    <span>{item.value};</span>
-                }
-              </span>
-              </div>
-            })
-          }
+
+          <div className="styleInfo">
+            <div className="styleTip1">{stylesStr1}</div>
+            <div className="styleTip2">
+              {`${selectorName}:  {`}
+            </div>
+
+            {
+              RNPassedPropArr && RNPassedPropArr.map((item, index) => {
+                return <div className="styleItem" key={index}>
+
+                  <span className="prop">{item.prop}: </span>
+                  {
+                    item.value.width ?
+                      <span className="value">{`{width: ${item.value.width}, height: ${item.value.height}}`},</span> :
+                      <span className="value">{item.value},</span>
+                  }
+                </div>
+              })
+            }
+
+            <div className="styleTip2">
+              {'}'}
+            </div>
+            <span className="styleTip1">{stylesStr2}</span>
+          </div>
         </div>
         {/*<div className="infoItem">
           <h4>不支持的RN样式：</h4>
