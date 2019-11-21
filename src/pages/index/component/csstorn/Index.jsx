@@ -164,6 +164,7 @@ console.log('第五步：转换驼峰：', humpPropArr);
 import {rnCollectFilter, rnCollectFilterAbbrevia} from '../AST/utils/rnCollectFilter'
 import marginAbbrev from './abbreviate/margin';
 import paddingAbbrev from './abbreviate/padding';
+import borderAbbrev from './abbreviate/border';
 
 
 handlePropValue(humpPropArr);
@@ -192,6 +193,8 @@ function handlePropValue (humpPropArr) {
           passedPropArr.push.apply(passedPropArr, marginAbbrev(valueArr));
         } else if (item.prop === 'padding') {
           passedPropArr.push.apply(passedPropArr, paddingAbbrev(valueArr));
+        }  else if (item.prop === 'border') {
+          passedPropArr.push.apply(passedPropArr, borderAbbrev(valueArr));
         } else {
           console.log('通过且要处理简写，但是并没有处理的有：', item);
         }
