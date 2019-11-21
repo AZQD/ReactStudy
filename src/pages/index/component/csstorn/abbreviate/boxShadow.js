@@ -52,7 +52,7 @@ export default function boxShadowAbbrev (valueArr) {
         value: valueArr[4]
       }
     ]);
-  }else{ // 兼容
+  } else { // 兼容
     result.push.apply(result, [
       {
         prop: 'boxShadow',
