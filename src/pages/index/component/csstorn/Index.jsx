@@ -154,6 +154,8 @@ function transformSelf (entryCss) {
 // 2.花括号内CSS转义为语法树(postcss)
   let postcssAST = postcssParse(entryCss);
   console.log('第二步：花括号内CSS转义为语法树：', postcssAST);
+  
+  let selectorName = postcssAST.nodes[0].selector;
 
 // 3.通过语法树，获取属性prop和value数组
   let propValueArr = postcssASTToPropValueArr(postcssAST);
@@ -235,7 +237,7 @@ function transformSelf (entryCss) {
 
   // 6.检测RN主持结果：true：属性都支持；false：有不支持的属性，具体看console；
   let {totalPropArr: RNTotalPropArr, passedPropArr: RNPassedPropArr, notPassedPropArr: RNNotPassedPropArr} = handlePropValue(humpPropArr);
-  return {RNTotalPropArr, RNPassedPropArr, RNNotPassedPropArr};
+  return {selectorName, RNTotalPropArr, RNPassedPropArr, RNNotPassedPropArr};
 
 }
 
@@ -251,6 +253,7 @@ export default class Index extends React.Component {
     super(props);
     this.state = {
       entryCss: '',
+      selectorName: '',
       RNTotalPropArr: [],
       RNPassedPropArr: [],
       RNNotPassedPropArr: [],
@@ -258,53 +261,55 @@ export default class Index extends React.Component {
   }
 
   componentWillMount () {
-    let entryCss = '.container{text-decoration: underline solid blue; text-shadow: 1px 2px 3px red; box-shadow: 1px 2px 3px 4px .5;background: yellows; border-left: 1px solid red; padding: 10px 20px; margin: 12px 20px 15px 34px; color: red; line-height: 16px; border: 1px solid red; float: right; ab-cd: 12px;}';
-    this.transformFun(entryCss);
+    // let entryCss = '.container{text-decoration: underline solid blue; text-shadow: 1px 2px 3px red; box-shadow: 1px 2px 3px 4px .5;background: yellows; border-left: 1px solid red; padding: 10px 20px; margin: 12px 20px 15px 34px; color: red; line-height: 16px; border: 1px solid red; float: right; ab-cd: 12px;}';
+    // this.transformFun(entryCss);
   }
 
   transformFun(entryCss){
-    let {RNTotalPropArr, RNPassedPropArr, RNNotPassedPropArr} = transformSelf(entryCss);
+    if(entryCss){
+      let {selectorName, RNTotalPropArr, RNPassedPropArr, RNNotPassedPropArr} = transformSelf(entryCss);
+      this.setState({
+        selectorName,
+        RNTotalPropArr,
+        RNPassedPropArr,
+        RNNotPassedPropArr
+      });
+    }else{
+      alert('请您输入要转换的样式');
+    }
+  };
+
+  // 输入框
+  handleInput = (e) => {
+    let value = e.target.value;
     this.setState({
-      RNTotalPropArr,
-      RNPassedPropArr,
-      RNNotPassedPropArr
+      entryCss: value
     });
   };
 
+  submitFun = () => {
+    let {entryCss} = this.state;
+    this.transformFun(entryCss);
+  };
+
   render() {
-    let {RNTotalPropArr, RNPassedPropArr, RNNotPassedPropArr} = this.state;
+    let {entryCss, selectorName, RNTotalPropArr, RNPassedPropArr, RNNotPassedPropArr} = this.state;
+    console.log(666, this.state);
     return <div className="cssToRNBox">
-      {/*<h3>传入的花括号样式：</h3>
-      <p>{entryCss}</p>*/}
       <br/>
-      <h3>CSS语法树转译结果：</h3>
-
-      {/*<div className="infoBox">
-
-        <div className="infoItem">
-          <h4>支持的CSS：</h4>
-          {
-            cssPassedPropArr && cssPassedPropArr.map((item, index) => {
-              return <div className="item" key={index}>样式信息：<span className="value">{item.prop}: {item.value};</span>
-              </div>
-            })
-          }
-        </div>
-
-        <div className="infoItem">
-          <h4>不支持的CSS：</h4>
-          {
-            cssNotPassedPropArr && cssNotPassedPropArr.map((item, index) => {
-              return <div className="item" key={index}>样式信息：<span
-                className="value false">{item.prop}: {item.value};</span></div>
-            })
-          }
-        </div>
-      </div>*/}
+      <h3>CSS语法转RN-工具平台</h3>
 
       <div className="infoBox">
-        <div className="infoItem">
-          <h4>支持的RN样式：</h4>
+        <div className="textareaWrap">
+          <textarea className="textarea"
+                    name='content'
+                    placeholder="请您输入要转换React Native的样式"
+                    value={entryCss}
+                    onChange={(e) => this.handleInput(e)}/>
+        </div>
+
+        <div className="resultBox">
+          <div className="submitBtn" onClick={this.submitFun}>提交运行</div>
           {
             RNPassedPropArr && RNPassedPropArr.map((item, index) => {
               return <div className="item" key={index}>样式信息：<span className="value">
@@ -312,14 +317,14 @@ export default class Index extends React.Component {
                 {
                   item.value.width ?
                   <span>{`{width: ${item.value.width}; height: ${item.value.height};}`};</span> :
-                    <span>{item.value}</span>
+                    <span>{item.value};</span>
                 }
               </span>
               </div>
             })
           }
         </div>
-        <div className="infoItem">
+        {/*<div className="infoItem">
           <h4>不支持的RN样式：</h4>
           {
             RNNotPassedPropArr && RNNotPassedPropArr.map((item, index) => {
@@ -327,7 +332,7 @@ export default class Index extends React.Component {
                 className="value false">{item.prop}: {item.value};</span></div>
             })
           }
-        </div>
+        </div>*/}
       </div>
     </div>
   }

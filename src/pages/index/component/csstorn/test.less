@@ -1,0 +1,28 @@
+.boxSelector {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  height: 100px;
+  background-color: red;
+  padding: 10px 20px;
+  border-left: 1px solid red;
+  box-shadow: 1px 2px 3px 4px;
+}
+
+.textSelector {
+  width: 200px;
+  height: 100px;
+  line-height: 16px;
+  font-size: 16px;
+  color: #000000;
+  background-color: red;
+  padding: 10px 20px;
+  text-shadow: 1px 2px 3px red;
+  text-decoration: underline solid blue;
+}
+
+/*属性有误，值有误；*/
+.errorSelector{
+  background-color: reds;/*在编辑器本身就会报错，如果真的这么写，也能校验出来*/
+  test-prop: 20px solid #F00;
+}
