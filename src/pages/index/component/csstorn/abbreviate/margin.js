@@ -1,7 +1,7 @@
 export default function marginAbbrev (valueArr) {
   let result = [];
   if (valueArr.length === 1) {
-    result.push.apply(result,[
+    result.push.apply(result, [
       {
         prop: 'marginLeft',
         value: valueArr[0]
@@ -19,8 +19,8 @@ export default function marginAbbrev (valueArr) {
         value: valueArr[0]
       }
     ]);
-  }else if (valueArr.length === 2) {
-    result.push.apply(result,[
+  } else if (valueArr.length === 2) {
+    result.push.apply(result, [
       {
         prop: 'marginTop',
         value: valueArr[0]
@@ -38,8 +38,8 @@ export default function marginAbbrev (valueArr) {
         value: valueArr[1]
       }
     ]);
-  }else if (valueArr.length === 3) {
-    result.push.apply(result,[
+  } else if (valueArr.length === 3) {
+    result.push.apply(result, [
       {
         prop: 'marginTop',
         value: valueArr[0]
@@ -57,8 +57,8 @@ export default function marginAbbrev (valueArr) {
         value: valueArr[2]
       }
     ]);
-  }else if (valueArr.length === 4) {
-    result.push.apply(result,[
+  } else if (valueArr.length === 4) {
+    result.push.apply(result, [
       {
         prop: 'marginTop',
         value: valueArr[0]
