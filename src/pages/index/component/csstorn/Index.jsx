@@ -163,6 +163,8 @@ console.log('第五步：转换驼峰：', humpPropArr);
 
 
 import { rnCollectFilter, rnCollectFilterAbbrevia} from '../AST/utils/rnCollectFilter'
+import marginAbbrev from './abbreviate/margin';
+console.log(998, marginAbbrev);
 
 
 handlePropValue(humpPropArr);
@@ -187,83 +189,9 @@ function handlePropValue (humpPropArr) {
         console.log('通过且要处理简写的有：', item);
         let valueArr = item.value.split(' ');
         if (item.prop === 'margin') {
-          if (valueArr.length === 1) {
-            passedPropArr.push.apply(passedPropArr,[
-              {
-                prop: 'marginLeft',
-                value: valueArr[0]
-              },
-              {
-                prop: 'marginRight',
-                value: valueArr[0]
-              },
-              {
-                prop: 'marginTop',
-                value: valueArr[0]
-              },
-              {
-                prop: 'marginBottom',
-                value: valueArr[0]
-              }
-            ]);
-          }else if (valueArr.length === 2) {
-            passedPropArr.push.apply(passedPropArr,[
-              {
-                prop: 'marginTop',
-                value: valueArr[0]
-              },
-              {
-                prop: 'marginBottom',
-                value: valueArr[0]
-              },
-              {
-                prop: 'marginLeft',
-                value: valueArr[1]
-              },
-              {
-                prop: 'marginRight',
-                value: valueArr[1]
-              }
-            ]);
-          }else if (valueArr.length === 3) {
-            passedPropArr.push.apply(passedPropArr,[
-              {
-                prop: 'marginTop',
-                value: valueArr[0]
-              },
-              {
-                prop: 'marginLeft',
-                value: valueArr[1]
-              },
-              {
-                prop: 'marginRight',
-                value: valueArr[1]
-              },
-              {
-                prop: 'marginBottom',
-                value: valueArr[2]
-              }
-            ]);
-          }else if (valueArr.length === 4) {
-            passedPropArr.push.apply(passedPropArr,[
-              {
-                prop: 'marginTop',
-                value: valueArr[0]
-              },
-              {
-                prop: 'marginRight',
-                value: valueArr[1]
-              },
-              {
-                prop: 'marginBottom',
-                value: valueArr[2]
-              },
-              {
-                prop: 'marginLeft',
-                value: valueArr[3]
-              }
-            ]);
-          }
+          passedPropArr.push.apply(passedPropArr, marginAbbrev(valueArr));
+        }else{
+          console.log('通过且要处理简写，但是并没有处理的有：', item);
         }
       }else{
         console.log('RN支持的样式有：', item);
