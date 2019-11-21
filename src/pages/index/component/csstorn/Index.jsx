@@ -131,7 +131,7 @@ console.log('----------css-to-react-native end------------');
 
 console.log('----------纯粹处理转RN begin------------');
 
-let entryCss = '.container{padding: 10px 20px; margin: 12px 20px 15px 34px; color: red; line-height: 16px; border: 1px solid red; float: right; ab-cd: 12px;}';
+let entryCss = '.container{ border-left: 1px solid red; padding: 10px 20px; margin: 12px 20px 15px 34px; color: red; line-height: 16px; border: 1px solid red; float: right; ab-cd: 12px;}';
 
 // 1.传入花括号样式（后续使用node工具的fs读取文件）
 console.log('第一步：传入花括号样式：', entryCss);
@@ -165,6 +165,7 @@ import {rnCollectFilter, rnCollectFilterAbbrevia} from '../AST/utils/rnCollectFi
 import marginAbbrev from './abbreviate/margin';
 import paddingAbbrev from './abbreviate/padding';
 import borderAbbrev from './abbreviate/border';
+import borderLeftAbbrev from './abbreviate/borderLeft';
 
 
 handlePropValue(humpPropArr);
@@ -193,8 +194,10 @@ function handlePropValue (humpPropArr) {
           passedPropArr.push.apply(passedPropArr, marginAbbrev(valueArr));
         } else if (item.prop === 'padding') {
           passedPropArr.push.apply(passedPropArr, paddingAbbrev(valueArr));
-        }  else if (item.prop === 'border') {
+        } else if (item.prop === 'border') {
           passedPropArr.push.apply(passedPropArr, borderAbbrev(valueArr));
+        } else if (item.prop === 'borderLeft') {
+          passedPropArr.push.apply(passedPropArr, borderLeftAbbrev(valueArr));
         } else {
           console.log('通过且要处理简写，但是并没有处理的有：', item);
         }
