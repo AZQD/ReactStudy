@@ -1,5 +1,5 @@
 
-let rnCollectFilter = [
+export const rnCollectFilter = [
   'alignContent',
   'alignItems',
   'alignSelf',
@@ -16,7 +16,7 @@ let rnCollectFilter = [
   'display',
   'end',
   'start',
-  'flex',
+  'flex',//简写
   'flexDirection',
   'flexBasis',
   'flexGrow',
@@ -25,7 +25,7 @@ let rnCollectFilter = [
   'height',
   'justifyContent',
   'left',
-  'margin',
+  'margin',//简写
   'marginBottom',
   'marginHorizontal',
   'marginLeft',
@@ -38,7 +38,7 @@ let rnCollectFilter = [
   'maxWidth',
   'minHeight',
   'minWidth',
-  'padding',
+  'padding',//简写
   'paddingBottom',
   'paddingHorizontal',
   'paddingLeft',
@@ -57,7 +57,7 @@ let rnCollectFilter = [
   'shadowOpacity',
   'shadowRadius',
   'decomposedMatrix',
-  'transform',
+  'transform',//简写
   'transformMatrix',
   'backfaceVisibility',
   'backgroundColor',
@@ -106,6 +106,34 @@ let rnCollectFilter = [
   'borderEndColor',
   'borderStartColor',
   'borderTopEndRadius',
-  'borderTopStartRadius'
+  'borderTopStartRadius',
+
+  'font',//简写
+  'border',//简写
+  'border-left',//简写
+  'border-right',//简写
+  'border-top',//简写
+  'border-bottom',//简写
+  'background',//简写
+  'boxShadow',//简写
+  'textShadow',//简写
+  'textDecoration',//简写
 ];
-export default rnCollectFilter;
+
+export const rnCollectFilterAbbrevia = [
+  'flex',//简写
+  'margin',//简写
+  'padding',//简写
+  'transform',//简写
+
+  'font',//简写
+  'border',//简写
+  'border-left',//简写
+  'border-right',//简写
+  'border-top',//简写
+  'border-bottom',//简写
+  'background',//简写
+  'boxShadow',//简写
+  'textShadow',//简写
+  'textDecoration',//简写
+];
