@@ -110,10 +110,10 @@ export const rnCollectFilter = [
 
   'font', // 简写
   'border', // 简写
-  'border-left', // 简写
-  'border-right', // 简写
-  'border-top', // 简写
-  'border-bottom', // 简写
+  'borderLeft', // 简写
+  'borderRight', // 简写
+  'borderTop', // 简写
+  'borderBottom', // 简写
   'background', // 简写
   'boxShadow', // 简写
   'textShadow', // 简写
@@ -122,17 +122,17 @@ export const rnCollectFilter = [
 
 export const rnCollectFilterAbbrevia = [
   'flex', // 简写
-  'margin', // 简写
-  'padding', // 简写
+  'margin', // 简写ok
+  'padding', // 简写ok
   'transform', // 简写
 
   'font', // 简写
-  'border', // 简写
-  'border-left', // 简写
-  'border-right', // 简写
-  'border-top', // 简写
-  'border-bottom', // 简写
-  'background', // 简写
+  'border', // 简写ok
+  'borderLeft', // 简写ok
+  'borderRight', // 简写ok
+  'borderTop', // 简写ok
+  'borderBottom', // 简写ok
+  'background', // 简写ok
   'boxShadow', // 简写
   'textShadow', // 简写
   'textDecoration', // 简写
