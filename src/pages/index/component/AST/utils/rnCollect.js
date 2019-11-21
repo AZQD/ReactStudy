@@ -166,4 +166,15 @@ const rnCollect = [
   'elevation',
 ];
 
+
+// 获取去重后的Native支持的样式属性汇总
+/*var fs = require('fs');
+fs.writeFileSync('rnCollectFilter.js', `
+let rnCollectFilter = [
+  ${
+  Array.from(new Set(rnCollect)).map(item => '"' + item + '"' + '\n')
+  }];
+export default rnCollectFilter;
+`);*/
+
 export default rnCollect;
