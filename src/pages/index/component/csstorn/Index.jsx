@@ -304,26 +304,34 @@ export default class Index extends React.Component {
 
   render() {
     let {entryCss, selectorName, RNTotalPropArr, RNPassedPropArr, RNNotPassedPropArr} = this.state;
-    console.log(666, this.state);
+    console.log('CSS语法转RN样式-工具平台state值：', this.state);
+
+    let notPassStr = RNNotPassedPropArr.map(item => item.prop).join('、');
     let stylesStr1 = 'const styles = StyleSheet.create({';
     let stylesStr2 = '});';
     return <div className="cssToRNBox">
-      <h3>CSS语法转RN-工具平台</h3>
 
-      <div className="infoBox">
-        <div className="textareaWrap">
-          <textarea className="textarea"
-                    name='content'
-                    placeholder="请您输入要转换React Native的样式"
-                    value={entryCss}
-                    onChange={(e) => this.handleInput(e)}/>
+      <h3 className="cssToRNTitle">CSS语法转RN样式-工具平台</h3>
+
+      <div className="contentBox">
+
+        <div className="inputInfo">
+          <div className="title">
+            <div className="left">实例代码：</div>
+            <div className="right" onClick={this.submitFun}>提交运行</div>
+          </div>
+          <div className="content">
+            <textarea className="textarea"
+                      name='content'
+                      placeholder="请您输入要转换React Native的样式"
+                      value={entryCss}
+                      onChange={(e) => this.handleInput(e)}/>
+          </div>
         </div>
 
-        <div className="resultBox">
-
-          <div className="submitBtn" onClick={this.submitFun}>提交运行</div>
-
-          <div className="styleInfo">
+        <div className="outputInfo">
+          <div className="title">运行结果：</div>
+          <div className="content">
             <div className="styleTip1">{stylesStr1}</div>
             <div className="styleTip2">
               {`${selectorName}:  {`}
@@ -358,6 +366,17 @@ export default class Index extends React.Component {
             })
           }
         </div>*/}
+      </div>
+
+      <div className="tipBox">
+        {
+          notPassStr &&
+          <div className="desc2"><span className="bold">注意：</span>{notPassStr}属性转换异常，请检查校验！</div>
+        }
+        {
+          RNTotalPropArr.length>0 &&
+          <div className="desc1"><span className="bold">说明：</span>样式选择器为：{selectorName}，共转换{RNTotalPropArr.length}个属性，{RNPassedPropArr.length}个转换成功，{RNNotPassedPropArr.length}个转换异常。</div>
+        }
       </div>
     </div>
   }
