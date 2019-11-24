@@ -3,7 +3,7 @@
  * 依据：https://github.com/vhpoet/react-native-styling-cheat-sheet#image
  * @type {string[]}
  */
-/*export const rnCollectFilter = [
+/* export const rnCollectFilter = [
   'alignContent',
   'alignItems',
   'alignSelf',
