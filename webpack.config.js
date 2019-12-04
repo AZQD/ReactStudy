@@ -2,6 +2,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");// html模板
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");// 压缩js
 const CleanWebpackPlugin = require("clean-webpack-plugin");// 清除相关文件
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: {
@@ -55,8 +56,22 @@ module.exports = {
         test: /\.less$/,
         use: [
           "style-loader",
-          {loader: "css-loader", options: {importLoaders: 1}}, // 注意less的配置
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1
+            }
+          }, // 注意less的配置
           "less-loader",
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [
+                autoprefixer(),
+              ]
+            }
+          }
         ],
       },
       {
