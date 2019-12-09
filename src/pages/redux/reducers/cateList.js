@@ -7,7 +7,8 @@ const initCateList = {
 
 function cateList (state = initCateList, action) {
   switch (action.type) {
-  /*case actionData.GET_CATE_LIST: // 不需要
+
+  /* case actionData.GET_CATE_LIST: // 不需要
     return {
       cateList: [...state.cateList],
     };*/
