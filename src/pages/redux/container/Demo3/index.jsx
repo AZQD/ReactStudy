@@ -9,14 +9,6 @@ class CateList extends Component {
 
   componentDidMount() {
     console.log('Demo3-props', this.props);
-    // ajax.getJSON('https://suggest.taobao.com/sug?code=utf-8&q=%E5%8C%97%E4%BA%AC')
-    ajax.getJSON('https://ewxtongzhen.58.com/shop/posts/category/b/list')
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   }
 
   getCateList() {
@@ -38,7 +30,7 @@ class CateList extends Component {
 }
 
 function mapStateToProps(state) {
-  const cateList = state.cateList;
+  const { cateList } = state;
   return {
     cateList: cateList.cateList
   }

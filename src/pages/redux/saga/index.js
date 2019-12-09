@@ -14,9 +14,16 @@ export function * helloSaga () {
   console.log('hello Saga!');
 }
 
+function allCateFetch (action) {
+  console.log(3333, action);
+  return ajax.getJSON('https://ewxtongzhen.58.com/shop/posts/category/b/list');
+}
+
 export function * getCateList (action) {
-  const data = yield call(ajax.getJSON('https://ewxtongzhen.58.com/shop/posts/category/b/list'), action);
-  console.log(11, data);
+  console.log(1111);
+  const data = yield call(allCateFetch, action); // 同步执行
+  console.log(2222);
+  console.log('data：', data);
 }
 
 
