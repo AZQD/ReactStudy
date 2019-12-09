@@ -13,15 +13,15 @@ function handleList (state = initCateList, action) {
     return {
       cateList: [...state.cateList],
     };*/
-  case actionData.GET_CATE_LIST_SUCCESS:
+    case actionData.GET_CATE_LIST_SUCCESS:
     return {
-      activeIndex: state.activeIndex,
-      cateList: [...action.payload],
+      ...state,
+      cateList: action.payload,
     };
   case actionData.TOGGLE_CATE_ITEM:
     return {
-      activeIndex: action.payload,
-      cateList: [...state.cateList],
+      ...state,
+      activeIndex: action.payload
     };
   default:
     return state;
