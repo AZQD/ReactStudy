@@ -1,6 +1,6 @@
 import { delay } from 'redux-saga';
 import {
-  put, takeEvery, all, call,
+  put, takeEvery, all, call, takeLatest
 } from 'redux-saga/effects';
 import ajax from 'ajax-promise-simple';
 import * as actionFN from '../action';
@@ -33,5 +33,12 @@ export function * getCateList (action) {
 
 export default function * rootSaga () {
   // 当type为GET_CATE_LIST的action触发时，调用todolist函数
-  yield takeEvery(actionData.GET_CATE_LIST, getCateList);
+
+  // 第一种方式
+  // yield takeEvery(actionData.GET_CATE_LIST, getCateList);
+
+  // 第二种方式
+  yield all([
+    takeLatest(actionData.GET_CATE_LIST, getCateList)
+  ]);
 }
