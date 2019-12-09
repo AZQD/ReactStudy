@@ -30,6 +30,6 @@ export function * getCateList (action) {
 
 
 export default function * rootSaga () {
-  //当type为GET_CATE_LIST的action触发时，调用todolist函数
+  // 当type为GET_CATE_LIST的action触发时，调用todolist函数
   yield takeEvery(actionData.GET_CATE_LIST, getCateList);
 }
