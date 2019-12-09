@@ -20,7 +20,7 @@ class CateList extends Component {
     return (
       <div>
         <CommonMenu history={this.props.history} />
-        <button onClick={() => this.getCateList()}>获取列表</button>
+        <button  onClick={() => this.props.getCateList()}>获取列表</button>
         <div className="demo3Box">
 
         </div>
@@ -29,18 +29,31 @@ class CateList extends Component {
   };
 }
 
-function mapStateToProps(state) {
+/*function mapStateToProps(state) {
   const { cateList } = state;
   return {
     cateList: cateList.cateList
   }
-}
+}*/
 
-function mapDispatchToProps(dispatch) {
+const mapStateToProps = (state) => {
+  const { cateList } = state;
+  return {
+    cateList: cateList.cateList
+  }
+};
+
+/*function mapDispatchToProps(dispatch) {
   return {
     action: bindActionCreators(actionFN, dispatch)
   }
-}
+}*/
+
+const mapDispatchToProps = (dispatch) => ({
+  getCateList: () => {
+    dispatch(actionFN.getCateList());
+  }
+});
 
 
 const Demo3 = connect(mapStateToProps, mapDispatchToProps)(CateList);
