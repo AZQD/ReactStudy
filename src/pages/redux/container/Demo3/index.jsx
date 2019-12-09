@@ -13,7 +13,8 @@ class CateList extends Component {
 
   render() {
     // console.log('Demo3', this.props);
-    const {cateList} = this.props;
+    const {activeIndex, cateList} = this.props;
+    console.log(2455, activeIndex);
     return (
       <div>
         <CommonMenu history={this.props.history} />
@@ -21,7 +22,7 @@ class CateList extends Component {
         <div className="demo3Box">
           {
             cateList.map((item, index) =>
-              <li key={index}>{item.cateId}：{item.name}</li>
+              <li style={{color: index === activeIndex && 'red'}} key={index} onClick={() => this.props.toggleCateItem(index)}>{item.cateId}：{item.name}</li>
             )
           }
         </div>
@@ -40,7 +41,8 @@ class CateList extends Component {
 const mapStateToProps = (state) => {
   const { cateList } = state;
   return {
-    cateList: cateList.cateList
+    cateList: cateList.cateList,
+    activeIndex: cateList.activeIndex,
   }
 };
 
@@ -53,6 +55,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   getCateList: () => {
     dispatch(actionFN.getCateList());
+  },
+  toggleCateItem: (index) => {
+    dispatch(actionFN.toggleCateItem(index));
   }
 });
 

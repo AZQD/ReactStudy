@@ -27,3 +27,9 @@ export function getCateList (payload) {
     payload,
   };
 }
+export function toggleCateItem (payload) {
+  return {
+    type: actionData.TOGGLE_CATE_ITEM,
+    payload,
+  };
+}
