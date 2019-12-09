@@ -14,7 +14,7 @@ class CateList extends Component {
   render() {
     // console.log('Demo3', this.props);
     const {activeIndex, cateList} = this.props;
-    console.log(2455, activeIndex);
+    console.log('activeIndex=' + activeIndex);
     return (
       <div>
         <CommonMenu history={this.props.history} />

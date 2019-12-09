@@ -6,6 +6,7 @@ const initCateList = {
 };
 
 function handleList (state = initCateList, action) {
+  console.log('handleList：', state, action);
   switch (action.type) {
 
   /* case actionData.GET_CATE_LIST: // 不需要
@@ -15,7 +16,7 @@ function handleList (state = initCateList, action) {
   case actionData.GET_CATE_LIST_SUCCESS:
     return {
       activeIndex: state.activeIndex,
-      cateList: [...action.cateData],
+      cateList: [...action.payload],
     };
   case actionData.TOGGLE_CATE_ITEM:
     return {
