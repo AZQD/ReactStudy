@@ -25,7 +25,8 @@ export function * getCateList (action) {
   console.log(3, '***获取数据完成***', action);
   console.log('data：', data);
   const cateData = data.data;
-  // yield put({type: actionData.GET_CATE_LIST_SUCCESS, cateData})
+  // 把action放到一起集中管理；
+  // yield put({type: actionData.GET_CATE_LIST_SUCCESS, cateData});
   yield put(actionFN.getCateListSuccess(cateData));
 }
 
