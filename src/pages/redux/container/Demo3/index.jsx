@@ -39,10 +39,10 @@ class CateList extends Component {
 }*/
 
 const mapStateToProps = (state) => {
-  const { cateList } = state;
+  const { handleList } = state;
   return {
-    cateList: cateList.cateList,
-    activeIndex: cateList.activeIndex,
+    cateList: handleList.cateList,
+    activeIndex: handleList.activeIndex,
   }
 };
 

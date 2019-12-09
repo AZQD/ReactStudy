@@ -5,7 +5,7 @@ const initCateList = {
   cateList: [],
 };
 
-function cateList (state = initCateList, action) {
+function handleList (state = initCateList, action) {
   switch (action.type) {
 
   /* case actionData.GET_CATE_LIST: // 不需要
@@ -27,4 +27,4 @@ function cateList (state = initCateList, action) {
   }
 }
 
-export default cateList;
+export default handleList;

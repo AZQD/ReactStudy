@@ -22,9 +22,9 @@ class CateList extends Component {
 }
 
 function mapStateToProps(state) {
-  const cateList = state.cateList;
+  const handleList = state.handleList;
   return {
-    cateList: cateList.cateList
+    cateList: handleList.cateList
   }
 }
 
