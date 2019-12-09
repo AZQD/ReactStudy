@@ -3,3 +3,4 @@ export const REDUCE = 'REDUCE'; // 减少
 export const DOUBLE = 'DOUBLE'; // 翻倍
 
 export const GET_CATE_LIST = 'GET_CATE_LIST'; // 获取类别列表
+export const GET_CATE_LIST_SUCCESS = 'GET_CATE_LIST_SUCCESS'; // 获取类别列表success

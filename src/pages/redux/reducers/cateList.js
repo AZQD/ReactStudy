@@ -10,6 +10,10 @@ function cateList (state = initCateList, action) {
     return {
       cateList: [...state.cateList],
     };
+  case actionData.GET_CATE_LIST_SUCCESS:
+    return {
+      cateList: [...action.cateData],
+    };
   default:
     return state;
   }

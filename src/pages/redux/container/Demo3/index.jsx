@@ -11,18 +11,19 @@ class CateList extends Component {
     console.log('Demo3-props', this.props);
   }
 
-  getCateList() {
-    this.props.action.getCateList();
-  }
-
   render() {
-    console.log('Demo3', this.props);
+    // console.log('Demo3', this.props);
+    const {cateList} = this.props;
     return (
       <div>
         <CommonMenu history={this.props.history} />
         <button  onClick={() => this.props.getCateList()}>获取列表</button>
         <div className="demo3Box">
-
+          {
+            cateList.map((item, index) =>
+              <li key={index}>{item.cateId}：{item.name}</li>
+            )
+          }
         </div>
       </div>
     )
