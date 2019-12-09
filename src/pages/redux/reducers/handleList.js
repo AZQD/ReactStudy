@@ -13,7 +13,7 @@ function handleList (state = initCateList, action) {
     return {
       cateList: [...state.cateList],
     };*/
-    case actionData.GET_CATE_LIST_SUCCESS:
+  case actionData.GET_CATE_LIST_SUCCESS:
     return {
       ...state,
       cateList: action.payload,
