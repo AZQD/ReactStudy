@@ -38,7 +38,7 @@ function submitFetch (action) {
 export function * submitForm (action) {
   console.log(1, '***开始提交表单***', action);
   const {name, phone} = action.payload;
-  if(!name || !phone){
+  if (!name || !phone) {
     alert('请填写内容');
     return;
   }
