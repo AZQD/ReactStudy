@@ -6,7 +6,6 @@ const initCateList = {
 };
 
 function handleList (state = initCateList, action) {
-  console.log('handleList：', state, action);
   switch (action.type) {
 
   /* case actionData.GET_CATE_LIST: // 不需要（因为这部分是在saga里面异步获取数据）

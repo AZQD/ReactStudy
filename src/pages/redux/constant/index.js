@@ -6,3 +6,5 @@ export const GET_CATE_LIST = 'GET_CATE_LIST'; // 获取类别列表
 export const GET_CATE_LIST_SUCCESS = 'GET_CATE_LIST_SUCCESS'; // 获取类别列表success
 
 export const TOGGLE_CATE_ITEM = 'TOGGLE_CATE_ITEM'; // 切换类别样式
+
+export const INPUT_ON_CHANGE = 'INPUT_ON_CHANGE'; // 输入框修改

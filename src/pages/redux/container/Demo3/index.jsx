@@ -4,6 +4,7 @@ import CommonMenu from '../CommonMenu';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as actionFN from '../../action'
+import handleForm from "../../reducers/handleForm";
 
 class CateList extends Component {
 
@@ -11,10 +12,20 @@ class CateList extends Component {
     console.log('Demo3-props', this.props);
   }
 
+  // 输入框
+  handleInput = (e, type) => {
+    let value = e.target.value;
+    if (type === 'phone') { // 校验电话格式
+      value = value.substring(0, 11);
+    }
+    this.props.inputOnChange(type, value);
+  };
+
   render() {
     // console.log('Demo3', this.props);
     const {activeIndex, cateList} = this.props.handleList;
-    console.log('activeIndex=' + activeIndex);
+    const {name, phone} = this.props.handleForm;
+    // console.log('activeIndex=' + activeIndex);
     return (
       <div>
         <CommonMenu history={this.props.history} />
@@ -25,6 +36,11 @@ class CateList extends Component {
               <li style={{color: index === activeIndex && 'red'}} key={index} onClick={() => this.props.toggleCateItem(index)}>{item.cateId}：{item.name}</li>
             )
           }
+        </div>
+        <div className="formBox">
+          姓名：<input value={name} onChange={(e) => this.handleInput(e, 'name')} type="text"/><br/>
+          电话：<input value={phone} onChange={(e) => this.handleInput(e, 'phone')} type="number"/><br/>
+          <button>提交</button>
         </div>
       </div>
     )
@@ -40,7 +56,8 @@ class CateList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    handleList: state.handleList
+    handleList: state.handleList,
+    handleForm: state.handleForm,
   }
 };
 
@@ -56,6 +73,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   toggleCateItem: (index) => {
     dispatch(actionFN.toggleCateItem(index));
+  },
+  inputOnChange: (type, value) => {
+    dispatch(actionFN.inputOnChange({type, value}));
   }
 });
 

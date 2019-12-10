@@ -39,3 +39,10 @@ export function toggleCateItem (payload) {
     payload,
   };
 }
+
+export function inputOnChange (payload) {
+  return {
+    type: actionData.INPUT_ON_CHANGE,
+    payload,
+  };
+}
