@@ -18,7 +18,7 @@ class CateList extends Component {
     if (type === 'phone') { // 校验电话格式
       value = value.substring(0, 11);
     }
-    this.props.inputOnChange(type, value);
+    this.props.inputOnChange({type, value});
   };
 
   render() {
@@ -47,37 +47,36 @@ class CateList extends Component {
   };
 }
 
-/*function mapStateToProps(state) {
-  const { cateList } = state;
-  return {
-    cateList: cateList.cateList
-  }
-}*/
-
-const mapStateToProps = (state) => {
+// 接收第二个参数ownProps，ownProps代表组件本身的props
+const mapStateToProps = (state, ownProps) => {
+  // console.log(1234, state, ownProps);
   return {
     handleList: state.handleList,
     handleForm: state.handleForm,
   }
 };
 
-/*function mapDispatchToProps(dispatch) {
-  return {
-    action: bindActionCreators(actionFN, dispatch)
-  }
-}*/
-
-const mapDispatchToProps = (dispatch) => ({
+// mapDispatchToProps的第一种写法：
+/*const mapDispatchToProps = (dispatch) => ({
   getCateList: () => {
     dispatch(actionFN.getCateList());
   },
   toggleCateItem: (index) => {
     dispatch(actionFN.toggleCateItem(index));
   },
-  inputOnChange: (type, value) => {
-    dispatch(actionFN.inputOnChange({type, value}));
+  inputOnChange: (params) => {
+    dispatch(actionFN.inputOnChange(params));
   }
-});
+});*/
+
+// mapDispatchToProps的第二种写法：
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    getCateList: actionFN.getCateList,
+    toggleCateItem: actionFN.toggleCateItem,
+    inputOnChange: actionFN.inputOnChange
+  }, dispatch);
+};
 
 
 const Demo3 = connect(mapStateToProps, mapDispatchToProps)(CateList);
