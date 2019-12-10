@@ -47,7 +47,7 @@ class CateList extends Component {
             电话：<input className="ipt" value={phone} onChange={(e) => this.handleInput(e, 'phone')} type="number"/><br/>
             <button className="btn" onClick={() => this.props.submitForm({name, phone})}>提交</button>
             {
-              submitFlag && <p>提交成功！</p>
+              submitFlag && <div>提交成功！</div>
             }
           </div>
 
