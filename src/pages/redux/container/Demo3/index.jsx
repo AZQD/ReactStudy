@@ -13,7 +13,7 @@ class CateList extends Component {
 
   render() {
     // console.log('Demo3', this.props);
-    const {activeIndex, cateList} = this.props;
+    const {activeIndex, cateList} = this.props.handleList;
     console.log('activeIndex=' + activeIndex);
     return (
       <div>
@@ -39,10 +39,8 @@ class CateList extends Component {
 }*/
 
 const mapStateToProps = (state) => {
-  const { handleList } = state;
   return {
-    cateList: handleList.cateList,
-    activeIndex: handleList.activeIndex,
+    handleList: state.handleList
   }
 };
 
