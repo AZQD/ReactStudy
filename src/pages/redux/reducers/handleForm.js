@@ -5,17 +5,17 @@ const initState = {
   phone: ''
 };
 
-function handleForm(state = initState, action){
+function handleForm (state = initState, action) {
   console.log('handleForm：', state, action);
-  switch (action.type){
-    case actionData.INPUT_ON_CHANGE:
-      const {type, value} = action.payload;
-      return {
-        ...state,
-        [type]: value
-      };
-    default:
-      return state;
+  switch (action.type) {
+  case actionData.INPUT_ON_CHANGE:
+    const {type, value} = action.payload;
+    return {
+      ...state,
+      [type]: value
+    };
+  default:
+    return state;
   }
 }
 
