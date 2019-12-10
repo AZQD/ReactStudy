@@ -70,12 +70,19 @@ const mapStateToProps = (state, ownProps) => {
 });*/
 
 // mapDispatchToProps的第二种写法：
-const mapDispatchToProps = (dispatch) => {
+/*const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     getCateList: actionFN.getCateList,
     toggleCateItem: actionFN.toggleCateItem,
     inputOnChange: actionFN.inputOnChange
   }, dispatch);
+};*/
+
+// mapDispatchToProps的第三种写法：
+const mapDispatchToProps = (dispatch) => {
+  return {
+    ...bindActionCreators(actionFN, dispatch)
+  };
 };
 
 
