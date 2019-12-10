@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import ajax from 'ajax-promise-simple';
 import CommonMenu from '../CommonMenu';
 import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
-import * as actionFN from '../../action'
-import handleForm from "../../reducers/handleForm";
+import {bindActionCreators} from 'redux';
+import * as actionFN from '../../action';
+import './index.less';
 
 class CateList extends Component {
 
@@ -18,6 +18,7 @@ class CateList extends Component {
     if (type === 'phone') { // 校验电话格式
       value = value.substring(0, 11);
     }
+    // value = value.replace(/\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDE4F]/g, "");（禁止输入表情正则表达式）
     this.props.inputOnChange({type, value});
   };
 
@@ -29,21 +30,27 @@ class CateList extends Component {
     return (
       <div>
         <CommonMenu history={this.props.history} />
-        <button  onClick={() => this.props.getCateList()}>获取列表</button>
         <div className="demo3Box">
-          {
-            cateList.map((item, index) =>
-              <li style={{color: index === activeIndex && 'red'}} key={index} onClick={() => this.props.toggleCateItem(index)}>{item.cateId}：{item.name}</li>
-            )
-          }
-        </div>
-        <div className="formBox">
-          姓名：<input value={name} onChange={(e) => this.handleInput(e, 'name')} type="text"/><br/>
-          电话：<input value={phone} onChange={(e) => this.handleInput(e, 'phone')} type="number"/><br/>
-          <button onClick={() => this.props.submitForm({name, phone})}>提交</button>
-          {
-            submitFlag && <p>提交成功！</p>
-          }
+
+          <div className="partItem">
+            <button className="btn" onClick={() => this.props.getCateList()}>获取列表</button>
+            {
+              cateList.map((item, index) =>
+                <li style={{color: index === activeIndex && 'red'}} key={index} onClick={() => this.props.toggleCateItem(index)}>{item.cateId}：{item.name}</li>
+              )
+            }
+          </div>
+
+          <div className="partItem">
+            <hr/>
+            姓名：<input className="ipt" value={name} onChange={(e) => this.handleInput(e, 'name')} type="text"/><br/>
+            电话：<input className="ipt" value={phone} onChange={(e) => this.handleInput(e, 'phone')} type="number"/><br/>
+            <button className="btn" onClick={() => this.props.submitForm({name, phone})}>提交</button>
+            {
+              submitFlag && <p>提交成功！</p>
+            }
+          </div>
+
         </div>
       </div>
     )
