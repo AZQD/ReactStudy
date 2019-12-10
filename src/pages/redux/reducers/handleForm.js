@@ -2,7 +2,8 @@ import * as actionData from '../constant';
 
 const initState = {
   name: '',
-  phone: ''
+  phone: '',
+  submitFlag: false
 };
 
 function handleForm (state = initState, action) {
@@ -17,6 +18,11 @@ function handleForm (state = initState, action) {
       [type]: value
     };
   }
+  case actionData.SUBMIT_FORM_SUCCESS:
+    return {
+      ...state,
+      submitFlag: action.payload
+    };
   default:
     return state;
   }

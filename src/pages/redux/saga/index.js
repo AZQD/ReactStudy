@@ -30,6 +30,24 @@ export function * getCateList (action) {
   yield put(actionFN.getCateListSuccess(cateData));
 }
 
+function submitFetch (action) {
+  console.log(2, '***正在提交表单***', action);
+  return ajax.getJSON('https://ewxtongzhen.58.com/shop/posts/category/b/list');
+}
+
+export function * submitForm (action) {
+  console.log(1, '***开始提交表单***', action);
+  const {name, phone} = action.payload;
+  if(!name || !phone){
+    alert('请填写内容');
+    return;
+  }
+  const data = yield call(submitFetch, action); // 同步执行
+  console.log(3, '***提交表单完成***', action);
+  console.log('data：', data);
+  yield put(actionFN.submitFormSuccess(true));
+}
+
 
 export default function * rootSaga () {
   // 当type为GET_CATE_LIST的action触发时，调用todolist函数
@@ -39,6 +57,7 @@ export default function * rootSaga () {
 
   // 第二种方式
   yield all([
-    takeLatest(actionData.GET_CATE_LIST, getCateList)
+    takeLatest(actionData.GET_CATE_LIST, getCateList),
+    takeLatest(actionData.SUBMIT_FORM, submitForm)
   ]);
 }

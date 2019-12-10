@@ -24,7 +24,7 @@ class CateList extends Component {
   render() {
     // console.log('Demo3', this.props);
     const {activeIndex, cateList} = this.props.handleList;
-    const {name, phone} = this.props.handleForm;
+    const {name, phone, submitFlag} = this.props.handleForm;
     // console.log('activeIndex=' + activeIndex);
     return (
       <div>
@@ -40,7 +40,10 @@ class CateList extends Component {
         <div className="formBox">
           姓名：<input value={name} onChange={(e) => this.handleInput(e, 'name')} type="text"/><br/>
           电话：<input value={phone} onChange={(e) => this.handleInput(e, 'phone')} type="number"/><br/>
-          <button>提交</button>
+          <button onClick={() => this.props.submitForm({name, phone})}>提交</button>
+          {
+            submitFlag && <p>提交成功！</p>
+          }
         </div>
       </div>
     )

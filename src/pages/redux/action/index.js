@@ -46,3 +46,16 @@ export function inputOnChange (payload) {
     payload,
   };
 }
+
+export function submitForm (payload) {
+  return {
+    type: actionData.SUBMIT_FORM,
+    payload,
+  };
+}
+export function submitFormSuccess (payload) {
+  return {
+    type: actionData.SUBMIT_FORM_SUCCESS,
+    payload,
+  };
+}
