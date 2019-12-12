@@ -9,7 +9,7 @@ import './index.less';
 class CateList extends Component {
 
   componentDidMount() {
-    console.log('Demo3-props', this.props);
+    // console.log('Demo3-props', this.props);
   }
 
   // 输入框

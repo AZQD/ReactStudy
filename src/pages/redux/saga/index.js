@@ -6,8 +6,7 @@ import ajax from 'ajax-promise-simple';
 import * as actionFN from '../action';
 import * as actionData from '../constant';
 
-console.log(delay, put, takeEvery, all);
-console.log(typeof delay);
+// console.log(delay, put, takeEvery, all);
 
 export function * helloSaga () {
   yield delay(2000);
