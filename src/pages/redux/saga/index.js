@@ -5,6 +5,7 @@ import {
 import ajax from 'ajax-promise-simple';
 import * as actionFN from '../action';
 import * as actionData from '../constant';
+import '../../../mockjs/index';
 
 // console.log(delay, put, takeEvery, all);
 
@@ -15,7 +16,7 @@ export function * helloSaga () {
 
 function allCateFetch (action) {
   console.log(2, '***正在获取数据***', action);
-  return ajax.getJSON('https://ewxtongzhen.58.com/shop/posts/category/b/list');
+  return ajax.getJSON('/redux/demo3/category/list');
 }
 
 export function * getCateList (action) {
@@ -31,7 +32,7 @@ export function * getCateList (action) {
 
 function submitFetch (action) {
   console.log(2, '***正在提交表单***', action);
-  return ajax.getJSON('https://ewxtongzhen.58.com/shop/posts/category/b/list');
+  return ajax.postJSON('/redux/demo3/submit', action.payload);
 }
 
 export function * submitForm (action) {
