@@ -1,3 +1,7 @@
+/**
+ * Mock语法规范：https://github.com/nuysoft/Mock/wiki/Syntax-Specification
+ * 数据模板定义示例：http://mockjs.com/examples.html
+ */
 import Mock from 'mockjs';
 
 Mock.mock(
@@ -18,22 +22,85 @@ Mock.mock(
   'post',
   {
     'data': {
-      'mtime': '@datetime', // 随机生成日期时间
-      'score|1-5': 'hello', // 随机生成1-5的字符串
-      'rank|1-5': 100, // 随机生成1-100的数字
-      'stars|1-5': 5, // 随机生成1-5的数字
-      'end|+1': 5,
-      'end|1': true,
-      'obj|2': {
-        'score|1-5': 'hello',
-        'rank|1-5': 100,
-        'stars|1-5': 5,
+      // String
+      "string1|1-10": "★",
+      "string2|3": "★★★",
+
+      // Number
+      "number1|+1": 202,
+      "number2|1-100": 100,
+      "number3|1-100.1-10": 1,
+      "number4|123.1-10": 1,
+      "number5|123.3": 1,
+      "number6|123.10": 1.123,
+
+      // Boolean
+      // 'name|1': boolean：随机生成一个布尔值，值为 true 的概率是 1/2，值为 false 的概率同样是 1/2。
+      "boolean2|1": true,
+      // 'name|min-max': value： 随机生成一个布尔值，值为 value 的概率是 min / (min + max)，值为 !value 的概率是 max / (min + max)。
+      "boolean3|1-2": true,
+
+      // Object
+      "object1|2": {
+        "310000": "上海市",
+        "320000": "江苏省",
+        "330000": "浙江省",
+        "340000": "安徽省"
       },
-      'arr|6': [{
-        'id|+1': 0,
-        'cateId|+1': 1000001,
-        'name|1': '@province'
-      }],
+      "object2|2-4": {
+        "110000": "北京市",
+        "120000": "天津市",
+        "130000": "河北省",
+        "140000": "山西省"
+      },
+
+      // Array
+      "array1|1": [
+        "AMD",
+        "CMD",
+        "UMD"
+      ],
+      "array2|+1": [
+        "AMD",
+        "CMD",
+        "UMD"
+      ],
+      "array3|1-10": [
+        {
+          "name|+1": [
+            "Hello",
+            "Mock.js",
+            "!"
+          ]
+        }
+      ],
+      "array4|1-10": [
+        "Mock.js"
+      ],
+      "array5|1-10": [
+        "Hello",
+        "Mock.js",
+        "!"
+      ],
+      "array6|3": [
+        "Mock.js"
+      ],
+      "array7|3": [
+        "Hello",
+        "Mock.js",
+        "!"
+      ],
+
+      // Function
+      'foo': 'Syntax Demo foo',
+      'fooFun': function() {
+        return this.foo
+      },
+
+      // RegExp
+      'regexp': /[a-z][A-Z][0-9]/,
+
+      'time': '@datetime', // 随机生成日期时间
       'nickname': '@cname', // 随机生成中文名字
     },
     'msg': '操作成功',
