@@ -2,13 +2,14 @@
  * Mock语法规范：https://github.com/nuysoft/Mock/wiki/Syntax-Specification
  * 数据模板定义示例：http://mockjs.com/examples.html
  */
-import Mock from 'mockjs';
+import Mock, {Random} from 'mockjs';
 
 Mock.mock(
   /\/redux\/demo3\/category\/list/,
   'get',
   {
     'data|10': [{
+      'id': '@id',
       'cateId|+1': 1000001,
       'name|1': '@province'
     }],
@@ -100,8 +101,34 @@ Mock.mock(
       // RegExp
       'regexp': /[a-z][A-Z][0-9]/,
 
-      'time': '@datetime', // 随机生成日期时间
+      // 数据占位符定义
+      // Date
+      'datetime': '@datetime', // 随机生成日期时间
+      'nowtime': '@now', // 当前日期时间
+
+      // Image
+      "imgUrl": Random.image('200x100', '#F00', '#FFF', 'Mock.js'),
+
+      // Color
+      "color": '@color',
+
+      // Text
+      'cparagraph': '@cparagraph',
+      'cword': '@cword(6)',
+      'ctitle': '@ctitle',
       'nickname': '@cname', // 随机生成中文名字
+
+      // Email
+      'email': '@email',
+
+      // Address
+      'province': '@province',
+      'city': '@city',
+      'county': '@county',
+      'area': Random.county(true),
+
+      // ID
+      'id': '@id'
     },
     'msg': '操作成功',
     'code': 0
