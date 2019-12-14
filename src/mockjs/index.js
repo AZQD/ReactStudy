@@ -107,10 +107,10 @@ Mock.mock(
       'nowtime': '@now', // 当前日期时间
 
       // Image
-      "imgUrl": Random.image('200x100', '#F00', '#FFF', 'Mock.js'),
+      'imgUrl': Random.image('200x100', '#F00', '#FFF', 'Mock.js'),
 
       // Color
-      "color": '@color',
+      'color': '@color',
 
       // Text
       'cparagraph': '@cparagraph',
