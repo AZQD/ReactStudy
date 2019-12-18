@@ -27,12 +27,14 @@ export function getCateList (payload) {
     payload,
   };
 }
+
 export function getCateListSuccess (payload) {
   return {
     type: actionData.GET_CATE_LIST_SUCCESS,
     payload,
   };
 }
+
 export function toggleCateItem (payload) {
   return {
     type: actionData.TOGGLE_CATE_ITEM,
@@ -53,6 +55,7 @@ export function submitForm (payload) {
     payload,
   };
 }
+
 export function submitFormSuccess (payload) {
   return {
     type: actionData.SUBMIT_FORM_SUCCESS,
