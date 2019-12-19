@@ -2,7 +2,7 @@ import React from 'react'
 
 // export default class ReactRender extends React.PureComponent {
 export default class ReactRender extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       listData: [
@@ -34,7 +34,7 @@ export default class ReactRender extends React.Component {
     }
   };
 
-  render() {
+  render () {
     const {listData} = this.state;
     return (
       <div>
