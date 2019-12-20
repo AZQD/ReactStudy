@@ -2,26 +2,26 @@ import React from 'react'
 
 const withHeader = (WrapComp) =>
   class extends React.Component {
-    constructor(props) {
+    constructor (props) {
       super(props);
       this.state = {
         uuid: ''
       }
     }
 
-    componentDidMount() {
+    componentDidMount () {
       let uuid = window.localStorage.getItem('58tj_uuid');
       this.setState({uuid});
     }
 
-    getDate() {
+    getDate () {
       const timestamp = (new Date()).getTime();
       console.log(timestamp);
     }
 
-    render() {
+    render () {
       console.log('初始props：', this.props);
-      const { history, ...otherProps } = this.props;
+      const {history, ...otherProps} = this.props;
       console.log('不传history, 只传递props：', otherProps);
       return <div>
         {WrapComp && <WrapComp getDate={this.getDate} {...this.state} {...otherProps}/>}
