@@ -54,7 +54,7 @@ const Item = ({match}) => (
 );
 
 export default class PartRight extends React.Component {
-  render() {
+  render () {
     return (
       <Switch>
         <Route exact path="/" component={Home}/>
