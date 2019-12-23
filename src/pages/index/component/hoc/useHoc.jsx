@@ -3,19 +3,19 @@ import withHeader from './HOC'
 
 @withHeader
 export default class UseHoc extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.props.getDate();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate () {
     console.log('this.props:', this.props);
   }
 
-  render() {
+  render () {
     return <div>使用高阶组件</div>
   }
 }
