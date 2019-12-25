@@ -49,7 +49,7 @@ console.log('--------csstree end----------');
 
 
 export default class CssTree extends React.Component {
-  render() {
+  render () {
     return <div className="csstreeBox">
       <h3>传入的花括号样式：</h3>
       <p>{entryCss}</p>
