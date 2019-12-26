@@ -31,6 +31,8 @@ componentDidUpdate(prevProps, prevState) 在组件完成更新后立即调用。
 
 componentWillUnmount在组件从 DOM 中移除之前立刻被调用。
 
+React新的生命周期：https://www.cnblogs.com/colima/p/9484607.html;
+
 # React常用知识点总结
 
 ### 1.react setState后render没有更新:
