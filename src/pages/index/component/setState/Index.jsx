@@ -82,8 +82,8 @@ export default class SetState extends React.Component {
 
 setState的同步异步取决于不同的调用场景，底层根据变量 isBatchingUpdates 来判断是同步更新还是放到队列中异步更新。
 
-React使用了事务的机制，在每个生命周期和合成事件中，事务的前置钩子调用batchedUpdates方法修改isBatchingUpdates变量为true，在后置钩子中将变量置为false。 -- 放到队列中异步更新。
-原生绑定addEventListener、setTimeout等没有进入到React的事务当中，isBatchingUpdates始终为false，-- 同步更新；
+React使用了事务的机制，在每个生命周期和合成事件中，事务的前置钩子调用batchedUpdates方法修改isBatchingUpdates变量为true，在后置钩子中将变量置为false。 -- 放到队列中异步更新(合并setState)。
+原生绑定addEventListener、setTimeout、ajax等没有进入到React的事务当中，isBatchingUpdates始终为false，-- 同步更新；
 
 参考：https://www.jianshu.com/p/aa403ce27af8
  */
