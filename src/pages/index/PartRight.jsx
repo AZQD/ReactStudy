@@ -7,6 +7,7 @@ import UseHoc from './component/hoc/useHoc'
 import CssTree from './component/AST/csstree/CssTree'
 import Postcss from './component/AST/postcss/Postcss'
 import CssToRN from './component/csstorn/Index'
+import SetState from './component/setState/Index'
 
 const Home = () => (
   <div>
@@ -67,6 +68,7 @@ export default class PartRight extends React.Component {
         <Route path="/cssTree" component={CssTree}/>
         <Route path="/postcss" component={Postcss}/>
         <Route path="/csstorn" component={CssToRN}/>
+        <Route path="/setState" component={SetState}/>
       </Switch>
     )
   }
