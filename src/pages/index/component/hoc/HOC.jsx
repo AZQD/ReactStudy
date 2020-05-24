@@ -25,7 +25,7 @@ const withHeader = (params) => (WrapComp) =>{
         {WrapComp && <WrapComp getDate={this.getDate} {...this.state} {...otherProps}/>}
         <div className="title" onClick={this.clickFun}>我是高阶组件的内容</div>
         <button onClick={this.clickFun}>点击触发组件func</button>
-        {super.render()}
+        {/*{super.render()}*/} {/*反向继承时可用*/}
       </div>
     }
   };
