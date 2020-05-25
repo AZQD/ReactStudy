@@ -64,3 +64,8 @@ export default Index;
 
 // HOOK—useState、useEffect的使用：https://www.jianshu.com/p/dcd6bc12dbee
 // ReactJS useContext使用：https://blog.csdn.net/weixin_43676119/article/details/89150233
+/**useContext使用步骤：
+   1.创建Context
+   2.使用MyContext.Provider提供value
+   3.使用useContext(MyContext)获得数值value
+ */
