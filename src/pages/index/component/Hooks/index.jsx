@@ -64,8 +64,18 @@ export default Index;
 
 // HOOK—useState、useEffect的使用：https://www.jianshu.com/p/dcd6bc12dbee
 // ReactJS useContext使用：https://blog.csdn.net/weixin_43676119/article/details/89150233
-/**useContext使用步骤：
-   1.创建Context
-   2.使用MyContext.Provider提供value
-   3.使用useContext(MyContext)获得数值value
- */
+
+// useState:
+// 参数：初始 state
+// 返回值：当前状态和一个让你更新它的函数
+
+
+// useEffect：（副作用函数）
+// 第一个参数：函数；
+// 第二个参数：传一个空数组[]时，相当于只在首次渲染的时候执行，也可以传某个值；
+
+
+// useContext使用步骤：
+// 1.创建Context
+// 2.使用MyContext.Provider提供value
+// 3.使用useContext(MyContext)获得数值value
