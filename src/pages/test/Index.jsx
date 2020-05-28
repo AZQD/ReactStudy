@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import Header from './Header';
 import Content from './Content';
 
-class Index extends React.PurComponent {
+class Index extends React.PureComponent {
   render () {
     return (
       <div className="wrapper">
