@@ -99,3 +99,17 @@ lint-staged：取得所有被提交的文件依次执行写好的任务（ESLint
 ESlint配置参考文档：https://segmentfault.com/a/1190000016626739#articleHeader5
 
 Prettier配置参考：https://segmentfault.com/a/1190000015862803
+
+### 7.React编译报错：Invalid hook call. Hooks can only be called inside of the body of a function component.:
+```
+(1)原因：react react-dom 是 16.13.0 版本 升级 16.13.0 问题解决
+(2)解决：cnpm install --save react@16.13.0 react-dom@16.13.0
+```
+参考链接：[https://blog.csdn.net/guokaigdg/article/details/104906217](https://blog.csdn.net/guokaigdg/article/details/104906217)
+
+
+### 8.React编译报错：Super expression must either be null or a function, not undefined:
+```
+(1)原因：关键字书写错误
+(2)解决：检查书写，如：class Index extends React.PureComponent
+```
