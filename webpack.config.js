@@ -24,7 +24,7 @@ module.exports = {
     contentBase: `${__dirname}/`,
     historyApiFallback: true, // 不跳转
     inline: true, // 实时刷新
-    hot: true,
+    hot: true, // 开启HMR
     proxy: {
       "/sug": {
         target: "https://suggest.taobao.com/",
