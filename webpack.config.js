@@ -1,4 +1,5 @@
 const webpack = require("webpack");
+const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");// html模板
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 抽离css
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");// 压缩js
@@ -14,6 +15,9 @@ module.exports = {
   },
   resolve: {
     extensions: [".js", ".css", ".jsx", ".less"], // 自动补全文件后缀
+    alias: {
+      '@util': path.join(__dirname, 'src/util'),
+    }
   },
   output: {
     path: `${__dirname}/build`, // 打包后的文件存放的地方

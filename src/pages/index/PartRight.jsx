@@ -11,7 +11,7 @@ import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 // import SetState from './component/setState/Index'
 // import Hooks from './component/Hooks/Index'
 
-import loadable from '../../util/loadable'; // 路由动态加载
+import loadable from '@util/loadable'; // 路由动态加载
 
 const ReactRender = loadable(() => import('./component/ReactRender'));
 const Decorator = loadable(() => import('./component/Decorator'));
