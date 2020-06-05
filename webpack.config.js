@@ -1,7 +1,9 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");// html模板
+const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 抽离css
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");// 压缩js
 const CleanWebpackPlugin = require("clean-webpack-plugin");// 清除相关文件
+
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
@@ -46,7 +48,7 @@ module.exports = {
         test: /\.css$/,
         use: [
           {
-            loader: "style-loader",
+            loader: MiniCssExtractPlugin.loader,
           }, {
             loader: "css-loader",
           },
@@ -55,7 +57,7 @@ module.exports = {
       {
         test: /\.less$/,
         use: [
-          "style-loader",
+          MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
             options: {
@@ -127,7 +129,12 @@ module.exports = {
 
     new webpack.HotModuleReplacementPlugin(), // 热加载插件
 
-    // new UglifyJSPlugin(),//压缩插件
 
+    new MiniCssExtractPlugin({ // 抽离css文件插件
+      filename: 'css/[name].css',
+      chunkFilename: 'css/[name].css',
+    }),
+
+    // new UglifyJSPlugin(),//压缩插件
   ],
 };
