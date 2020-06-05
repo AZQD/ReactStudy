@@ -86,9 +86,19 @@ module.exports = {
       {
         // loader 后面 limit 字段代表图片打包限制，这个限制是指当图片大小小于限制时会自动转成 base64 码引用。
         // name 字段指定了在打包根目录（output.path）下生成名为 images 的文件夹，并在原图片名前加上8位 hash 值。
-        test: /\.(png|jpg|gif)$/,
+        // test: /\.(png|jpg|gif)$/,
         // loader: 'url-loader?limit=8192'
-        loader: "url-loader?limit=8192&name=images/[hash:8].[name].[ext]",
+        // loader: "url-loader?limit=8192&name=images/[hash:8].[name].[ext]",
+        test: /\.(jpg|png|gif|svg|woff2?|eot|ttf)$/i,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            name: '[name].[ext]?[hash:6]',
+            limit: 8192,
+            publicPath: '/static',
+            outputPath: 'static',
+          },
+        }],
       },
       {
         // test: /\.html$/,
