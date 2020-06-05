@@ -1,14 +1,26 @@
 import React from 'react'
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom'
 
-import ReactRender from './component/ReactRender'
-import Decorator from './component/Decorator'
-import UseHoc from './component/hoc/useHoc'
-import CssTree from './component/AST/csstree/CssTree'
-import Postcss from './component/AST/postcss/Postcss'
-import CssToRN from './component/csstorn/Index'
-import SetState from './component/setState/Index'
-import Hooks from './component/Hooks/Index'
+
+// import ReactRender from './component/ReactRender'
+// import Decorator from './component/Decorator'
+// import UseHoc from './component/hoc/useHoc'
+// import CssTree from './component/AST/csstree/CssTree'
+// import Postcss from './component/AST/postcss/Postcss'
+// import CssToRN from './component/csstorn/Index'
+// import SetState from './component/setState/Index'
+// import Hooks from './component/Hooks/Index'
+
+import loadable from '../../util/loadable'; // 路由动态加载
+
+const ReactRender = loadable(() => import('./component/ReactRender'));
+const Decorator = loadable(() => import('./component/Decorator'));
+const UseHoc = loadable(() => import('./component/hoc/useHoc'));
+const CssTree = loadable(() => import('./component/AST/csstree/CssTree'));
+const Postcss = loadable(() => import('./component/AST/postcss/Postcss'));
+const CssToRN = loadable(() => import('./component/csstorn/Index'));
+const SetState = loadable(() => import('./component/setState/Index'));
+const Hooks = loadable(() => import('./component/Hooks/Index'));
 
 const Home = () => (
   <div>

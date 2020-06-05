@@ -113,3 +113,13 @@ Prettier配置参考：https://segmentfault.com/a/1190000015862803
 (1)原因：关键字书写错误
 (2)解决：检查书写，如：class Index extends React.PureComponent
 ```
+
+### 9.React路由动态加载方案：
+```
+1. npm i react-loadable --save-dev
+2. 封装工具 /util/loadable
+3. 引入和使用：
+import loadable from '../../util/loadable'; // 路由动态加载
+const ReactRender = loadable(() => import('./component/ReactRender'));
+4. npm run build打包可以看到多个打包文件；
+```

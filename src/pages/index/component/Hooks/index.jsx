@@ -28,7 +28,7 @@ import React, {useState, useEffect, useContext} from 'react'
   }
 }*/
 
-
+console.log('%cHooks', 'color: red; font-size: 30px;');
 const MyContext = React.createContext();
 
 // 函数组价
