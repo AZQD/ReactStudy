@@ -95,8 +95,8 @@ module.exports = {
           options: {
             name: '[name].[ext]?[hash:6]',
             limit: 8192,
-            publicPath: '/static',
-            outputPath: 'static',
+            // publicPath: '/static',
+            // outputPath: 'static',
           },
         }],
       },
