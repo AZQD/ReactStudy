@@ -7,8 +7,7 @@ import {HashRouter as Router, Route, Link, Switch} from 'react-router-dom';
 // console.log("hashHistory",hashHistory);
 import PartLeft from './PartLeft';
 import PartRight from './PartRight';
-import '../../../static/js/public.js';
-import '../../../static/css/public.css';
+import '@assets/common.less';
 import './App.less';
 function App () {
     return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import './Content.less'
-import pig from '../../images/test/pig.png'
+import pig from '@static/img/test/pig.png'
 
 export default class Content extends React.Component{
   render (){

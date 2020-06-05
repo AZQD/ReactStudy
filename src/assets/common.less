@@ -1,0 +1,124 @@
+@charset "utf-8";
+
+/**
+ * @fileOverview 移动端清除默认样式
+ * @module reset
+ * @description 常用的默认样式清除，没有添加body，这个可根据实际项目自行添加
+ * @version 1.0.0
+**/
+
+body,
+nav,
+dl,
+dt,
+dd,
+p,
+h1,
+h2,
+h3,
+h4,
+ul,
+ol,
+li,
+input,
+button,
+textarea,
+footer {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body,
+form,
+fieldset,
+p,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    -webkit-text-size-adjust: none;
+}
+
+html,
+body {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+}
+
+:focus {
+    outline: 0;
+}
+
+button,
+input,
+select,
+textarea {
+    font-size: 100%;
+    vertical-align: middle;
+    outline: 0
+}
+
+textarea {
+    resize: none
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    cursor: pointer;
+    -webkit-appearance: button;
+    -moz-appearance: button
+}
+
+input:focus:-moz-placeholder,
+input:focus::-webkit-input-placeholder {
+    color: transparent
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    padding: 0;
+    border: 0
+}
+
+img,
+fieldset {
+    border: 0;
+}
+
+a,
+button,
+input {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+img {
+    -webkit-touch-callou: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+.clear {
+    zoom: 1;
+}
+
+.clear:after {
+    display: block;
+    clear: both;
+    content: "\20";
+}

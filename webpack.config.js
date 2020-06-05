@@ -16,7 +16,10 @@ module.exports = {
   resolve: {
     extensions: [".js", ".css", ".jsx", ".less"], // 自动补全文件后缀
     alias: {
+      '@assets': path.join(__dirname, 'src/assets'),
       '@util': path.join(__dirname, 'src/util'),
+      '@static': path.join(__dirname, 'static'),
+      '@mockjs': path.join(__dirname, 'src/mockjs'),
     }
   },
   output: {

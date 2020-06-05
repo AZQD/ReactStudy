@@ -5,7 +5,7 @@ import {
 import ajax from 'ajax-promise-simple';
 import * as actionFN from '../action';
 import * as actionData from '../constant';
-import '../../../mockjs/index';
+import '@mockjs/index';
 
 // console.log(delay, put, takeEvery, all);
 
