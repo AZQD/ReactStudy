@@ -23,6 +23,10 @@ function handleForm (state = initState, action) {
       ...state,
       submitFlag: action.payload
     };
+  case actionData.FORM_RESET:
+    return {
+      ...initState
+    };
   default:
     return state;
   }

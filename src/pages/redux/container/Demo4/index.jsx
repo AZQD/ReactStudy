@@ -12,19 +12,23 @@ class CateList extends Component {
 
   render() {
     console.log('Demo4', this.props);
+    const handleForm = this.props.handleForm;
+    const formReset = this.props.action.formReset;
     return (
       <div>
         <CommonMenu history={this.props.history} />
-        12345
+        <div>{handleForm.name}</div>
+        <div>{handleForm.phone}</div>
+        <button onClick={formReset}>清空DEMO3的表单</button>
       </div>
     )
   };
 }
 
 function mapStateToProps(state) {
-  const handleList = state.handleList;
+  const handleForm = state.handleForm;
   return {
-    cateList: handleList.cateList
+    handleForm: handleForm
   }
 }
 

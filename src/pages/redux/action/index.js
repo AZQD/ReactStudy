@@ -62,3 +62,10 @@ export function submitFormSuccess (payload) {
     payload,
   };
 }
+
+export function formReset (payload) {
+  return {
+    type: actionData.FORM_RESET,
+    payload,
+  };
+}

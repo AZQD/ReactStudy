@@ -10,3 +10,4 @@ export const TOGGLE_CATE_ITEM = 'TOGGLE_CATE_ITEM'; // 切换类别样式
 export const INPUT_ON_CHANGE = 'INPUT_ON_CHANGE'; // 输入框修改
 export const SUBMIT_FORM = 'SUBMIT_FORM'; // 提交表单
 export const SUBMIT_FORM_SUCCESS = 'SUBMIT_FORM_SUCCESS'; // 提交表单成功
+export const FORM_RESET = 'FORM_RESET'; // 清空表单
