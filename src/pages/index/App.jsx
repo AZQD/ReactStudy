@@ -9,7 +9,7 @@ import PartLeft from './PartLeft';
 import PartRight from './PartRight';
 import '../../../static/js/public.js';
 import '../../../static/css/public.css';
-import '../../css/index/index.less';
+import './App.less';
 function App () {
     return (
         <Router>

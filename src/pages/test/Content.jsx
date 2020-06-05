@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../css/test/content'
+import './Content.less'
 import pig from '../../images/test/pig.png'
 
 export default class Content extends React.Component{
