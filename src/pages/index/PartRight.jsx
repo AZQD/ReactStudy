@@ -21,6 +21,7 @@ const Postcss = loadable(() => import('./component/AST/postcss/Postcss'));
 const CssToRN = loadable(() => import('./component/csstorn/Index'));
 const SetState = loadable(() => import('./component/setState/Index'));
 const Hooks = loadable(() => import('./component/Hooks/Index'));
+const Immutable = loadable(() => import('./component/Immutable/Index'));
 
 const Home = () => (
   <div>
@@ -83,6 +84,7 @@ export default class PartRight extends React.Component {
         <Route path="/csstorn" component={CssToRN}/>
         <Route path="/setState" component={SetState}/>
         <Route path="/hooks" component={Hooks}/>
+        <Route path="/immutable" component={Immutable}/>
       </Switch>
     )
   }

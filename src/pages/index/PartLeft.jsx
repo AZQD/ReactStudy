@@ -48,6 +48,9 @@ export default class PartLeft extends React.Component {
           <li className="mainLi">
             <Link to="/hooks" replace>Hooks</Link>
           </li>
+          <li className="mainLi">
+            <Link to="/immutable" replace>Immutable</Link>
+          </li>
 
           {/*页面跳转*/}
           <li className="mainLi">
