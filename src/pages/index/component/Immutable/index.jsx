@@ -9,6 +9,8 @@ import Immutable from 'immutable'
 // List(arr)
 // is()
 
+// 详细说明：https://www.cnblogs.com/chris-oil/p/8494337.html
+// API简介快速入门：https://blog.csdn.net/ZQ_KING/article/details/80914619
 
 var obj = {
   company: '阿里',
