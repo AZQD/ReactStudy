@@ -1,6 +1,9 @@
 import React from 'react'
 import Immutable from 'immutable'
 
+// setState不管数据是否发生变化，都会触发render
+// super(props):能在 constructor 访问 this.props
+
 // 常用API：
 
 // fromJS()
