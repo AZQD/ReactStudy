@@ -46,15 +46,13 @@ console.log(55, Immutable.is(Immutable.fromJS(obj), Immutable.Map(obj)));
 console.log(55, Immutable.is(Immutable.fromJS(arr), Immutable.List(arr)));
 
 
-class Index extends React.Component{
-  constructor (props){
+class Index extends React.Component {
+  constructor (props) {
     super(props);
-    this.state = {
-
-    };
+    this.state = {};
   }
 
-  render(){
+  render () {
     return (
       <div>
         <h3>Immutable常用API：</h3>
@@ -72,4 +70,5 @@ class Index extends React.Component{
     )
   }
 }
+
 export default Index;
