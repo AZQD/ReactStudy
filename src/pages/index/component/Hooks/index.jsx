@@ -52,8 +52,6 @@ function Index (props) {
     };
   }, []);
 
-
-
   return (
     <div>
       <h3>React Hooks应用：useState, useEffect, useContext</h3>
