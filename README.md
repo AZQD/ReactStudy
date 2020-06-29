@@ -124,4 +124,4 @@ const ReactRender = loadable(() => import('./component/ReactRender'));
 4. npm run build打包可以看到多个打包文件；
 ```
 
-test
+test1
