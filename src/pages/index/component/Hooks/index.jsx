@@ -35,9 +35,24 @@ const MyContext = React.createContext();
 function Index (props) {
   let [count, setCount] = useState(1);
 
+  // react hooks 中模拟 componentDidMount
   useEffect(() => {
-    console.log('count：', count);
+    console.log('componentDidMount');
+  }, []);
+
+  // react hooks 中模拟 componentDidUpdate
+  useEffect(() => {
+    console.log('componentDidUpdate', count);
   }, [count]);
+
+  // react hooks 中模拟 componentWillUnmount
+  useEffect(() => {
+    return () => {
+      alert('componentWillUnmount');
+    };
+  }, []);
+
+
 
   return (
     <div>
