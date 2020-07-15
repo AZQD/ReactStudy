@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useState, useEffect, useContext, useRef} from 'react'
 
 // 类组件
 /*class Index extends React.Component{
@@ -34,6 +34,8 @@ const MyContext = React.createContext();
 // 函数组价
 function Index (props) {
   let [count, setCount] = useState(1);
+  let countRef = useRef(count); // 用法1：为了每次都拿到最新值，通过一个 ref 并且将数据都挂载到 ref.current 上面；
+  let inputRef = useRef(null); // 用法2：和常规ref类似；
 
   // react hooks 中模拟 componentDidMount
   useEffect(() => {
@@ -52,15 +54,34 @@ function Index (props) {
     };
   }, []);
 
+  const inputChange = () => {
+    console.log(inputRef.current.value);
+  };
+  const addFun = () => {
+    setCount(count + 1);
+    countRef.current = count + 1;
+    setTimeout(() => {
+      // 多次点击触发，countRef.current是准确的
+      console.log('count:', count);
+      console.log('countRef.current:', countRef.current);
+    }, 2000);
+  };
+
   return (
     <div>
       <h3>React Hooks应用：useState, useEffect, useContext</h3>
       <div>{count}</div>
-      <button onClick={() => setCount(count * 2)}>翻倍</button>
+      <button onClick={() => addFun()}>翻倍</button>
+      <div>当前组件count：{count}</div>
+      <div>当前组件countRef.current：{countRef.current}</div>
 
       <MyContext.Provider value={count}>
         <Child/>
       </MyContext.Provider>
+
+      <hr/>
+      <input onChange={() =>inputChange()} ref={inputRef} type="text"/>
+
     </div>
   )
 }
@@ -92,3 +113,8 @@ export default Index;
 // 1.创建Context
 // 2.使用MyContext.Provider提供value
 // 3.使用useContext(MyContext)获得数值value
+
+
+// useRef用法：
+// 1.用法1；
+// 2.用法2；
