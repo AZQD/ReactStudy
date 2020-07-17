@@ -19,7 +19,7 @@ export default class SetState extends React.Component {
     this.setState({
       val: this.state.val + 3
     });
-    setTimeout( () => {
+    setTimeout(() => {
       this.setState({
         val: this.state.val + 1
       });
@@ -32,7 +32,7 @@ export default class SetState extends React.Component {
     }, 0);
 
     let btn = document.getElementById("btn");
-    btn.addEventListener('click', ()=>{
+    btn.addEventListener('click', () => {
       this.setState({
         val: this.state.val + 1
       });
