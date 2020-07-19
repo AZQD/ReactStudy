@@ -26,21 +26,21 @@ console.log('组件的静态属性：', Component1.param2);*/
 
 // 2.方法的装饰
 
-function decorator2(target, name, descriptor) {
+function decorator2 (target, name, descriptor) {
     console.log(target, name, descriptor);
 }
 
 export default class Component2 extends React.Component {
-    constructor(porps) {
+    constructor (porps) {
         super(porps);
     }
 
     @decorator2
-    addFun(a, b) {
+    addFun (a, b) {
         return a + b;
     }
 
-    render() {
+    render () {
         return <div>类的装饰和方法的装饰</div>
     }
 }
