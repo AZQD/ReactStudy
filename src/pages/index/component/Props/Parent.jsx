@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PureComponent} from 'react'
 import ajax from 'ajax-promise-simple';
 import '@mockjs/index';
 import Child from './Child';
@@ -21,12 +21,25 @@ export default class Parent extends Component {
         });
     };
 
+    addItem = () => {
+        // let listData = this.state.listData;
+        // let listDataNew = Object.assign([], listData);
+        let listDataNew = this.state.listData;
+        listDataNew.unshift({
+            id: Math.random(),
+            name: '啦啦啦啦啦啦啦'
+        });
+        this.setState({listData: listDataNew});
+    };
+
     render () {
         const {listData} = this.state;
         return (
             <div>
                 <h3>Parent</h3>
                 <button onClick={this.getList}>获取列表数据</button>
+                <br/>
+                <button onClick={this.addItem}>增加一项</button>
 
                 <hr/>
 
