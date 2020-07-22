@@ -44,6 +44,12 @@ export default class SetState extends React.Component {
       });
     }, false);
 
+      // setState接收函数
+    // this.setState((prevState) => ({
+    //     ...prevState,
+    //     test: 1
+    // }));
+
   }
 
   add = () => {
@@ -64,11 +70,11 @@ export default class SetState extends React.Component {
 
   render () {
     let {val} = this.state;
-    console.log('render', val);
+    console.log('render', this.state);
     return (
       <div>
         <h3>SetState同步异步</h3>
-        <p>value的值为：{this.state.val}</p>
+        <p>value的值为：{val}</p>
 
         <button onClick={this.add}>使用jsx的onclick方式增加</button>
         <br/>
