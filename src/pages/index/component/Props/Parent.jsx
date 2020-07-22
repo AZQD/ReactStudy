@@ -4,7 +4,7 @@ import '@mockjs/index';
 import Child from './Child';
 
 // 类组件
-export default class Parent extends Component {
+export default class Parent extends PureComponent {
     constructor (props) {
         super(props);
         this.state = {
