@@ -22,14 +22,32 @@ export default class Parent extends Component {
     };
 
     addItem = () => {
-        // let listData = this.state.listData;
-        // let listDataNew = Object.assign([], listData);
-        let listDataNew = this.state.listData;
-        listDataNew.unshift({
+        let newItem = {
             id: Math.random(),
             name: '啦啦啦啦啦啦啦'
-        });
+        };
+        let listData = this.state.listData;
+
+
+        // 场景一、对于当前组件：如果是用Component创建的类组件，可以使用listData：
+        // listData.unshift(newItem);
+        // this.setState({listData: listData});
+
+
+        // 场景二、对于当前组件：如果是用PureComponent创建的类组件，必须创建新的listData：
+        // 方法1：
+        // let listDataNew = Object.assign([], listData); // 创建新的listData
+        // listDataNew.unshift(newItem); // 添加newItem
+
+        // 方法2：
+        // let listDataNew = listData.slice(); // 创建新的listData
+        // listDataNew.unshift(newItem); // 添加newItem
+
+        // 方法3：
+        let listDataNew = [newItem, ...listData]; // 创建新的listData，添加newItem
+
         this.setState({listData: listDataNew});
+
     };
 
     render () {
