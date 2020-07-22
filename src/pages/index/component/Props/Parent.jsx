@@ -1,5 +1,6 @@
 import React, {Component, PureComponent} from 'react'
 import ajax from 'ajax-promise-simple';
+import { debounce } from 'lcj'; // 防抖
 import '@mockjs/index';
 import Child from './Child';
 
@@ -50,27 +51,12 @@ export default class Parent extends PureComponent {
 
     };
 
-    // 防抖（只执行一次）
-    /**
-     * 定义：规定一个期限时间，在首次触发事件时，不立即执行回调函数，而是在期限时间后再执行，如果期限时间内回调函数被重复执行，则期限时间重新计时。
-     * 应用：1.百度搜索输入框，延迟请求；2.window的scroll、resize事件调整窗口；
-     */
-    debounce = (fn, delay) => {
-        let timer = null;
-        return function () {
-            if (timer) {
-                clearTimeout(timer);
-            }
-            timer = setTimeout(fn, delay)
-        }
-    };
-
     render () {
         const {listData} = this.state;
         return (
             <div>
                 <h3>Parent</h3>
-                <button onClick={this.debounce(this.getList, 1000)}>获取列表数据</button>
+                <button onClick={debounce(this.getList, 1000)}>获取列表数据</button>
                 <br/>
                 <button onClick={this.addItem}>增加一项</button>
 
