@@ -135,4 +135,18 @@ Mock.mock(
   }
 );
 
+Mock.mock(
+    /\/props\/parent\/list/,
+    'get',
+    {
+        'data|10': [{
+            'id': '@id',
+            'cateId|+1': 1000001,
+            'name|1': '@province'
+        }],
+        'msg': '操作成功',
+        'code': 0
+    }
+);
+
 export default Mock;

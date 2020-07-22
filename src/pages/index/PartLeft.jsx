@@ -54,6 +54,9 @@ export default class PartLeft extends React.Component {
           <li className="mainLi">
             <Link to="/lazyload" replace>Lazyload</Link>
           </li>
+          <li className="mainLi">
+            <Link to="/props" replace>Props</Link>
+          </li>
 
           {/*页面跳转*/}
           <li className="mainLi">

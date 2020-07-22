@@ -20,9 +20,10 @@ const CssTree = loadable(() => import('./component/AST/csstree/CssTree'));
 const Postcss = loadable(() => import('./component/AST/postcss/Postcss'));
 const CssToRN = loadable(() => import('./component/csstorn/Index'));
 const SetState = loadable(() => import('./component/setState/Index'));
-const Hooks = loadable(() => import('./component/Hooks/Index'));
-const Immutable = loadable(() => import('./component/Immutable/Index'));
-const Lazyload = loadable(() => import('./component/Lazyload/Index'));
+const Hooks = loadable(() => import('./component/Hooks/index'));
+const Immutable = loadable(() => import('./component/Immutable/index'));
+const Lazyload = loadable(() => import('./component/Lazyload/index'));
+const Props = loadable(() => import('./component/Props/Parent'));
 
 const Home = () => (
   <div>
@@ -87,6 +88,7 @@ export default class PartRight extends React.Component {
         <Route path="/hooks" component={Hooks}/>
         <Route path="/immutable" component={Immutable}/>
         <Route path="/lazyload" component={Lazyload}/>
+        <Route path="/props" component={Props}/>
       </Switch>
     )
   }
