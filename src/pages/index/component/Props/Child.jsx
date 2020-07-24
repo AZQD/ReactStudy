@@ -1,5 +1,4 @@
 import React, {Component, PureComponent} from 'react'
-console.log('hello');
 
 // 类组件
 export default class Child extends PureComponent {
