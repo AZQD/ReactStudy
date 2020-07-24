@@ -8,7 +8,7 @@ export default class Child extends PureComponent {
     }
 
     render () {
-        let {listData = []} = this.props;
+        const {listData = []} = this.props;
         return (
             <div>
                 <h3>Child</h3>
