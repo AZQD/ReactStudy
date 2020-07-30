@@ -1,5 +1,6 @@
 import React, {Component, PureComponent} from 'react'
 
+
 // 类组件
 export default class Child extends PureComponent {
     constructor (props) {
