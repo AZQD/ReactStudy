@@ -1,5 +1,6 @@
 import React, {Component, PureComponent} from 'react'
 
+
 // 类组件
 export default class Child extends PureComponent {
     constructor (props) {
@@ -8,7 +9,7 @@ export default class Child extends PureComponent {
     }
 
     render () {
-        let {listData = []} = this.props;
+        const {listData = []} = this.props;
         return (
             <div>
                 <h3>Child</h3>
