@@ -60,6 +60,7 @@
   "dependencies": {
     "ajax-promise-simple": "^1.1.2",
     "html-react-parser": "^0.13.0",
+    "qs": "^6.9.4",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-lazyload": "^2.6.8",
