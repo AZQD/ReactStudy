@@ -60,6 +60,9 @@ export default class PartLeft extends React.Component {
           <li className="mainLi">
             <Link to="/qs" replace>qs</Link>
           </li>
+          <li className="mainLi">
+            <Link to="/log" replace>log</Link>
+          </li>
 
           {/*页面跳转*/}
           <li className="mainLi">

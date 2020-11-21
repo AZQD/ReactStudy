@@ -25,6 +25,7 @@ const Immutable = loadable(() => import('./component/Immutable/index'));
 const Lazyload = loadable(() => import('./component/Lazyload/index'));
 const Props = loadable(() => import('./component/Props/Parent'));
 const Qs = loadable(() => import('./component/qs/index'));
+const Log = loadable(() => import('./component/log/index'));
 
 const Home = () => (
   <div>
@@ -91,6 +92,7 @@ export default class PartRight extends React.Component {
         <Route path="/lazyload" component={Lazyload}/>
         <Route path="/props" component={Props}/>
         <Route path="/qs" component={Qs}/>
+        <Route path="/log" component={Log}/>
       </Switch>
     )
   }
