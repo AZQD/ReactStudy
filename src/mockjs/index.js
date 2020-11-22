@@ -1,3 +1,15 @@
+// import ajax from 'ajax-promise-simple';
+//
+// // 测试接口请求方式1：使用mock
+// import '@mockjs/index';
+// ajax.getJSON('/redux/demo3/category/list').then(res => {
+//     console.log(11, res);
+// });
+// // 测试接口请求方式2：使用proxy
+// ajax.getJSON('/portal/interface/indexmysub2020').then(res => {
+//     console.log(22, res);
+// });
+
 /**
  * Mock语法规范：https://github.com/nuysoft/Mock/wiki/Syntax-Specification
  * 数据模板定义示例：http://mockjs.com/examples.html
