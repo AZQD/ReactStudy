@@ -40,6 +40,11 @@ module.exports = {
         changeOrigin: true,
         secure: false,
       },
+      "/portal/interface": {
+        target: "https://wenku.baidu.com/",
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
   module: {
