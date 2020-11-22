@@ -59,7 +59,6 @@ document.addEventListener("visibilitychange", function(e) {
         console.log('visibilitychange：页面显示', e.type);
     } else {
         console.log('visibilitychange：页面隐藏', e.type);
-        document.title = '123'
     }
 });
 
