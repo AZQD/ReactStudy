@@ -10,6 +10,11 @@ loadScript('https://tracklog.58.com/referrer_m.js', () => {
     // window.clickLog('from=log_start');
 });
 
+window.addEventListener("load", event => {
+    console.log('load：', event);
+    window.clickLog('from=onload');
+}, false);
+
 /**
  * 当窗口即将被卸载（关闭）时,会触发该事件.此时页面文档依然可见,且该事件的默认动作可以被取消.
  * 参考文档：https://developer.mozilla.org/zh-CN/docs/Web/API/Window/onbeforeunload
@@ -18,6 +23,7 @@ loadScript('https://tracklog.58.com/referrer_m.js', () => {
  */
 window.onbeforeunload = function (e) {
     e = e || event;
+    console.log('onbeforeunload：', e);
 
     // 兼容IE8和Firefox 4之前的版本
     if (e) {
@@ -35,9 +41,65 @@ window.onbeforeunload = function (e) {
  * 参考文档：https://developer.mozilla.org/zh-CN/docs/Web/API/Window/onunload
  */
 window.onunload = function () {
-    window.clickLog('from=onunload');
+    window.clickLog('from=onunload1');
 };
+// window.addEventListener("unload", event => {
+//     console.log('unload：', event);
+//     window.clickLog('from=onunload2');
+// }, false);
 
+
+
+document.addEventListener("visibilitychange", function(e) {
+    window.clickLog('from=visibilitychange');
+    if (document.visibilityState === 'visible') {
+        console.log('visibilitychange：页面显示', e.type);
+    } else {
+        console.log('visibilitychange：页面隐藏', e.type);
+        document.title = '123'
+    }
+});
+
+
+window.addEventListener("pageshow", event => {
+    console.log('pageshow：', event.persisted);
+    if (event.persisted) { // persisted：维持, 保持, 持续存在
+        /* the page isn't being discarded, so it can be reused later */
+        // 该页不会被丢弃，因此可以在以后重用
+    }
+}, false);
+
+window.addEventListener("pagehide", event => {
+    console.log('pagehide：', event.persisted);
+    window.clickLog('from=pagehide');
+    if (event.persisted) { // persisted：维持, 保持, 持续存在
+        /* the page isn't being discarded, so it can be reused later */
+        // 该页不会被丢弃，因此可以在以后重用
+    }
+}, false);
+
+
+// const events = [
+//     "pagehide", "pageshow",
+//     "unload", "load"
+// ];
+//
+// const eventLogger = event => {
+//     switch (event.type) {
+//         case "pagehide":
+//         case "pageshow":
+//             let isPersisted = event.persisted ? "persisted" : "not persisted";
+//             console.log('Event:', event.type, '-', isPersisted);
+//             break;
+//         default:
+//             console.log('Event:', event.type);
+//             break;
+//     }
+// };
+//
+// events.forEach(eventName =>
+//     window.addEventListener(eventName, eventLogger)
+// );
 
 class Index extends React.Component {
     constructor (props) {
@@ -49,7 +111,8 @@ class Index extends React.Component {
         return (
             <div>
                 <h3>log埋点常用方法</h3>
-                <a href="https://www.baidu.com">123</a>
+                <p><a href="https://www.baidu.com">打开页面</a></p>
+                <p><a href="https://www.baidu.com" target="_blank">打开新窗口</a></p>
             </div>
         )
     }
