@@ -49,7 +49,10 @@ window.onunload = function () {
 // }, false);
 
 
-
+/**
+ * 当其选项卡的内容变得可见或被隐藏时，会在文档上触发 visibilitychange (能见度更改)事件。
+ * 参考文档：https://wiki.developer.mozilla.org/zh-CN/docs/Web/API/Document/visibilitychange_event
+ */
 document.addEventListener("visibilitychange", function(e) {
     window.clickLog('from=visibilitychange');
     if (document.visibilityState === 'visible') {
@@ -61,6 +64,10 @@ document.addEventListener("visibilitychange", function(e) {
 });
 
 
+/**
+ * 当一条会话历史记录被执行的时候将会触发页面显示(pageshow)事件
+ * 参考文档：https://wiki.developer.mozilla.org/zh-CN/docs/Web/Events/pageshow
+ */
 window.addEventListener("pageshow", event => {
     console.log('pageshow：', event.persisted);
     if (event.persisted) { // persisted：维持, 保持, 持续存在
@@ -69,6 +76,11 @@ window.addEventListener("pageshow", event => {
     }
 }, false);
 
+
+/**
+ * 当浏览器在显示与会话历史记录不同的页面的过程中隐藏当前页面时, pagehide(页面隐藏)事件会被发送到一个Window
+ * 参考文档：https://wiki.developer.mozilla.org/zh-CN/docs/Web/API/Window/pagehide_event
+ */
 window.addEventListener("pagehide", event => {
     console.log('pagehide：', event.persisted);
     window.clickLog('from=pagehide');
