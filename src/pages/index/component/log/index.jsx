@@ -53,7 +53,7 @@ window.onunload = function () {
  * 当其选项卡的内容变得可见或被隐藏时，会在文档上触发 visibilitychange (能见度更改)事件。
  * 参考文档：https://wiki.developer.mozilla.org/zh-CN/docs/Web/API/Document/visibilitychange_event
  */
-document.addEventListener("visibilitychange", function(e) {
+document.addEventListener("visibilitychange", function (e) {
     window.clickLog('from=visibilitychange');
     if (document.visibilityState === 'visible') {
         console.log('visibilitychange：页面显示', e.type);
