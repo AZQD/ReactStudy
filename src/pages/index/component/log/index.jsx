@@ -121,7 +121,7 @@ class Index extends React.Component {
     render () {
         return (
             <div>
-                <h3>log埋点常用方法</h3>
+                <h3>addEventListener常用监听：log埋点常用方法</h3>
                 <p><a href="https://www.baidu.com">打开页面</a></p>
                 <p><a href="https://www.baidu.com" target="_blank">打开新窗口</a></p>
             </div>
