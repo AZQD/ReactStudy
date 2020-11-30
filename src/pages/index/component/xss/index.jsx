@@ -9,7 +9,7 @@ class Index extends React.Component {
     }
 
     render () {
-        const originHTML = '<iframe src="https://www.baidu.com"></iframe><script>alert(11);</script><><img src=x onerror=alert(22);//>';
+        const originHTML = '<iframe src="https://www.baidu.com"></iframe><script>alert("网站被XSS攻击了！");</script><><img src=x onerror=alert("网站被XSS攻击了！！！");//>';
         const dompurifyHTML = dompurify.sanitize(originHTML);
         const xssHTML = xss(originHTML);
         console.log(1, '原始数据：', originHTML);
