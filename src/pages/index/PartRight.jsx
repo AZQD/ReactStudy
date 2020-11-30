@@ -26,6 +26,7 @@ const Lazyload = loadable(() => import('./component/Lazyload/index'));
 const Props = loadable(() => import('./component/Props/Parent'));
 const Qs = loadable(() => import('./component/qs/index'));
 const Log = loadable(() => import('./component/log/index'));
+const Xss = loadable(() => import('./component/xss/index'));
 
 const Home = () => (
   <div>
@@ -93,6 +94,7 @@ export default class PartRight extends React.Component {
         <Route path="/props" component={Props}/>
         <Route path="/qs" component={Qs}/>
         <Route path="/log" component={Log}/>
+        <Route path="/xss" component={Xss}/>
       </Switch>
     )
   }

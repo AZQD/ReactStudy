@@ -59,6 +59,7 @@
   },
   "dependencies": {
     "ajax-promise-simple": "^1.1.2",
+    "dompurify": "^2.2.2",
     "html-react-parser": "^0.13.0",
     "qs": "^6.9.4",
     "react": "^16.13.0",
@@ -67,7 +68,8 @@
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "redux": "^4.0.1",
-    "redux-saga": "^0.15.0"
+    "redux-saga": "^0.15.0",
+    "xss": "^1.0.8"
   },
   "pre-commit": [
     "lint"
