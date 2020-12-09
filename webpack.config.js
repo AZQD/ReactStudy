@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 抽离css
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");// 压缩js
 const CleanWebpackPlugin = require("clean-webpack-plugin");// 清除相关文件
 
-const autoprefixer = require('autoprefixer');
+const autoprefixer = require('autoprefixer'); // 自动添加浏览器厂商前缀
 
 module.exports = {
   entry: {
