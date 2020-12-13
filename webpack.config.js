@@ -89,6 +89,28 @@ module.exports = {
         ],
       },
       {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1
+            }
+          }, // 注意sass的配置
+          "sass-loader",
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: [
+                autoprefixer(),
+              ]
+            }
+          }
+        ]
+      },
+      {
         // loader 后面 limit 字段代表图片打包限制，这个限制是指当图片大小小于限制时会自动转成 base64 码引用。
         // name 字段指定了在打包根目录（output.path）下生成名为 images 的文件夹，并在原图片名前加上8位 hash 值。
         // test: /\.(png|jpg|gif)$/,
