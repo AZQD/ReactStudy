@@ -10,17 +10,17 @@ class Index extends React.Component {
 
   componentDidMount () {
     new Chimee({
-      wrapper: '.chimee-video-wrapper',  // video dom容器
+      wrapper: '.chimee-video-wrapper',
       src: 'https://wos2.58cdn.com.cn/HiJeDcBazHNm/simplevideo/1607713384238videofile.mp4',
+      poster: 'https://pic3.58cdn.com.cn/nowater/pinche/n_v24e4fe1b239534e0faedec8c95792e99d.jpg',
       autoplay: true,
       controls: true,
       playsInline: true,
-      preload: 'auto',
+      preload: true,
       x5VideoPlayerFullscreen: true,
-      x5VideoOrientation: 'landscape|portrait',
+      x5VideoOrientation: true,
       xWebkitAirplay: true,
-      muted: true,
-      // removeInnerPlugins: ['chimeeMobiControlbar', 'chimeeState'] // 需要移除的插件
+      x5VideoPlayerType: 'h5' // 加上这个可以开启x5同层播放,避免z-index:失效
     });
   }
 
