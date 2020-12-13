@@ -60,6 +60,8 @@
   "dependencies": {
     "ajax-promise-simple": "^1.1.2",
     "chimee": "^0.12.0",
+    "chimee-mobile-player": "^0.2.8",
+    "chimee-plugin-controlbar": "^0.4.11",
     "dompurify": "^2.2.2",
     "html-react-parser": "^0.13.0",
     "qs": "^6.9.4",
