@@ -26,46 +26,48 @@ class Index extends React.Component {
       xWebkitAirplay: true,
       x5VideoPlayerType: 'h5', // 加上这个可以开启x5同层播放,避免z-index:失效、
     });
-    const arr = [
-      'abort',
-      'canplay',
-      'canplaythrough',
-      'durationchange',
-      'emptied',
-      'encrypted',
-      'ended',
-      'error',
-      'interruptbegin',
-      'interruptend',
-      'loadeddata',
-      'loadedmetadata',
-      'loadstart',
-      'mozaudioavailable',
-      'pause',
-      'play',
-      'playing',
-      'progress',
-      'ratechange',
-      'seeked',
-      'seeking',
-      'stalled',
-      'suspend',
-      // 'timeupdate',
-      'volumechange',
-      'waiting',
-      'load',
-      'seek',
-      // 'mousemove',
-      // 'touchstart',
-      // 'touchmove',
-      'touchend',
-      'after_pause',
-      'after_play',
-      'beforeSeek',
-      'afterSeek',
-    ];
 
-    // chimee.currentTime = 20; // 初始化位置
+    // 常用这几个事件
+      const arr = [
+          'play',
+          'seeking',
+          'seeked',
+          'pause',
+          // 'seek',
+          // 'abort',
+          // 'canplay',
+          // 'canplaythrough',
+          // 'durationchange',
+          // 'emptied',
+          // 'encrypted',
+          // 'ended', // 播放完
+          // 'error',
+          // 'interruptbegin',
+          // 'interruptend',
+          // 'loadeddata',
+          // 'loadedmetadata',
+          // 'loadstart',
+          // 'mozaudioavailable',
+          // 'playing',
+          // // 'progress',
+          // 'ratechange',
+          // 'stalled',
+          // 'suspend', // 暂停预加载
+          // 'timeupdate',
+          // 'volumechange',
+          // 'waiting',
+          // 'load',
+          // // 'mousemove',
+          // // 'touchstart',
+          // // 'touchmove',
+          // // 'touchend',
+          // 'after_pause',
+          // 'after_play',
+          // 'beforeSeek',
+          // 'afterSeek',
+      ];
+
+      // chimee.currentTime = 20; // 初始化位置
     arr.map((item, index) => {
       // console.log(234, item, index);
       chimee.on(item, (e) => {
