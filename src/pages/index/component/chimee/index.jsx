@@ -80,7 +80,9 @@ class Index extends React.Component {
         })
     };
 
-    // 参考文档：http://chimee.org/docs/chimee_api.html
+    // 参考文档：
+    // http://chimee.org/docs/chimee_api.html
+    // https://www.bookstack.cn/read/chimee/24.md
     render () {
         return (
             <div>
