@@ -33,64 +33,64 @@ const MyContext = React.createContext();
 
 // 函数组价
 function Index (props) {
-  let [count, setCount] = useState(1);
-  let countRef = useRef(count); // 用法1：为了每次都拿到最新值，通过一个 ref 并且将数据都挂载到 ref.current 上面；
-  let inputRef = useRef(null); // 用法2：和常规ref类似；
+    let [count, setCount] = useState(1);
+    let countRef = useRef(count); // 用法1：为了每次都拿到最新值，通过一个 ref 并且将数据都挂载到 ref.current 上面；
+    let inputRef = useRef(null); // 用法2：和常规ref类似；
 
-  // react hooks 中模拟 componentDidMount
-  useEffect(() => {
-    console.log('componentDidMount');
-  }, []);
+    // react hooks 中模拟 componentDidMount
+    useEffect(() => {
+        console.log('componentDidMount');
+    }, []);
 
-  // react hooks 中模拟 componentDidUpdate
-  useEffect(() => {
-    console.log('componentDidUpdate', count);
-  }, [count]);
+    // react hooks 中模拟 componentDidUpdate
+    useEffect(() => {
+        console.log('componentDidUpdate', count);
+    }, [count]);
 
-  // react hooks 中模拟 componentWillUnmount
-  useEffect(() => {
-    return () => {
-      alert('componentWillUnmount');
+    // react hooks 中模拟 componentWillUnmount
+    useEffect(() => {
+        return () => {
+            alert('componentWillUnmount');
+        };
+    }, []);
+
+    const inputChange = () => {
+        console.log(inputRef.current.value);
     };
-  }, []);
+    const addFun = () => {
+        setCount(count + 1);
+        countRef.current = count + 1;
+        setTimeout(() => {
+            // 多次点击触发，countRef.current是准确的
+            console.log('count:', count);
+            console.log('countRef.current:', countRef.current);
+        }, 2000);
+    };
 
-  const inputChange = () => {
-    console.log(inputRef.current.value);
-  };
-  const addFun = () => {
-    setCount(count + 1);
-    countRef.current = count + 1;
-    setTimeout(() => {
-      // 多次点击触发，countRef.current是准确的
-      console.log('count:', count);
-      console.log('countRef.current:', countRef.current);
-    }, 2000);
-  };
+    return (
+        <div>
+            <h3>React Hooks应用：useState, useEffect, useContext</h3>
+            <div>{count}</div>
+            <button onClick={() => addFun()}>翻倍</button>
+            <div>当前组件count：{count}</div>
+            <div>当前组件countRef.current：{countRef.current}</div>
 
-  return (
-    <div>
-      <h3>React Hooks应用：useState, useEffect, useContext</h3>
-      <div>{count}</div>
-      <button onClick={() => addFun()}>翻倍</button>
-      <div>当前组件count：{count}</div>
-      <div>当前组件countRef.current：{countRef.current}</div>
+            <MyContext.Provider value={count}>
+                <Child/>
+            </MyContext.Provider>
 
-      <MyContext.Provider value={count}>
-        <Child/>
-      </MyContext.Provider>
+            <hr/>
+            <input onChange={() => inputChange()} ref={inputRef} type="text"/>
 
-      <hr/>
-      <input onChange={() =>inputChange()} ref={inputRef} type="text"/>
-
-    </div>
-  )
+        </div>
+    )
 }
 
 function Child () {
-  let count = useContext(MyContext);
-  return (
-    <div>Child count: {count}</div>
-  );
+    let count = useContext(MyContext);
+    return (
+        <div>Child count: {count}</div>
+    );
 }
 
 export default Index;
