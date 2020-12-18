@@ -75,8 +75,12 @@ function Index (props) {
             <div>当前组件count：{count}</div>
             <div>当前组件countRef.current：{countRef.current}</div>
 
-            <MyContext.Provider value={count}>
-                <Child/>
+            <MyContext.Provider value={{count, setCount}}>
+                {
+                    [1, 2, 3].map((n, i) => (
+                        <Child key={n} index={i}/>
+                    ))
+                }
             </MyContext.Provider>
 
             <hr/>
@@ -86,10 +90,18 @@ function Index (props) {
     )
 }
 
-function Child () {
-    let count = useContext(MyContext);
+function Child (props) {
+    let {count, setCount} = useContext(MyContext);
+
+    useEffect(() => {
+        console.log(props.index, 'update');
+    }, [count]);
+
     return (
-        <div>Child count: {count}</div>
+        <div>
+            Child count: {count}
+            <button onClick={() => setCount(count+1)}>增加</button>
+        </div>
     );
 }
 
