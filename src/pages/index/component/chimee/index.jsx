@@ -61,6 +61,7 @@ class Index extends React.Component {
             // // 'touchstart',
             // // 'touchmove',
             // // 'touchend',
+            // 'before_pause',
             // 'after_pause',
             // 'after_play',
             // 'beforeSeek',
