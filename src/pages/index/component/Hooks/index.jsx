@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext, useRef} from 'react'
+import React, {PureComponent, useState, useEffect, useContext, useRef} from 'react'
 
 // 类组件
 /*class Index extends React.Component{
@@ -57,8 +57,8 @@ function Index (props) {
     const inputChange = () => {
         console.log(inputRef.current.value);
     };
-    const addFun = () => {
-        setCount(count + 1);
+    const doubleFun = () => {
+        setCount(count * 2);
         countRef.current = count + 1;
         setTimeout(() => {
             // 多次点击触发，countRef.current是准确的
@@ -71,14 +71,14 @@ function Index (props) {
         <div>
             <h3>React Hooks应用：useState, useEffect, useContext</h3>
             <div>{count}</div>
-            <button onClick={() => addFun()}>翻倍</button>
+            <button onClick={() => doubleFun()}>翻倍</button>
             <div>当前组件count：{count}</div>
             <div>当前组件countRef.current：{countRef.current}</div>
 
             <MyContext.Provider value={{count, setCount}}>
                 {
                     [1, 2, 3].map((n, i) => (
-                        <Child key={n} index={i}/>
+                        <Child key={n} index={i} count={count} setCount={setCount}/>
                     ))
                 }
             </MyContext.Provider>
@@ -90,19 +90,48 @@ function Index (props) {
     )
 }
 
-function Child (props) {
-    let {count, setCount} = useContext(MyContext);
+// function Child (props) {
+//     let {count, setCount} = useContext(MyContext);
+//
+//     useEffect(() => {
+//         console.log(props.index, 'update');
+//     }, [count]);
+//
+//     return (
+//         <div>
+//             Child count: {count}
+//             <button onClick={() => setCount(count+1)}>增加</button>
+//         </div>
+//     );
+// }
 
-    useEffect(() => {
-        console.log(props.index, 'update');
-    }, [count]);
+class Child extends PureComponent {
+    constructor (props) {
+        super(props);
+        this.state = {
+        };
+    }
 
-    return (
-        <div>
-            Child count: {count}
-            <button onClick={() => setCount(count+1)}>增加</button>
-        </div>
-    );
+    componentDidMount () {
+        console.log(this.props.index, 'componentDidMount');
+    }
+
+    componentWillReceiveProps (newProps) {
+        console.log(this.props.index, 'componentWillReceiveProps', newProps);
+    }
+
+    componentDidUpdate (prevProps, prevState) {
+        console.log(this.props.index, 'componentDidUpdate', prevProps, prevState);
+    }
+
+    render () {
+        return (
+            <div>
+                Child count: {this.props.count}
+                <button onClick={() => this.props.setCount(this.props.count+1)}>增加</button>
+            </div>
+        );
+    }
 }
 
 export default Index;
