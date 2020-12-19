@@ -34,6 +34,7 @@ const MyContext = React.createContext();
 // 函数组价
 function Index (props) {
     let [count, setCount] = useState(1);
+    let [arr, setArr] = useState([]);
     let countRef = useRef(count); // 用法1：为了每次都拿到最新值，通过一个 ref 并且将数据都挂载到 ref.current 上面；
     let inputRef = useRef(null); // 用法2：和常规ref类似；
 
@@ -78,7 +79,7 @@ function Index (props) {
             <MyContext.Provider value={{count, setCount}}>
                 {
                     [1, 2, 3].map((n, i) => (
-                        <Child key={n} index={i} count={count} setCount={setCount}/>
+                        <Child key={n} index={i} count={count} setCount={setCount} arr={arr} setArr={setArr}/>
                     ))
                 }
             </MyContext.Provider>
@@ -121,6 +122,18 @@ class Child extends PureComponent {
     }
 
     componentDidUpdate (prevProps, prevState) {
+        let {arr} = this.props;
+        console.log(234, arr);
+        let tempArr = arr.filter((item) => item.index === this.props.index) || [];
+        console.log('tempArr', tempArr);
+        let tempObj = tempArr[0] || {};
+        tempObj = {
+            ...tempObj,
+            index: this.props.index
+        };
+        arr[this.props.index] = tempObj;
+        // console.log(2222, arr);
+        // this.props.setArr(arr); // arr如果是对象，没有setArr也可以更新arr,因为arr是引用数据类型；（基本数据类型不会）
         console.log(this.props.index, 'componentDidUpdate', prevProps, prevState);
     }
 
