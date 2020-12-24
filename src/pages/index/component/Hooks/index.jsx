@@ -109,8 +109,7 @@ function Index (props) {
 class Child extends PureComponent {
     constructor (props) {
         super(props);
-        this.state = {
-        };
+        this.state = {};
     }
 
     componentDidMount () {
@@ -141,7 +140,7 @@ class Child extends PureComponent {
         return (
             <div>
                 Child count: {this.props.count}
-                <button onClick={() => this.props.setCount(this.props.count+1)}>增加</button>
+                <button onClick={() => this.props.setCount(this.props.count + 1)}>增加</button>
             </div>
         );
     }
