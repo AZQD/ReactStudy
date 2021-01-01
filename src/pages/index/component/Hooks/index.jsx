@@ -31,6 +31,7 @@ import React, {PureComponent, useState, useEffect, useContext, useRef} from 'rea
 console.log('%cHooks', 'color: red; font-size: 30px;');
 const MyContext = React.createContext();
 
+
 // 函数组价
 function Index (props) {
     let [count, setCount] = useState(1);
