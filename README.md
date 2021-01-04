@@ -14,6 +14,7 @@
 Mounting：已插入真实 DOM
 Updating：正在被重新渲染
 Unmounting：已移出真实 DOM
+
 生命周期的方法有：
 
 componentWillMount 在渲染前调用,在客户端也在服务端。
