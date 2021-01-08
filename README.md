@@ -34,6 +34,16 @@ componentWillUnmount在组件从 DOM 中移除之前立刻被调用。
 
 React新的生命周期：https://www.cnblogs.com/colima/p/9484607.html;
 
+React 错误处理(componentDidCatch)
+```js
+ componentDidCatch(error, info) {
+    // Display fallback UI
+    this.setState({ hasError: true });
+    // You can also log the error to an error reporting service
+    logErrorToMyService(error, info);
+  }
+```js
+
 # React常用知识点总结
 
 ### 1.react setState后render没有更新:
