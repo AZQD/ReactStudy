@@ -48,6 +48,7 @@ React 错误处理(componentDidCatch)
 # React常用知识点总结
 
 ### 1.react setState后render没有更新:
+
 ```
 解决方案：React.Component 把PureComponent 改成Component。
 总结：PureComponent与Component唯一的区别：PureComponent是自带了一个简单的shouldComponentUpdate来优化更新机制的。
