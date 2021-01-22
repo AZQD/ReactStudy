@@ -14,6 +14,7 @@
 Mounting：已插入真实 DOM
 Updating：正在被重新渲染
 Unmounting：已移出真实 DOM
+
 生命周期的方法有：
 
 componentWillMount 在渲染前调用,在客户端也在服务端。
@@ -33,9 +34,21 @@ componentWillUnmount在组件从 DOM 中移除之前立刻被调用。
 
 React新的生命周期：https://www.cnblogs.com/colima/p/9484607.html;
 
+React 错误处理(componentDidCatch)
+
+```js
+ componentDidCatch(error, info) {
+    // Display fallback UI
+    this.setState({ hasError: true });
+    // You can also log the error to an error reporting service
+    logErrorToMyService(error, info);
+  }
+```js
+
 # React常用知识点总结
 
 ### 1.react setState后render没有更新:
+
 ```
 解决方案：React.Component 把PureComponent 改成Component。
 总结：PureComponent与Component唯一的区别：PureComponent是自带了一个简单的shouldComponentUpdate来优化更新机制的。
