@@ -141,3 +141,14 @@ const ReactRender = loadable(() => import('./component/ReactRender'));
 ```
 使用 sudo npm run dev，输入电脑密码即可；
 ```
+
+### 10.报错信息：
+      .replace(
+      			^
+      SyntaxError: Invalid regular expression: /(\p{Uppercase_Letter}+|\p{Lowercase_Letter}|\d)(\p{Uppercase_Letter}+)/: Invalid escape：
+      
+```
+    node版本不匹配，如当前node版本为8.9.0，可使用新版本：
+    nvm use 12.19.0
+    重新启动项目即可；
+```
