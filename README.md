@@ -136,3 +136,8 @@ import loadable from '../../util/loadable'; // 路由动态加载
 const ReactRender = loadable(() => import('./component/ReactRender'));
 4. npm run build打包可以看到多个打包文件；
 ```
+
+### 9.npm run dev 报错：Error: listen EACCES 0.0.0.0:80：
+```
+使用 sudo npm run dev，输入电脑密码即可；
+```
