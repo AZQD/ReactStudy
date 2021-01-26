@@ -60,7 +60,7 @@
   },
   "dependencies": {
     "ajax-promise-simple": "^1.1.2",
-    "azqd": "^1.0.12",
+    "azqd": "^1.0.14",
     "chimee": "^0.12.0",
     "chimee-mobile-player": "^0.2.8",
     "chimee-plugin-controlbar": "^0.4.11",
