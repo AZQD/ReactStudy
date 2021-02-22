@@ -1,8 +1,11 @@
 import React, {Component, PureComponent} from 'react'
 import ajax from 'ajax-promise-simple';
 import { debounce } from 'lcj'; // 防抖
+import azqd from 'azqd'; // 防抖
 import '@mockjs/index';
 import Child from './Child';
+// console.log(234, azqd);
+console.log(234, azqd.default.default.default);
 
 // 类组件
 export default class Parent extends PureComponent {
