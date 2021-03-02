@@ -152,3 +152,5 @@ const ReactRender = loadable(() => import('./component/ReactRender'));
     nvm use 12.19.0
     重新启动项目即可；
 ```
+
+react17: 启发式更新算法。
